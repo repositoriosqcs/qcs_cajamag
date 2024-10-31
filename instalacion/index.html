@@ -1,0 +1,1961 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../buenaspracticas/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>INSTALACIÓN Y CONFIGURACIÓN - Optimización CAJAMAG - Gobierno de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#d89717" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#instalacion-y-configuracion-del-entorno-para-el-procesamiento-de-datos-del-data-warehouse" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Optimización CAJAMAG - Gobierno de Datos" class="md-header__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Optimización CAJAMAG - Gobierno de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              INSTALACIÓN Y CONFIGURACIÓN
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Optimización CAJAMAG - Gobierno de Datos" class="md-nav__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Optimización CAJAMAG - Gobierno de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INTRODUCCIÓN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    INSTALACIÓN Y CONFIGURACIÓN
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    INSTALACIÓN Y CONFIGURACIÓN
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#librerias-necesarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Librerías Necesarias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-del-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del Entorno
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración del Entorno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creacion-de-entorno-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creación de Entorno Virtual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de Dependencias
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importacion-de-funciones-desde-funcionespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importación de Funciones desde Funciones.py
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Importación de Funciones desde Funciones.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-guardar_en_dwhdf-tabla-logger-multiple-if_exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. guardar_en_dwh(df, tabla, logger, multiple, if_exists):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-obtener_conexionnombre_bd" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. obtener_conexion(nombre_bd):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-setup_loggerlog_filename-log_level" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. setup_logger(log_filename, log_level):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-limpiar_htmltexto_html" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. limpiar_html(texto_html):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-log_tiempologger-mensaje-tiempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. log_tiempo(logger, mensaje, tiempo):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-cargar_tablasmotor-queries-df_structure-logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. cargar_tablas(motor, queries, df_structure, logger):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-storeduplicatednombre_archivo-columnas-dataframe-ruta" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. StoreDuplicated(nombre_archivo, columnas, dataframe, ruta):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-testfunciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. testfunciones():
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-estandarizar_direcciondireccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. estandarizar_direccion(direccion):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-marcar_direcciones_estandarizadasdf-columna" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. marcar_direcciones_estandarizadas(df, columna):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-del-entorno-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del Entorno de Trabajo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración del Entorno de Trabajo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-inicial-del-logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración Inicial del Logger
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejecucion-de-funciones-de-conexion-y-procesamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejecución de Funciones de Conexión y Procesamiento
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../buenaspracticas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BUENAS PRACTICAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codigo/funciones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNCIONES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BODEGAS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            BODEGAS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Bodega 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            1. Bodega 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/Bloque1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/1.1-DimDatosFijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 DimDatosFijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/1.2-DimCalendarioMensual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 DimCalendarioMensual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/1.3-Dimensiones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 Dimensiones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/1.4-Dimensiones_xml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.4 Dimensiones xml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/1.5-FactDatosContacto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.5 FactDatosContacto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/1.6-Fact_Historico_Afiliacion_Empresas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.6 Fact Historico Afiliacion Empresas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/1.7-Fact_Historico_Trabajadores1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/1.7-Fact_Historico_Trabajadores2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/1.8-Fact_HistoricoBeneficiarios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.8 Fact HistoricoBeneficiarios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/1.9-Dim_Parametricas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.9 Dim Parametricas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. Bodega 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            2. Bodega 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/Bloque2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/2.1-FactAportesEmpAfiliadas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactAportesEmpAfiliadas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/2.1-FactHistoricoAportesTotales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactHistoricoAportesTotales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/2.2-FactHistoricoCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactHistoricoCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/2.3-FactSubsidioVivienda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 FactSubsidioVivienda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/2.4-FactFosfec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 FactFosfec
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/2.2-FactEstadoGiroCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactEstadoGiroCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/2.5-Fact_HistoricoMoraEmp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.5 Fact HistoricoMoraEmp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/2.6-FactHistoricoANS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.6 FactHistoricoANS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/2.7-FactHistoricoSubPrescrito/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.7 FactHistoricoSubPrescrito
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/2.8-FactHistoricoRecobro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.8 FactHistoricoRecobro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/2.9-FactHistoricoRecuperado/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.9 FactHistoricoRecuperado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/2.10-FactIgestion_Mercurio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.10 FactIgestion Mercurio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3. Bodega 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            3. Bodega 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/Bloque3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/3.1-FactTransaccionesVentas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 FactTransaccionesVentas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. Bodega 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            4. Bodega 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/Bloque4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/4.1-FactColegio_fijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 FactColegio fijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/4.2-FactColegio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 FactColegio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. Bodega 5
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            5. Bodega 5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/Bloque5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/5.1-FactServicioSocial_Fijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 FactServicioSocial Fijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/5.2-FactServicioSocial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 FactServicioSocial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    6. Bodega 6
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            6. Bodega 6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/Bloque6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/6.1-FactEncuestas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 FactEncuestas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seccion/6.2-Fact_Encuesta_afil_empleador/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 Fact Encuesta afil empleador
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#librerias-necesarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Librerías Necesarias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-del-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del Entorno
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración del Entorno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creacion-de-entorno-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creación de Entorno Virtual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de Dependencias
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importacion-de-funciones-desde-funcionespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importación de Funciones desde Funciones.py
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Importación de Funciones desde Funciones.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-guardar_en_dwhdf-tabla-logger-multiple-if_exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. guardar_en_dwh(df, tabla, logger, multiple, if_exists):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-obtener_conexionnombre_bd" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. obtener_conexion(nombre_bd):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-setup_loggerlog_filename-log_level" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. setup_logger(log_filename, log_level):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-limpiar_htmltexto_html" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. limpiar_html(texto_html):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-log_tiempologger-mensaje-tiempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. log_tiempo(logger, mensaje, tiempo):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-cargar_tablasmotor-queries-df_structure-logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. cargar_tablas(motor, queries, df_structure, logger):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-storeduplicatednombre_archivo-columnas-dataframe-ruta" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. StoreDuplicated(nombre_archivo, columnas, dataframe, ruta):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-testfunciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. testfunciones():
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-estandarizar_direcciondireccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. estandarizar_direccion(direccion):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-marcar_direcciones_estandarizadasdf-columna" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. marcar_direcciones_estandarizadas(df, columna):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-del-entorno-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del Entorno de Trabajo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración del Entorno de Trabajo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-inicial-del-logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración Inicial del Logger
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejecucion-de-funciones-de-conexion-y-procesamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejecución de Funciones de Conexión y Procesamiento
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="instalacion-y-configuracion-del-entorno-para-el-procesamiento-de-datos-del-data-warehouse">Instalación y Configuración del Entorno para el Procesamiento de Datos del Data Warehouse<a class="headerlink" href="#instalacion-y-configuracion-del-entorno-para-el-procesamiento-de-datos-del-data-warehouse" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>Este documento presenta los pasos necesarios para configurar un entorno que permita la instalación y configuración de todas las dependencias necesarias para ejecutar procesos de carga y transformación de datos dentro de un Data Warehouse (DWH). Además, se detalla el uso de las funciones contenidas en <code>Funciones.py</code> y cómo se aplican en el flujo de trabajo descrito en los notebook.</p>
+<h2 id="librerias-necesarias">Librerías Necesarias<a class="headerlink" href="#librerias-necesarias" title="Permanent link">&para;</a></h2>
+<p>Para ejecutar correctamente el proyecto, es necesario instalar las siguientes librerías de Python:</p>
+<ul>
+<li><code>sqlalchemy version 1.4.39</code>: Para la conexión con bases de datos.</li>
+<li><code>pandas version 2.0.3</code>: Para la manipulación y análisis de datos.</li>
+<li><code>beautifulsoup4 4.12.2</code>: Para la limpieza de datos en formato HTML.</li>
+<li><code>concurrent.futures</code>: Para la paralelización de tareas.</li>
+<li><code>numpy version 1.24.3</code>: Para el manejo de arreglos y cálculos numéricos.</li>
+<li><code>logging</code>: Para el registro de actividades y errores en el proceso ETL.</li>
+<li><code>os</code>: Para la gestión del sistema operativo y rutas de archivos.</li>
+<li><code>sys version 3.11.5</code>: Para modificar el <code>sys.path</code> y permitir la importación de módulos personalizados.</li>
+<li><code>datetime</code>: Para el manejo de fechas y tiempos.</li>
+<li><code>dateutil.relativedelta</code>: Para operaciones avanzadas con fechas.</li>
+</ul>
+<h2 id="configuracion-del-entorno">Configuración del Entorno<a class="headerlink" href="#configuracion-del-entorno" title="Permanent link">&para;</a></h2>
+<p>Para configurar el entorno, se recomienda usar un entorno virtual que permita mantener las dependencias organizadas y aisladas de otros proyectos. Los pasos para instalar las dependencias son los siguientes:</p>
+<h3 id="creacion-de-entorno-virtual">Creación de Entorno Virtual<a class="headerlink" href="#creacion-de-entorno-virtual" title="Permanent link">&para;</a></h3>
+<p>Primero, cree un entorno virtual:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>etl_env
+</code></pre></div>
+<p>Luego, active el entorno:</p>
+<ul>
+<li>En Windows:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>etl_env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</code></pre></div>
+<ul>
+<li>En Linux/macOS:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>etl_env/bin/activate
+</code></pre></div>
+<h3 id="instalacion-de-dependencias">Instalación de Dependencias<a class="headerlink" href="#instalacion-de-dependencias" title="Permanent link">&para;</a></h3>
+<p>Una vez que el entorno esté activado, instale las dependencias:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>sqlalchemy<span class="w"> </span>pandas<span class="w"> </span>beautifulsoup4<span class="w"> </span>numpy<span class="w"> </span>logging<span class="w"> </span>python-dateutil<span class="w"> </span>concurrent.futures
+</code></pre></div>
+<h2 id="importacion-de-funciones-desde-funcionespy">Importación de Funciones desde <code>Funciones.py</code><a class="headerlink" href="#importacion-de-funciones-desde-funcionespy" title="Permanent link">&para;</a></h2>
+<p>El proyecto utiliza funciones definidas externamente en el archivo <code>Funciones.py</code>. Este archivo incluye un conjunto de funciones personalizadas que facilitan la conexión a las bases de datos, la transformación de datos y el almacenamiento en el Data Warehouse. Algunas de las funciones principales contenidas en <code>Funciones.py</code> son:</p>
+<h3 id="1-guardar_en_dwhdf-tabla-logger-multiple-if_exists">1. <strong><code>guardar_en_dwh(df, tabla, logger, multiple, if_exists)</code></strong>:<a class="headerlink" href="#1-guardar_en_dwhdf-tabla-logger-multiple-if_exists" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Propósito</strong>: Guarda un <code>DataFrame</code> en una tabla específica del Data Warehouse.</li>
+<li><strong>Argumentos</strong>: Permite especificar la tabla, el logger para el registro del proceso y si los datos se deben agregar o reemplazar.</li>
+</ul>
+<h3 id="2-obtener_conexionnombre_bd">2. <strong><code>obtener_conexion(nombre_bd)</code></strong>:<a class="headerlink" href="#2-obtener_conexionnombre_bd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Propósito</strong>: Proporciona la cadena de conexión para conectarse a una base de datos específica.</li>
+<li><strong>Uso</strong>: Utilizado para establecer la conexión con las bases de datos.</li>
+</ul>
+<h3 id="3-setup_loggerlog_filename-log_level">3. <strong><code>setup_logger(log_filename, log_level)</code></strong>:<a class="headerlink" href="#3-setup_loggerlog_filename-log_level" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Propósito</strong>: Configura el logger para registrar eventos y errores durante la ejecución del proceso ETL.</li>
+<li><strong>Argumentos</strong>: El nombre del archivo de log y el nivel de detalle (INFO, DEBUG, etc.).</li>
+</ul>
+<h3 id="4-limpiar_htmltexto_html">4. <strong><code>limpiar_html(texto_html)</code></strong>:<a class="headerlink" href="#4-limpiar_htmltexto_html" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Propósito</strong>: Utiliza <code>BeautifulSoup</code> para limpiar el texto HTML, extrayendo únicamente el contenido textual y eliminando etiquetas HTML.</li>
+</ul>
+<h3 id="5-log_tiempologger-mensaje-tiempo">5. <strong><code>log_tiempo(logger, mensaje, tiempo)</code></strong>:<a class="headerlink" href="#5-log_tiempologger-mensaje-tiempo" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Propósito</strong>: Registra el tiempo transcurrido para una operación específica en el proceso ETL.</li>
+<li><strong>Argumentos</strong>: Recibe el logger, un mensaje descriptivo y el tiempo transcurrido.</li>
+</ul>
+<h3 id="6-cargar_tablasmotor-queries-df_structure-logger">6. <strong><code>cargar_tablas(motor, queries, df_structure, logger)</code></strong>:<a class="headerlink" href="#6-cargar_tablasmotor-queries-df_structure-logger" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Propósito</strong>: Carga las tablas especificadas en un diccionario de consultas SQL y las almacena en una estructura de datos.</li>
+<li><strong>Argumentos</strong>: Incluye el motor de conexión, las consultas SQL, un diccionario para almacenar los resultados y el logger para registrar el proceso.</li>
+</ul>
+<h3 id="7-storeduplicatednombre_archivo-columnas-dataframe-ruta">7. <strong><code>StoreDuplicated(nombre_archivo, columnas, dataframe, ruta)</code></strong>:<a class="headerlink" href="#7-storeduplicatednombre_archivo-columnas-dataframe-ruta" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Propósito</strong>: Almacena registros duplicados en un archivo para su análisis posterior.</li>
+<li><strong>Argumentos</strong>: Recibe el nombre del archivo, las columnas a comparar, el <code>DataFrame</code> y la ruta donde guardar los registros duplicados.</li>
+</ul>
+<h3 id="8-testfunciones">8. <strong><code>testfunciones()</code></strong>:<a class="headerlink" href="#8-testfunciones" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Propósito</strong>: Verifica que todas las funciones importadas desde <code>Funciones.py</code> están operativas.</li>
+<li><strong>Uso</strong>: Se ejecuta al inicio del script para garantizar la correcta importación de las funciones.</li>
+</ul>
+<h3 id="9-estandarizar_direcciondireccion">9. <strong><code>estandarizar_direccion(direccion)</code></strong>:<a class="headerlink" href="#9-estandarizar_direcciondireccion" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Propósito</strong>: Estandariza el formato de una dirección para asegurar la uniformidad de los datos.</li>
+<li><strong>Argumentos</strong>: Recibe la dirección a estandarizar.</li>
+</ul>
+<h3 id="10-marcar_direcciones_estandarizadasdf-columna">10. <strong><code>marcar_direcciones_estandarizadas(df, columna)</code></strong>:<a class="headerlink" href="#10-marcar_direcciones_estandarizadasdf-columna" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>- **Propósito**: Marca las direcciones estandarizadas dentro de un DataFrame.
+- **Argumentos**: Recibe el `DataFrame` y la columna de direcciones a analizar.
+</code></pre></div>
+
+<p>Estas funciones permiten simplificar y automatizar las tareas comunes de un proceso ETL, garantizando un flujo de trabajo eficiente y bien documentado.</p>
+<h2 id="configuracion-del-entorno-de-trabajo">Configuración del Entorno de Trabajo<a class="headerlink" href="#configuracion-del-entorno-de-trabajo" title="Permanent link">&para;</a></h2>
+<h3 id="configuracion-inicial-del-logger">Configuración Inicial del Logger<a class="headerlink" href="#configuracion-inicial-del-logger" title="Permanent link">&para;</a></h3>
+<p>La configuración del logger es fundamental para garantizar el seguimiento de las operaciones que se realizan en el proceso ETL. Utilice la función <code>setup_logger</code> para registrar los eventos.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">Funciones</span> <span class="kn">import</span> <span class="n">setup_logger</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">setup_logger</span><span class="p">(</span><span class="n">log_filename</span><span class="o">=</span><span class="s1">&#39;etl_proceso.log&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Inicio del proceso ETL&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ejecucion-de-funciones-de-conexion-y-procesamiento">Ejecución de Funciones de Conexión y Procesamiento<a class="headerlink" href="#ejecucion-de-funciones-de-conexion-y-procesamiento" title="Permanent link">&para;</a></h3>
+<p>A continuación, se muestra un ejemplo de cómo utilizar las funciones para establecer una conexión con el DWH y procesar los datos:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">Funciones</span> <span class="kn">import</span> <span class="n">obtener_conexion</span><span class="p">,</span> <span class="n">guardar_en_dwh</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+<span class="c1"># Establecer conexión al DWH</span>
+<span class="n">cadena_conexion</span> <span class="o">=</span> <span class="n">obtener_conexion</span><span class="p">(</span><span class="s1">&#39;dwh&#39;</span><span class="p">)</span>
+<span class="n">motor</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">cadena_conexion</span><span class="p">)</span>
+
+<span class="c1"># Procesar y guardar los datos</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM fuente_datos&quot;</span><span class="p">,</span> <span class="n">motor</span><span class="p">)</span>
+
+<span class="c1"># Guardar en DWH</span>
+<span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;tabla_destino&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="conclusion">Conclusión<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>La correcta configuración del entorno y la instalación de dependencias son fundamentales para asegurar que los procesos de carga y transformación de datos se realicen de manera eficiente y sin contratiempos. Al tener un entorno adecuadamente configurado, se minimizan los errores y se facilita la depuración y mantenimiento del código. Además, el uso de funciones centralizadas en <code>Funciones.py</code> permite simplificar la lógica de conexión, limpieza y carga de datos, asegurando la reproducibilidad de los procesos y manteniendo un código más ordenado, estructurado y fácil de entender. Esto se traduce en una mayor eficiencia, un menor costo de mantenimiento y una mejor calidad general de los datos procesados, facilitando así la toma de decisiones basada en datos confiables y bien organizados.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../js/init_mermaid.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1853 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="instalacion/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>Optimización CAJAMAG - Gobierno de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#d89717" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduccion-al-proyecto-de-data-warehouse-optimizacion-del-proceso-de-datos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="." title="Optimización CAJAMAG - Gobierno de Datos" class="md-header__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Optimización CAJAMAG - Gobierno de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              INTRODUCCIÓN
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Optimización CAJAMAG - Gobierno de Datos" class="md-nav__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Optimización CAJAMAG - Gobierno de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    INTRODUCCIÓN
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    INTRODUCCIÓN
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos del Proyecto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-del-proyecto-por-bloques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura del Proyecto por Bloques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura del Proyecto por Bloques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bloque-1x-datos-fijos-y-calendario-mensual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloque 1.X: Datos Fijos y Calendario Mensual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloque-2x-aportes-cuotas-y-subsidios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloque 2.X: Aportes, Cuotas y Subsidios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloque-3x-ventas-de-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloque 3.X: Ventas de Servicios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloque-4x-instituciones-educativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloque 4.X: Instituciones Educativas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloque-5x-servicio-social-y-datos-personales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloque 5.X: Servicio Social y Datos Personales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloque-6x-encuestas-y-opiniones-de-afiliados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloque 6.X: Encuestas y Opiniones de Afiliados
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tecnologias-y-herramientas-utilizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tecnologías y Herramientas Utilizadas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logica-del-modelo-y-transformaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lógica del Modelo y Transformaciones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tablas-del-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tablas del Modelo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resultados-esperados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resultados Esperados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="instalacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INSTALACIÓN Y CONFIGURACIÓN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="buenaspracticas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BUENAS PRACTICAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="codigo/funciones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNCIONES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BODEGAS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            BODEGAS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Bodega 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            1. Bodega 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/Bloque1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/1.1-DimDatosFijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 DimDatosFijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/1.2-DimCalendarioMensual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 DimCalendarioMensual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/1.3-Dimensiones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 Dimensiones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/1.4-Dimensiones_xml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.4 Dimensiones xml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/1.5-FactDatosContacto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.5 FactDatosContacto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/1.6-Fact_Historico_Afiliacion_Empresas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.6 Fact Historico Afiliacion Empresas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/1.7-Fact_Historico_Trabajadores1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/1.7-Fact_Historico_Trabajadores2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/1.8-Fact_HistoricoBeneficiarios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.8 Fact HistoricoBeneficiarios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/1.9-Dim_Parametricas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.9 Dim Parametricas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. Bodega 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            2. Bodega 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/Bloque2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/2.1-FactAportesEmpAfiliadas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactAportesEmpAfiliadas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/2.1-FactHistoricoAportesTotales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactHistoricoAportesTotales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/2.2-FactHistoricoCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactHistoricoCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/2.3-FactSubsidioVivienda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 FactSubsidioVivienda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/2.4-FactFosfec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 FactFosfec
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/2.2-FactEstadoGiroCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactEstadoGiroCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/2.5-Fact_HistoricoMoraEmp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.5 Fact HistoricoMoraEmp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/2.6-FactHistoricoANS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.6 FactHistoricoANS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/2.7-FactHistoricoSubPrescrito/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.7 FactHistoricoSubPrescrito
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/2.8-FactHistoricoRecobro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.8 FactHistoricoRecobro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/2.9-FactHistoricoRecuperado/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.9 FactHistoricoRecuperado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/2.10-FactIgestion_Mercurio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.10 FactIgestion Mercurio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3. Bodega 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            3. Bodega 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/Bloque3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/3.1-FactTransaccionesVentas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 FactTransaccionesVentas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. Bodega 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            4. Bodega 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/Bloque4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/4.1-FactColegio_fijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 FactColegio fijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/4.2-FactColegio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 FactColegio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. Bodega 5
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            5. Bodega 5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/Bloque5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/5.1-FactServicioSocial_Fijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 FactServicioSocial Fijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/5.2-FactServicioSocial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 FactServicioSocial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    6. Bodega 6
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            6. Bodega 6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/Bloque6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/6.1-FactEncuestas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 FactEncuestas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="seccion/6.2-Fact_Encuesta_afil_empleador/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 Fact Encuesta afil empleador
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos del Proyecto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-del-proyecto-por-bloques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura del Proyecto por Bloques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura del Proyecto por Bloques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bloque-1x-datos-fijos-y-calendario-mensual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloque 1.X: Datos Fijos y Calendario Mensual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloque-2x-aportes-cuotas-y-subsidios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloque 2.X: Aportes, Cuotas y Subsidios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloque-3x-ventas-de-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloque 3.X: Ventas de Servicios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloque-4x-instituciones-educativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloque 4.X: Instituciones Educativas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloque-5x-servicio-social-y-datos-personales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloque 5.X: Servicio Social y Datos Personales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloque-6x-encuestas-y-opiniones-de-afiliados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloque 6.X: Encuestas y Opiniones de Afiliados
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tecnologias-y-herramientas-utilizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tecnologías y Herramientas Utilizadas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logica-del-modelo-y-transformaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lógica del Modelo y Transformaciones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tablas-del-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tablas del Modelo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resultados-esperados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resultados Esperados
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="introduccion-al-proyecto-de-data-warehouse-optimizacion-del-proceso-de-datos">Introducción al Proyecto de Data Warehouse: Optimización del Proceso de Datos<a class="headerlink" href="#introduccion-al-proyecto-de-data-warehouse-optimizacion-del-proceso-de-datos" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>Este documento tiene como objetivo proporcionar una visión integral sobre el proyecto de optimización del proceso de datos mediante la implementación de un Data Warehouse (DWH). El enfoque principal de este proyecto es consolidar, transformar y almacenar datos provenientes de diversas fuentes para mejorar la integridad, calidad y disponibilidad de la información, facilitando el análisis de datos y la toma de decisiones estratégicas.</p>
+<p>En la era de los datos, un DWH proporciona una base sólida que permite a las organizaciones gestionar grandes volúmenes de información de manera eficiente. Este proyecto está estructurado en bloques funcionales, cada uno de ellos con un enfoque específico, que garantiza que los datos se integren de manera ordenada, estandarizada y precisa, asegurando su utilidad para el análisis y las consultas empresariales.</p>
+<p>Este proyecto está alineado con la iniciativa de <strong>Gobierno de Datos</strong> del proyecto de optimización CAJAMAG. Se enfoca en la automatización de los procesos de carga y transformación de datos para la <strong>Bodega Temporal de Base de Datos Pivote</strong>, utilizando herramientas como Python y SQL, tal como se detalla en el documento técnico funcional correspondiente.</p>
+<h2 id="objetivos-del-proyecto">Objetivos del Proyecto<a class="headerlink" href="#objetivos-del-proyecto" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Consolidación de Datos desde Múltiples Fuentes</strong>: Integrar datos provenientes de diversas bases, tales como datos de beneficiarios, empresas, servicios sociales, instituciones educativas, entre otros, asegurando una estructura única y coherente.</li>
+<li><strong>Mejorar la Calidad de los Datos</strong>: Implementar validaciones, transformaciones y procesos de limpieza que aseguren la integridad, consistencia y calidad de la información.</li>
+<li><strong>Automatización de Procesos ETL</strong>: Utilizar herramientas como <code>Pandas</code>, <code>SQLAlchemy</code> y funciones personalizadas para automatizar la extracción, transformación y carga (ETL) de los datos, optimizando así el flujo de trabajo.</li>
+<li><strong>Estandarización y Documentación de los Procesos</strong>: Proporcionar una documentación clara y organizada de cada bloque de procesamiento de datos para facilitar su uso, replicabilidad y mantenimiento.</li>
+<li><strong>Facilitar la Toma de Decisiones</strong>: Proveer información estructurada y de alta calidad que soporte el análisis de indicadores clave y la toma de decisiones basada en datos.</li>
+</ol>
+<h2 id="estructura-del-proyecto-por-bloques">Estructura del Proyecto por Bloques<a class="headerlink" href="#estructura-del-proyecto-por-bloques" title="Permanent link">&para;</a></h2>
+<h3 id="bloque-1x-datos-fijos-y-calendario-mensual">Bloque 1.X: Datos Fijos y Calendario Mensual<a class="headerlink" href="#bloque-1x-datos-fijos-y-calendario-mensual" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Tablas involucradas</strong>: <code>DimDatosFijos</code>, <code>DimCalendarioMensual</code>.</li>
+<li><strong>Descripción</strong>: Estos bloques se enfocan en la consolidación de información estática y de calendario mensual, crucial para el análisis temporal y el enriquecimiento de los datos transaccionales.</li>
+</ul>
+<h3 id="bloque-2x-aportes-cuotas-y-subsidios">Bloque 2.X: Aportes, Cuotas y Subsidios<a class="headerlink" href="#bloque-2x-aportes-cuotas-y-subsidios" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Tablas involucradas</strong>: <code>AportesEmpresasAfiliadas</code>, <code>HistoricoAportesTotales</code>, <code>HistoricoCuotas</code>, <code>EstadoGiroCuota</code>, <code>SubsidioVivienda</code>, <code>Fosfec</code>, <code>HistoricoMoraEmpresas</code>.</li>
+<li><strong>Descripción</strong>: Integran los datos relacionados con aportes empresariales, subsidios, cuotas y morosidad. Aseguran la correcta transformación y carga de estos datos para apoyar los análisis financieros y la gestión de riesgos.</li>
+</ul>
+<h3 id="bloque-3x-ventas-de-servicios">Bloque 3.X: Ventas de Servicios<a class="headerlink" href="#bloque-3x-ventas-de-servicios" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Tabla involucrada</strong>: <code>FactTransaccionesVentas</code>.</li>
+<li><strong>Descripción</strong>: Gestiona la información de ventas de servicios, incluyendo los detalles de cada transacción, y almacena estos datos en el DWH para su posterior análisis. Además, proporciona un contexto detallado sobre las características de las ventas, lo cual permite realizar análisis de tendencias y desempeño.</li>
+</ul>
+<h3 id="bloque-4x-instituciones-educativas">Bloque 4.X: Instituciones Educativas<a class="headerlink" href="#bloque-4x-instituciones-educativas" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Tablas involucradas</strong>: <code>FactColegio_fijos</code>, <code>FactColegio</code>.</li>
+<li><strong>Descripción</strong>: Integra datos de estudiantes, acudientes, matrículas y grados provenientes de instituciones educativas, garantizando que la información esté normalizada y sea fácil de analizar. Esto facilita el seguimiento del progreso académico y el análisis de la efectividad de las iniciativas educativas.</li>
+</ul>
+<h3 id="bloque-5x-servicio-social-y-datos-personales">Bloque 5.X: Servicio Social y Datos Personales<a class="headerlink" href="#bloque-5x-servicio-social-y-datos-personales" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Tablas involucradas</strong>: <code>FactServicioSocial_Fijos</code>, <code>FactServicioSocial</code>.</li>
+<li><strong>Descripción</strong>: Administra datos personales relacionados con servicios sociales, asegurando la consistencia y calidad de la información para facilitar la consulta y el análisis detallado. Estos datos permiten evaluar el impacto de los programas de asistencia social y la cobertura de los beneficiarios.</li>
+</ul>
+<h3 id="bloque-6x-encuestas-y-opiniones-de-afiliados">Bloque 6.X: Encuestas y Opiniones de Afiliados<a class="headerlink" href="#bloque-6x-encuestas-y-opiniones-de-afiliados" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Tablas involucradas</strong>: <code>FactEncuestas</code>, <code>Fact_Encuesta_afil_empleador</code>.</li>
+<li><strong>Descripción</strong>: Carga y transforma los datos de encuestas realizadas a afiliados y empleadores, permitiendo la evaluación de la satisfacción y el rendimiento de los servicios brindados. Las respuestas de las encuestas son fundamentales para identificar áreas de mejora en los servicios ofrecidos por la organización.</li>
+</ul>
+<h2 id="tecnologias-y-herramientas-utilizadas">Tecnologías y Herramientas Utilizadas<a class="headerlink" href="#tecnologias-y-herramientas-utilizadas" title="Permanent link">&para;</a></h2>
+<p>Para asegurar la eficiencia y automatización de los procesos, el proyecto utiliza un conjunto de herramientas tecnológicas y librerías de Python, incluyendo:</p>
+<ul>
+<li><strong><code>sqlalchemy</code></strong>: Para la conexión y manipulación de bases de datos.</li>
+<li><strong><code>pandas</code></strong>: Para la manipulación y análisis de datos, permitiendo aplicar transformaciones complejas de manera eficiente.</li>
+<li><strong><code>numpy</code></strong>: Para operaciones matemáticas y manejo de arreglos numéricos, esenciales para cálculos estadísticos y otras operaciones.</li>
+<li><strong><code>logging</code></strong>: Para registrar las actividades y errores durante la ejecución del proceso ETL, proporcionando un historial detallado de las actividades realizadas.</li>
+<li><strong><code>concurrent.futures</code></strong>: Para la paralelización de tareas y optimización del tiempo de procesamiento, lo que permite un manejo eficiente de grandes volúmenes de datos.</li>
+<li><strong><code>beautifulsoup4</code></strong>: Para limpiar el texto HTML y asegurar la calidad de los datos ingresados desde fuentes web, eliminando elementos innecesarios y garantizando una entrada homogénea de datos.</li>
+</ul>
+<p>Adicionalmente, se utilizan funciones personalizadas contenidas en el archivo <code>Funciones.py</code> que permiten automatizar y simplificar tareas comunes del proceso ETL, tales como la conexión a bases de datos, la validación de duplicados y la limpieza de direcciones.</p>
+<p>El proceso de transformación de datos se lleva a cabo principalmente en MySQL, con algunas operaciones en Python mediante Jupyter notebooks, tal como se indica en el detalle del modelo de transformación de la Bodega Temporal.</p>
+<h2 id="logica-del-modelo-y-transformaciones">Lógica del Modelo y Transformaciones<a class="headerlink" href="#logica-del-modelo-y-transformaciones" title="Permanent link">&para;</a></h2>
+<p>El modelo de datos de la Bodega Temporal se basa en la consolidación y transformación de múltiples fuentes de datos en tablas pivote, diseñadas para soportar análisis posteriores en el DWH. Las transformaciones incluyen:</p>
+<ul>
+<li><strong>Estandarización de Direcciones</strong>: Utilizando funciones como <code>estandarizar_direccion()</code> y <code>marcar_direcciones_estandarizadas()</code> para garantizar consistencia en la entrada de datos de localización. Esta estandarización es esencial para asegurar que los datos geográficos sean precisos y fáciles de analizar.</li>
+<li><strong>Validación y Detección de Duplicados</strong>: Mediante <code>StoreDuplicated()</code> se identifican y almacenan registros duplicados para análisis posteriores, lo cual asegura que solo datos únicos se almacenen en las tablas destino. Esto previene problemas de inconsistencia en los análisis.</li>
+<li><strong>Conexión y Carga Automatizada</strong>: <code>guardar_en_dwh()</code> y <code>cargar_tablas()</code> se utilizan para realizar la carga de datos en el DWH, reemplazando o insertando los registros según las necesidades de cada bloque. Esta automatización reduce significativamente los errores humanos y garantiza que los datos siempre estén actualizados.</li>
+<li><strong>Paralelización de Procesos</strong>: Se utiliza la librería <code>concurrent.futures</code> para procesar consultas SQL y ejecutar transformaciones en paralelo, optimizando así el tiempo de ejecución. Esto es particularmente útil cuando se manejan grandes volúmenes de información que requieren procesamiento simultáneo.</li>
+<li><strong>Normalización de Tablas</strong>: Se aplican procesos de normalización para dividir datos en estructuras más simples, evitando redundancia y facilitando las actualizaciones. La normalización también mejora la eficiencia del almacenamiento y simplifica el mantenimiento de los datos.</li>
+</ul>
+<h2 id="tablas-del-modelo">Tablas del Modelo<a class="headerlink" href="#tablas-del-modelo" title="Permanent link">&para;</a></h2>
+<p>Las tablas principales del modelo incluyen:</p>
+<ul>
+<li><strong>DimDatosFijos</strong>: Tabla que almacena información estática sobre los afiliados y empresas, proporcionando un contexto estable para los análisis.</li>
+<li><strong>DimCalendarioMensual</strong>: Incluye las fechas de cada mes con información relevante para el análisis temporal, tales como días laborables y feriados.</li>
+<li><strong>FactTransaccionesVentas</strong>: Tabla que almacena las transacciones de ventas de servicios realizadas, proporcionando un detalle granular de cada venta, incluyendo montos y tipos de servicios ofrecidos.</li>
+<li><strong>FactServicioSocial</strong>: Integra información sobre los servicios sociales, proporcionando datos relevantes sobre estudiantes, acudientes y beneficiarios. Esto ayuda a evaluar el impacto de los servicios sociales sobre diferentes grupos de la población.</li>
+<li><strong>FactColegio</strong>: Almacena datos sobre estudiantes, sus acudientes y detalles de matrículas, facilitando análisis educativos, como la tasa de retención escolar y el rendimiento académico de los estudiantes.</li>
+<li><strong>FactEncuestas</strong>: Reúne información sobre las respuestas a encuestas realizadas, apoyando el análisis de satisfacción de los afiliados y empleadores. Estas respuestas proporcionan información cualitativa que ayuda a mejorar los servicios.</li>
+</ul>
+<h2 id="resultados-esperados">Resultados Esperados<a class="headerlink" href="#resultados-esperados" title="Permanent link">&para;</a></h2>
+<p>Este proyecto de optimización del Data Warehouse permitirá:</p>
+<ul>
+<li><strong>Mejorar la calidad y consistencia de los datos</strong>: Los procesos de transformación y validación asegurarán que los datos cargados en el DWH sean precisos y confiables. Se eliminarán errores y duplicados, mejorando la integridad de la información.</li>
+<li><strong>Optimizar la gestión de los datos</strong>: Al automatizar las tareas de ETL, se reducirán significativamente los tiempos de procesamiento, aumentando la eficiencia operativa. Los procesos automatizados garantizan una mayor rapidez y menor margen de error en la gestión de la información.</li>
+<li><strong>Facilitar la toma de decisiones</strong>: Un DWH bien diseñado proporcionará información clara y relevante que apoyará la toma de decisiones estratégicas en diferentes áreas del negocio. Los análisis podrán realizarse de manera más rápida y precisa, mejorando la capacidad de respuesta ante cambios del entorno.</li>
+<li><strong>Aumentar la confiabilidad de los análisis</strong>: Al centralizar y normalizar los datos, se garantiza que todas las áreas de la empresa trabajen con la misma información, eliminando discrepancias y asegurando un único punto de verdad.</li>
+</ul>
+<h2 id="diagrama-de-secuencia-del-proceso-etl">Diagrama de Secuencia del Proceso ETL<a class="headerlink" href="#diagrama-de-secuencia-del-proceso-etl" title="Permanent link">&para;</a></h2>
+<h2 id="diagrama-de-secuencia-del-proceso-etl_1">Diagrama de Secuencia del Proceso ETL<a class="headerlink" href="#diagrama-de-secuencia-del-proceso-etl_1" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    title Diagrama de Secuencia del Proceso ETL - General del Proyecto
+    participant 👤 Usuario
+    participant ETL_Script
+    participant Fuente_DB as Base de Datos Fuente
+    participant DWH as Data Warehouse
+
+    👤 Usuario -&gt;&gt; ETL_Script: Ejecuta el script ETL
+    ETL_Script -&gt;&gt; ETL_Script: Configura entorno y logger
+    ETL_Script -&gt;&gt; Fuente_DB: Conecta a la base de datos fuente
+    Fuente_DB --&gt;&gt; ETL_Script: Conexión exitosa
+    ETL_Script -&gt;&gt; Fuente_DB: Ejecuta consulta SQL para extraer datos
+    Fuente_DB --&gt;&gt; ETL_Script: Retorna datos de la consulta
+    ETL_Script -&gt;&gt; ETL_Script: Limpia, transforma y valida los datos
+    ETL_Script -&gt;&gt; DWH: Conecta al Data Warehouse
+    DWH --&gt;&gt; ETL_Script: Conexión exitosa
+    ETL_Script -&gt;&gt; DWH: Carga datos transformados en las tablas correspondientes
+    DWH --&gt;&gt; ETL_Script: Confirmación de carga exitosa
+    ETL_Script -&gt;&gt; 👤 Usuario: Finaliza proceso ETL y registra tiempo</code></pre>
+<h2 id="conclusion">Conclusión<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>La implementación de un Data Warehouse eficiente y bien optimizado es un pilar fundamental para cualquier organización que desee tomar decisiones basadas en datos fiables. Mediante la consolidación y limpieza de información, este proyecto no solo busca mejorar la calidad de los datos, sino también optimizar los procesos de negocio mediante una estructura clara y automatizada de gestión de información.</p>
+<p>En resumen, el proyecto tiene como objetivo principal la automatización de la <strong>Bodega Temporal de Base de Datos Pivote</strong>, que forma parte del marco del <strong>Gobierno de Datos</strong> de CAJAMAG, para garantizar una fuente de datos confiable y consistente que facilite la toma de decisiones estratégicas y mejore el rendimiento de los procesos de negocio mediante una estructura organizada y un modelo relacional unificado.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/init_mermaid.js"></script>
+      
+    
+  </body>
+</html>
