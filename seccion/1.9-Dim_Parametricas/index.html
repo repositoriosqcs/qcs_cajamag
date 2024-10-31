@@ -1,0 +1,4784 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../1.8-Fact_HistoricoBeneficiarios/">
+      
+      
+        <link rel="next" href="../Bloque2/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>1.9 Dim Parametricas - Optimización CAJAMAG - Gobierno de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#d89717" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#19-dim-parametricas" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Optimización CAJAMAG - Gobierno de Datos" class="md-header__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Optimización CAJAMAG - Gobierno de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.9 Dim Parametricas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Optimización CAJAMAG - Gobierno de Datos" class="md-nav__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Optimización CAJAMAG - Gobierno de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INTRODUCCIÓN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instalacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INSTALACIÓN Y CONFIGURACIÓN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../buenaspracticas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BUENAS PRACTICAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../codigo/funciones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNCIONES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BODEGAS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            BODEGAS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Bodega 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            1. Bodega 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.1-DimDatosFijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 DimDatosFijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.2-DimCalendarioMensual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 DimCalendarioMensual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.3-Dimensiones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 Dimensiones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.4-Dimensiones_xml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.4 Dimensiones xml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.5-FactDatosContacto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.5 FactDatosContacto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.6-Fact_Historico_Afiliacion_Empresas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.6 Fact Historico Afiliacion Empresas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.7-Fact_Historico_Trabajadores1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.7-Fact_Historico_Trabajadores2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.8-Fact_HistoricoBeneficiarios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.8 Fact HistoricoBeneficiarios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1.9 Dim Parametricas
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1.9 Dim Parametricas
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacion-de-librerias-y-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importación de librerías y funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-del-logger-y-comienzo-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del logger y comienzo del proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mercurio_beneficiarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mercurio_Beneficiarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mercurio_Beneficiarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-de-datos-desde-un-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga de Datos desde un CSV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcion-para-guardar-beneficiarios-de-mercurio-en-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Función para Guardar Beneficiarios de Mercurio en Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mercurio_trabajadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mercurio_Trabajadores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mercurio_Trabajadores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-de-datos-desde-un-csv-trabajadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga de Datos desde un CSV - Trabajadores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcion-para-almacenar-datos-de-trabajadores-de-mercurio-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Función para Almacenar Datos de Trabajadores de Mercurio en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errores_de_grabacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errores_de_Grabación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Errores_de_Grabación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-de-datos-desde-un-archivo-excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga de Datos desde un Archivo Excel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renombrado-de-columnas-y-almacenamiento-de-errores-en-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Renombrado de Columnas y Almacenamiento de Errores en Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proyeccion_cumpl_aportes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proyeccion_cumpl_aportes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proyeccion_cumpl_aportes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-proyeccion-de-cumplimiento-de-aportes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Proyección de Cumplimiento de Aportes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metricas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metricas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metricas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-metricas-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Métricas en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametricatipovinculacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      ParametricaTipoVinculacion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ParametricaTipoVinculacion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-la-parametrica-de-tipo-de-vinculacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de la Paramétrica de Tipo de Vinculación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metas_indicadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metas_indicadores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metas_indicadores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-metas-e-indicadores-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Metas e Indicadores en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metasencuestassuper" class="md-nav__link">
+    <span class="md-ellipsis">
+      MetasEncuestasSuper
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MetasEncuestasSuper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-metas-de-encuestas-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Metas de Encuestas en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metascuota" class="md-nav__link">
+    <span class="md-ellipsis">
+      MetasCuota
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MetasCuota">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-metas-de-cuota-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Metas de Cuota en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coordenadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coordenadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-coordenadas-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Coordenadas en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meta_cobertura_afiliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meta_cobertura_afiliacion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Meta_cobertura_afiliacion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-metas-de-proyeccion-de-cobertura-y-afiliacion-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Metas de Proyección de Cobertura y Afiliación en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indicadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indicadores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Indicadores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-indicadores-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Indicadores en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#satisfaccion_cartera" class="md-nav__link">
+    <span class="md-ellipsis">
+      Satisfacción_cartera
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Satisfacción_cartera">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-satisfaccion-de-cartera-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Satisfacción de Cartera en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detalle_preguntas_encuestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detalle_preguntas_encuestas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detalle_preguntas_encuestas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-detalle-de-preguntas-de-encuestas-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Detalle de Preguntas de Encuestas en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. Bodega 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            2. Bodega 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1-FactAportesEmpAfiliadas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactAportesEmpAfiliadas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1-FactHistoricoAportesTotales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactHistoricoAportesTotales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2-FactHistoricoCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactHistoricoCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.3-FactSubsidioVivienda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 FactSubsidioVivienda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.4-FactFosfec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 FactFosfec
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2-FactEstadoGiroCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactEstadoGiroCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.5-Fact_HistoricoMoraEmp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.5 Fact HistoricoMoraEmp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.6-FactHistoricoANS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.6 FactHistoricoANS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.7-FactHistoricoSubPrescrito/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.7 FactHistoricoSubPrescrito
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.8-FactHistoricoRecobro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.8 FactHistoricoRecobro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.9-FactHistoricoRecuperado/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.9 FactHistoricoRecuperado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.10-FactIgestion_Mercurio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.10 FactIgestion Mercurio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3. Bodega 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            3. Bodega 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.1-FactTransaccionesVentas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 FactTransaccionesVentas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. Bodega 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            4. Bodega 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1-FactColegio_fijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 FactColegio fijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.2-FactColegio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 FactColegio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. Bodega 5
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            5. Bodega 5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.1-FactServicioSocial_Fijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 FactServicioSocial Fijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.2-FactServicioSocial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 FactServicioSocial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    6. Bodega 6
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            6. Bodega 6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.1-FactEncuestas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 FactEncuestas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.2-Fact_Encuesta_afil_empleador/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 Fact Encuesta afil empleador
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacion-de-librerias-y-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importación de librerías y funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-del-logger-y-comienzo-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del logger y comienzo del proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mercurio_beneficiarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mercurio_Beneficiarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mercurio_Beneficiarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-de-datos-desde-un-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga de Datos desde un CSV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcion-para-guardar-beneficiarios-de-mercurio-en-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Función para Guardar Beneficiarios de Mercurio en Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mercurio_trabajadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mercurio_Trabajadores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mercurio_Trabajadores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-de-datos-desde-un-csv-trabajadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga de Datos desde un CSV - Trabajadores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcion-para-almacenar-datos-de-trabajadores-de-mercurio-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Función para Almacenar Datos de Trabajadores de Mercurio en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errores_de_grabacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errores_de_Grabación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Errores_de_Grabación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-de-datos-desde-un-archivo-excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga de Datos desde un Archivo Excel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renombrado-de-columnas-y-almacenamiento-de-errores-en-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Renombrado de Columnas y Almacenamiento de Errores en Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proyeccion_cumpl_aportes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proyeccion_cumpl_aportes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proyeccion_cumpl_aportes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-proyeccion-de-cumplimiento-de-aportes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Proyección de Cumplimiento de Aportes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metricas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metricas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metricas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-metricas-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Métricas en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametricatipovinculacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      ParametricaTipoVinculacion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ParametricaTipoVinculacion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-la-parametrica-de-tipo-de-vinculacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de la Paramétrica de Tipo de Vinculación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metas_indicadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metas_indicadores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metas_indicadores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-metas-e-indicadores-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Metas e Indicadores en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metasencuestassuper" class="md-nav__link">
+    <span class="md-ellipsis">
+      MetasEncuestasSuper
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MetasEncuestasSuper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-metas-de-encuestas-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Metas de Encuestas en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metascuota" class="md-nav__link">
+    <span class="md-ellipsis">
+      MetasCuota
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MetasCuota">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-metas-de-cuota-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Metas de Cuota en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coordenadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coordenadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-coordenadas-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Coordenadas en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meta_cobertura_afiliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meta_cobertura_afiliacion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Meta_cobertura_afiliacion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-metas-de-proyeccion-de-cobertura-y-afiliacion-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Metas de Proyección de Cobertura y Afiliación en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indicadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indicadores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Indicadores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-indicadores-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Indicadores en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#satisfaccion_cartera" class="md-nav__link">
+    <span class="md-ellipsis">
+      Satisfacción_cartera
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Satisfacción_cartera">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-satisfaccion-de-cartera-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Satisfacción de Cartera en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detalle_preguntas_encuestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detalle_preguntas_encuestas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detalle_preguntas_encuestas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carga-y-almacenamiento-de-detalle-de-preguntas-de-encuestas-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga y Almacenamiento de Detalle de Preguntas de Encuestas en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="19-dim-parametricas">1.9 Dim Parametricas<a class="headerlink" href="#19-dim-parametricas" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>El código está diseñado para realizar operaciones de carga y transformación de datos principalmente desde archivos Excel. Para ello, emplea funciones personalizadas que gestionan la conexión con el <em>Data Warehouse</em> mediante <code>SQLAlchemy</code>, y utiliza la librería <code>Pandas</code> para manipular los <code>DataFrames</code> generados a partir de estos archivos.</p>
+<p>Cada función sigue un patrón estructurado: se carga un archivo Excel en un <code>DataFrame</code>, se aplican las transformaciones necesarias, y finalmente se almacena el resultado en tablas específicas dentro del <em>Data Warehouse</em> mediante la función <code>guardar_en_dwh</code>. Este proceso permite manejar parámetros como el método de inserción, lo que facilita la opción de agregar o reemplazar datos en función de las necesidades de cada carga.</p>
+<p>La naturaleza modular y automatizada de este enfoque permite la integración eficiente de datos de múltiples fuentes y asegura que el proceso sea escalable y adaptable.</p>
+<p>El proceso ETL descrito está optimizado para la carga masiva de archivos CSV y Excel, aprovechando <code>SQLAlchemy</code> y <code>Pandas</code> para consolidar datos de distintas fuentes en un <em>Data Warehouse</em> centralizado. Las etapas abarcan la extracción, transformación (incluyendo limpieza y estandarización) y carga en tablas específicas del <em>Data Warehouse</em>.</p>
+<p>Las tablas de entrada provienen de archivos variados, como <code>Mercurio_beneficiario.csv</code> y <code>Metricas.xlsx</code>. Los datos se procesan mediante funciones dedicadas que preparan los <code>DataFrames</code> y los almacenan en tablas estructuradas en el <em>Data Warehouse</em>, donde cada tabla de salida representa un conjunto de datos procesados, como <code>Fact_Mercurio_Beneficiarios</code> y <code>BD_Dim_Metricas</code>. Este enfoque modular permite aplicar transformaciones específicas (como la conversión de nombres de columnas a mayúsculas o ajustes en los nombres de columnas para alinearse con estándares internos) de manera eficiente y consistente.</p>
+<h3 id="diagrama-de-secuencia-del-proceso-etl">Diagrama de Secuencia del Proceso ETL<a class="headerlink" href="#diagrama-de-secuencia-del-proceso-etl" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+  title Diagrama de Secuencia del Proceso ETL - Carga y Transformación de Archivos
+  autonumber
+  participant 👤 Usuario
+  participant ETL
+  participant BD as Base de Datos
+  Usuario-&gt;&gt;ETL: Solicitar procesamiento de datos de archivos de entrada
+  ETL-&gt;&gt;ETL: Leer archivos Excel y CSV (Pandas)
+  ETL-&gt;&gt;ETL: Aplicar transformación de datos (limpieza, conversión de columnas, ajustes de formato)
+  ETL-&gt;&gt;BD: Cargar datos en tablas específicas (guardar_en_dwh)
+  BD--&gt;&gt;ETL: Confirmación de carga exitosa
+  ETL--&gt;&gt;Usuario: Respuesta con mensaje de éxito en la carga de datos</code></pre>
+<h2 id="etl">ETL<a class="headerlink" href="#etl" title="Permanent link">&para;</a></h2>
+<h3 id="importacion-de-librerias-y-funciones">Importación de librerías y funciones<a class="headerlink" href="#importacion-de-librerias-y-funciones" title="Permanent link">&para;</a></h3>
+<p>El código configura el entorno para ejecutar funciones personalizadas importadas desde el archivo <code>Funciones.py</code>. Tras agregar el directorio correspondiente al <code>sys.path</code> para asegurar que Python pueda encontrar el módulo, se importan funciones como <code>guardar_en_dwh</code> y <code>testfunciones</code>, que probablemente manejan la carga de datos y pruebas unitarias. Además, <code>setup_logger</code> permite configurar el sistema de logs para registrar eventos y errores. El uso de <code>time</code> permite medir el tiempo de ejecución, lo que es útil para monitorear el rendimiento del proceso.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1">#Import de modulo funciones</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Agrega el directorio al sys.path</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../funciones&#39;</span><span class="p">))</span>
+
+<span class="c1"># Importa las funciones desde el archivo Funciones.py</span>
+
+<span class="kn">from</span> <span class="nn">Funciones</span> <span class="kn">import</span> <span class="n">guardar_en_dwh</span><span class="p">,</span> <span class="n">testfunciones</span><span class="p">,</span> <span class="n">setup_logger</span><span class="p">,</span> <span class="n">convertir_columnas_mayusculas</span>
+</code></pre></div>
+<h3 id="configuracion-del-logger-y-comienzo-del-proceso-etl">Configuración del logger y comienzo del proceso ETL<a class="headerlink" href="#configuracion-del-logger-y-comienzo-del-proceso-etl" title="Permanent link">&para;</a></h3>
+<p>En esta celda se configura el logger, que se utiliza para registrar mensajes de información (logging). El logger está configurado para guardar un archivo log con el nombre <code>Parametricas.log</code>, y en esta etapa, se inicia el proceso ETL, registrando el comienzo del mismo.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">#---------------------------------------------</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">setup_logger</span><span class="p">(</span><span class="n">log_filename</span><span class="o">=</span><span class="s1">&#39;Parametricas.log&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># Cambiado a logging.INFO</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">testfunciones</span><span class="p">())</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;COMIENZO ETL&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../Parametricas&#39;</span><span class="p">))</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:17:39,728 - INFO - Importacion de funciones correcta, 25-10-2024 22:17
+2024-10-25 22:17:39,730 - INFO - COMIENZO ETL
+</code></pre></div>
+
+<h3 id="mercurio_beneficiarios">Mercurio_Beneficiarios<a class="headerlink" href="#mercurio_beneficiarios" title="Permanent link">&para;</a></h3>
+<h4 id="carga-de-datos-desde-un-csv">Carga de Datos desde un CSV<a class="headerlink" href="#carga-de-datos-desde-un-csv" title="Permanent link">&para;</a></h4>
+<p>Este fragmento de código utiliza la función <code>pd.read_csv()</code> de Pandas para cargar un archivo CSV llamado <code>Mercurio_beneficiario.csv</code>, que se encuentra en el directorio <code>../Parametricas</code>. La opción <code>low_memory=False</code> desactiva la carga por fragmentos para evitar posibles problemas de tipo en las columnas cuando se trabaja con grandes volúmenes de datos. Tras cargar el archivo, se imprime el DataFrame resultante, permitiendo visualizar los datos importados y verificar su correcta lectura.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../Parametricas/Mercurio_beneficiario.csv&quot;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df_b</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>radicado</th>
+      <th>tipdoc</th>
+      <th>numdoc</th>
+      <th>coddocrelvin</th>
+      <th>relvin</th>
+      <th>tipcli</th>
+      <th>fecsol</th>
+      <th>estado</th>
+      <th>tipvin</th>
+      <th>tippar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>830</td>
+      <td>TI</td>
+      <td>1082879929</td>
+      <td>CC</td>
+      <td>84453898</td>
+      <td>persona</td>
+      <td>2020-06-27</td>
+      <td>P</td>
+      <td>beneficiario</td>
+      <td>hijo</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>830</td>
+      <td>TI</td>
+      <td>1082879929</td>
+      <td>CC</td>
+      <td>84453898</td>
+      <td>persona</td>
+      <td>2020-07-06</td>
+      <td>D</td>
+      <td>beneficiario</td>
+      <td>hijo</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>830</td>
+      <td>TI</td>
+      <td>1082879929</td>
+      <td>CC</td>
+      <td>84453898</td>
+      <td>persona</td>
+      <td>2022-02-23</td>
+      <td>P</td>
+      <td>beneficiario</td>
+      <td>hijo</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>830</td>
+      <td>TI</td>
+      <td>1082879929</td>
+      <td>CC</td>
+      <td>84453898</td>
+      <td>persona</td>
+      <td>2022-03-02</td>
+      <td>A</td>
+      <td>beneficiario</td>
+      <td>hijo</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1222</td>
+      <td>TI</td>
+      <td>1082859410</td>
+      <td>CC</td>
+      <td>84456479</td>
+      <td>persona</td>
+      <td>2022-02-03</td>
+      <td>P</td>
+      <td>beneficiario</td>
+      <td>hijo</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>70021</th>
+      <td>54783</td>
+      <td>CC</td>
+      <td>12551028</td>
+      <td>CC</td>
+      <td>1082948733</td>
+      <td>persona</td>
+      <td>2024-02-01</td>
+      <td>D</td>
+      <td>beneficiario</td>
+      <td>padre</td>
+    </tr>
+    <tr>
+      <th>70022</th>
+      <td>54783</td>
+      <td>CC</td>
+      <td>12551028</td>
+      <td>CC</td>
+      <td>1082948733</td>
+      <td>persona</td>
+      <td>2024-02-06</td>
+      <td>P</td>
+      <td>beneficiario</td>
+      <td>padre</td>
+    </tr>
+    <tr>
+      <th>70023</th>
+      <td>54783</td>
+      <td>CC</td>
+      <td>12551028</td>
+      <td>CC</td>
+      <td>1082948733</td>
+      <td>persona</td>
+      <td>2024-02-08</td>
+      <td>A</td>
+      <td>beneficiario</td>
+      <td>padre</td>
+    </tr>
+    <tr>
+      <th>70024</th>
+      <td>54784</td>
+      <td>TI</td>
+      <td>1081922640</td>
+      <td>CC</td>
+      <td>1081919446</td>
+      <td>persona</td>
+      <td>2024-02-01</td>
+      <td>P</td>
+      <td>beneficiario</td>
+      <td>hijo</td>
+    </tr>
+    <tr>
+      <th>70025</th>
+      <td>54784</td>
+      <td>TI</td>
+      <td>1081922640</td>
+      <td>CC</td>
+      <td>1081919446</td>
+      <td>persona</td>
+      <td>2024-02-10</td>
+      <td>A</td>
+      <td>beneficiario</td>
+      <td>hijo</td>
+    </tr>
+  </tbody>
+</table>
+<p>70026 rows × 10 columns</p>
+</div>
+
+<h4 id="funcion-para-guardar-beneficiarios-de-mercurio-en-data-warehouse">Función para Guardar Beneficiarios de Mercurio en Data Warehouse<a class="headerlink" href="#funcion-para-guardar-beneficiarios-de-mercurio-en-data-warehouse" title="Permanent link">&para;</a></h4>
+<p>La función <code>Mercurio_Beneficiarios</code> carga el DataFrame <code>df_b</code> (previamente leído desde el archivo CSV <code>Mercurio_beneficiario.csv</code>) y lo almacena en una tabla del Data Warehouse llamada <code>Fact_Mercurio_Beneficiarios</code>. La función <code>guardar_en_dwh</code> es utilizada para insertar los datos en la base de datos, y se configuran las opciones <code>multiple=False</code> para especificar que no se están enviando múltiples registros de una vez, e <code>if_exists='replace'</code> para añadir los nuevos datos a la tabla existente en lugar de reemplazarla.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">Mercurio_Beneficiarios</span><span class="p">():</span> 
+    <span class="n">Mercurio_Beneficiarios</span>  <span class="o">=</span> <span class="n">df_b</span>
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">Mercurio_Beneficiarios</span><span class="p">,</span> <span class="s1">&#39;Fact_Mercurio_Beneficiarios&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo Fact_Mercurio_Beneficiarios --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+<span class="n">Mercurio_Beneficiarios</span><span class="p">()</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:18:23,128 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:18:23,131 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:18:23,667 - INFO - Almacenando tabla única en DWH como Fact_Mercurio_Beneficiarios
+2024-10-25 22:18:32,311 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:18:32,877 - INFO - ALMACENAMIENTO ---  --- 9.75 seconds ---
+2024-10-25 22:18:32,879 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:18:32,881 - INFO - Tiempo Fact_Mercurio_Beneficiarios --- 48.65 seconds ---
+</code></pre></div>
+
+<h3 id="mercurio_trabajadores">Mercurio_Trabajadores<a class="headerlink" href="#mercurio_trabajadores" title="Permanent link">&para;</a></h3>
+<h4 id="carga-de-datos-desde-un-csv-trabajadores">Carga de Datos desde un CSV - Trabajadores<a class="headerlink" href="#carga-de-datos-desde-un-csv-trabajadores" title="Permanent link">&para;</a></h4>
+<p>Este bloque de código carga un archivo CSV llamado <code>Mercurio_Trabajadores.csv</code> que se encuentra en el directorio <code>../Parametricas</code>. Se utiliza <code>pd.read_csv()</code> de Pandas para leer los datos, con la opción <code>low_memory=False</code>, la cual previene problemas relacionados con la asignación de tipos de datos en columnas cuando el archivo es muy grande. Después de cargar el archivo, el contenido del DataFrame <code>df_t</code> es impreso para revisar y verificar los datos leídos del archivo CSV.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../Parametricas/Mercurio_Trabajadores.csv&quot;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">df_t</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>radicado</th>
+      <th>tipdoc</th>
+      <th>cedtra</th>
+      <th>relvin</th>
+      <th>tipcli</th>
+      <th>fecsol</th>
+      <th>estado</th>
+      <th>tipvin</th>
+      <th>tippar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>474</td>
+      <td>CC</td>
+      <td>57433308</td>
+      <td>4979946</td>
+      <td>Trabajador</td>
+      <td>2020-04-03</td>
+      <td>P</td>
+      <td>empleado</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>474</td>
+      <td>CC</td>
+      <td>57433308</td>
+      <td>4979946</td>
+      <td>Trabajador</td>
+      <td>2020-04-11</td>
+      <td>P</td>
+      <td>empleado</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>474</td>
+      <td>CC</td>
+      <td>57433308</td>
+      <td>4979946</td>
+      <td>Trabajador</td>
+      <td>2020-04-17</td>
+      <td>D</td>
+      <td>empleado</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>474</td>
+      <td>CC</td>
+      <td>57433308</td>
+      <td>4979946</td>
+      <td>Trabajador</td>
+      <td>2023-05-02</td>
+      <td>P</td>
+      <td>empleado</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>474</td>
+      <td>CC</td>
+      <td>57433308</td>
+      <td>4979946</td>
+      <td>Trabajador</td>
+      <td>2023-05-02</td>
+      <td>A</td>
+      <td>empleado</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>332204</th>
+      <td>387333</td>
+      <td>CC</td>
+      <td>12696041</td>
+      <td>901549079</td>
+      <td>Trabajador</td>
+      <td>2024-02-07</td>
+      <td>A</td>
+      <td>empleado</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>332205</th>
+      <td>387334</td>
+      <td>CC</td>
+      <td>1002321162</td>
+      <td>901549079</td>
+      <td>Trabajador</td>
+      <td>2024-01-31</td>
+      <td>P</td>
+      <td>empleado</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>332206</th>
+      <td>387334</td>
+      <td>CC</td>
+      <td>1002321162</td>
+      <td>901549079</td>
+      <td>Trabajador</td>
+      <td>2024-02-09</td>
+      <td>A</td>
+      <td>empleado</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>332207</th>
+      <td>387336</td>
+      <td>CC</td>
+      <td>1082879603</td>
+      <td>800104552</td>
+      <td>Trabajador</td>
+      <td>2024-01-31</td>
+      <td>P</td>
+      <td>empleado</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>332208</th>
+      <td>387336</td>
+      <td>CC</td>
+      <td>1082879603</td>
+      <td>800104552</td>
+      <td>Trabajador</td>
+      <td>2024-02-07</td>
+      <td>A</td>
+      <td>empleado</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>332209 rows × 9 columns</p>
+</div>
+
+<h4 id="funcion-para-almacenar-datos-de-trabajadores-de-mercurio-en-el-data-warehouse">Función para Almacenar Datos de Trabajadores de Mercurio en el Data Warehouse<a class="headerlink" href="#funcion-para-almacenar-datos-de-trabajadores-de-mercurio-en-el-data-warehouse" title="Permanent link">&para;</a></h4>
+<p>El código define una función que carga los datos del DataFrame <code>df_t</code> y los guarda en una tabla del Data Warehouse llamada <code>Fact_Mercurio_Trabajadores</code>. Para evitar la colisión de nombres entre la función y el DataFrame, se hace una asignación clara, separando el DataFrame bajo un nombre distinto. La función utiliza <code>guardar_en_dwh</code> para añadir los datos de forma eficiente, asegurando que se agreguen a la tabla sin sobrescribir los datos existentes, controlando el flujo con el registro adecuado.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">Mercurio_Trabajadores</span><span class="p">(</span><span class="n">_metod</span><span class="p">):</span> 
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df_t</span><span class="p">,</span> <span class="s1">&#39;Fact_Mercurio_Trabajadores&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="n">_metod</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo Fact_Mercurio_Trabajadores --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">Mercurio_Trabajadores</span><span class="p">(</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:22:14,291 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:22:14,293 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:22:14,808 - INFO - Almacenando tabla única en DWH como Fact_Mercurio_Trabajadores
+2024-10-25 22:22:45,242 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:22:45,495 - INFO - ALMACENAMIENTO ---  --- 31.20 seconds ---
+2024-10-25 22:22:45,497 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:22:45,498 - INFO - Tiempo Fact_Mercurio_Trabajadores --- 239.26 seconds ---
+</code></pre></div>
+
+<h3 id="errores_de_grabacion">Errores_de_Grabación<a class="headerlink" href="#errores_de_grabacion" title="Permanent link">&para;</a></h3>
+<h4 id="carga-de-datos-desde-un-archivo-excel">Carga de Datos desde un Archivo Excel<a class="headerlink" href="#carga-de-datos-desde-un-archivo-excel" title="Permanent link">&para;</a></h4>
+<p>Este código utiliza la función <code>pd.read_excel()</code> de Pandas para cargar un archivo Excel llamado <code>Errores_de_Grabación.xlsx</code> desde el directorio <code>../Parametricas</code>. El contenido del archivo se almacena en el DataFrame <code>df</code>, y luego se imprime para verificar que los datos han sido cargados correctamente. Esta operación es útil para analizar o procesar los errores de grabación registrados en el archivo Excel.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../Parametricas/Errores_de_Grabación.xlsx&quot;</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Muestra a revisar</th>
+      <th>Error en escritura</th>
+      <th>Afiliación en el formulario sin anexos, ni grabado en sistema</th>
+      <th>Error en grabación para pago de subsidio</th>
+      <th>periodo</th>
+      <th>Grabador</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>202307</td>
+      <td>GRABADOR N° 1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>142</td>
+      <td>11</td>
+      <td>0</td>
+      <td>2</td>
+      <td>202307</td>
+      <td>GRABADOR N° 2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>202307</td>
+      <td>GRABADOR N° 3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>146</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>202307</td>
+      <td>GRABADOR N° 4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>146</td>
+      <td>13</td>
+      <td>0</td>
+      <td>1</td>
+      <td>202307</td>
+      <td>GRABADOR N° 5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>140</td>
+      <td>10</td>
+      <td>0</td>
+      <td>1</td>
+      <td>202307</td>
+      <td>GRABADOR N° 6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>136</td>
+      <td>12</td>
+      <td>0</td>
+      <td>0</td>
+      <td>202307</td>
+      <td>GRABADOR N° 7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>202307</td>
+      <td>GRABADOR N° 8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h4 id="renombrado-de-columnas-y-almacenamiento-de-errores-en-data-warehouse">Renombrado de Columnas y Almacenamiento de Errores en Data Warehouse<a class="headerlink" href="#renombrado-de-columnas-y-almacenamiento-de-errores-en-data-warehouse" title="Permanent link">&para;</a></h4>
+<p>Este bloque de código renombra una columna en el DataFrame <code>df</code> para usar un nombre más corto y claro, facilitando su manipulación. El DataFrame resultante, <code>Errores_grabacion</code>, contiene los datos cargados desde un archivo Excel que registra errores de grabación. La función <code>Mercurio_Trabajadores</code> se utiliza para guardar estos datos en una tabla llamada <code>DB_Dim_Errores_grabacion</code> dentro del Data Warehouse. La función permite especificar el método de inserción de datos mediante el parámetro <code>_metod</code>, que puede ser 'replace' para agregar nuevos registros o 'replace' para reemplazar los existentes en la tabla.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Renombra las columnas a nombres más cortos</span>
+<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Afiliación en el formulario sin anexos, ni grabado en sistema &#39;</span><span class="p">:</span> <span class="s1">&#39;Afiliación sin anexos ni grabación&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Errores_grabacion</span>  <span class="o">=</span> <span class="n">df</span>
+
+<span class="k">def</span> <span class="nf">Mercurio_Trabajadores</span><span class="p">(</span><span class="n">_metod</span><span class="p">):</span> 
+    <span class="n">convertir_columnas_mayusculas</span><span class="p">(</span><span class="n">Errores_grabacion</span><span class="p">)</span>
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">Errores_grabacion</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_Errores_grabacion&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="n">_metod</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo BD_Dim_Errores_grabacion --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">Mercurio_Trabajadores</span><span class="p">(</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+<span class="n">Errores_grabacion</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:23:34,619 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:23:34,621 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:23:35,144 - INFO - Almacenando tabla única en DWH como BD_Dim_Errores_grabacion
+2024-10-25 22:23:36,055 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:23:36,180 - INFO - ALMACENAMIENTO ---  --- 1.56 seconds ---
+2024-10-25 22:23:36,181 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:23:36,183 - INFO - Tiempo BD_Dim_Errores_grabacion --- 7.77 seconds ---
+
+
+
+
+
+[&#39;MUESTRA A REVISAR&#39;,
+ &#39;ERROR EN ESCRITURA&#39;,
+ &#39;AFILIACIÓN SIN ANEXOS NI GRABACIÓN&#39;,
+ &#39;ERROR EN GRABACIÓN PARA PAGO DE SUBSIDIO&#39;,
+ &#39;PERIODO&#39;,
+ &#39;GRABADOR&#39;]
+</code></pre></div>
+
+<h3 id="proyeccion_cumpl_aportes">Proyeccion_cumpl_aportes<a class="headerlink" href="#proyeccion_cumpl_aportes" title="Permanent link">&para;</a></h3>
+<h4 id="carga-y-almacenamiento-de-proyeccion-de-cumplimiento-de-aportes">Carga y Almacenamiento de Proyección de Cumplimiento de Aportes<a class="headerlink" href="#carga-y-almacenamiento-de-proyeccion-de-cumplimiento-de-aportes" title="Permanent link">&para;</a></h4>
+<p>Este código carga un archivo Excel llamado <code>Proyeccion_cumpl_aportes.xlsx</code> en un DataFrame de Pandas llamado <code>df_proyeccion_cumpl_aportes</code>. Posteriormente, define una función <code>guardar_proyeccion_cumpl_aportes</code> que utiliza la función <code>guardar_en_dwh</code> para almacenar los datos en la tabla <code>DB_Dim_Proyeccion_cumpl_aportes</code> en el Data Warehouse. La opción <code>if_exists='replace'</code> asegura que los datos nuevos se agreguen a los registros existentes, sin sobrescribir la tabla.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_proyeccion_cumpl_aportes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../Parametricas/Proyeccion_cumpl_aportes.xlsx&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">guardar_proyeccion_cumpl_aportes</span><span class="p">(</span><span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">):</span>
+    <span class="n">convertir_columnas_mayusculas</span><span class="p">(</span><span class="n">df_proyeccion_cumpl_aportes</span><span class="p">)</span>
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df_proyeccion_cumpl_aportes</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_Proyeccion_cumpl_aportes&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="n">if_exists</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo BD_Dim_Proyeccion_cumpl_aportes --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">guardar_proyeccion_cumpl_aportes</span><span class="p">()</span>
+<span class="n">df_proyeccion_cumpl_aportes</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:24:09,616 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:24:09,619 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:24:10,145 - INFO - Almacenando tabla única en DWH como BD_Dim_Proyeccion_cumpl_aportes
+2024-10-25 22:24:11,139 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:24:11,261 - INFO - ALMACENAMIENTO ---  --- 1.65 seconds ---
+2024-10-25 22:24:11,263 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:24:11,264 - INFO - Tiempo BD_Dim_Proyeccion_cumpl_aportes --- 1.68 seconds ---
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AÑO</th>
+      <th>PERIODO</th>
+      <th>PROYECCIÓN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023</td>
+      <td>Enero</td>
+      <td>1.011240e+10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023</td>
+      <td>Febrero</td>
+      <td>1.095939e+10</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023</td>
+      <td>Marzo</td>
+      <td>1.341095e+10</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023</td>
+      <td>Abril</td>
+      <td>1.054549e+10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023</td>
+      <td>Mayo</td>
+      <td>1.264176e+10</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2023</td>
+      <td>Junio</td>
+      <td>1.259030e+10</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2023</td>
+      <td>Julio</td>
+      <td>1.386005e+10</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2023</td>
+      <td>Agosto</td>
+      <td>1.364761e+10</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2023</td>
+      <td>Septiembre</td>
+      <td>1.185319e+10</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2023</td>
+      <td>Octubre</td>
+      <td>1.350863e+10</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2023</td>
+      <td>Noviembre</td>
+      <td>1.241680e+10</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2023</td>
+      <td>Diciembre</td>
+      <td>1.686632e+10</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="metricas">Metricas<a class="headerlink" href="#metricas" title="Permanent link">&para;</a></h3>
+<h4 id="carga-y-almacenamiento-de-metricas-en-el-data-warehouse">Carga y Almacenamiento de Métricas en el Data Warehouse<a class="headerlink" href="#carga-y-almacenamiento-de-metricas-en-el-data-warehouse" title="Permanent link">&para;</a></h4>
+<p>Este bloque de código carga un archivo Excel llamado <code>Metricas.xlsx</code> en el DataFrame <code>df_n</code>. Luego, define la función <code>Metricas</code>, que guarda el contenido de este DataFrame en la tabla <code>DB_Dim_Metricas</code> del Data Warehouse utilizando la función <code>guardar_en_dwh</code>. La opción <code>if_exists='replace'</code> asegura que los datos se añadan a la tabla existente, sin sobrescribir registros previos.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_n</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../Parametricas/Metricas.xlsx&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Metricas</span><span class="p">(</span><span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">):</span> 
+    <span class="n">convertir_columnas_mayusculas</span><span class="p">(</span><span class="n">df_n</span><span class="p">)</span>
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df_n</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_Metricas&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="n">if_exists</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo BD_Dim_Metricas --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">Metricas</span><span class="p">(</span><span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+<span class="n">df_n</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:24:54,149 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:24:54,150 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:24:54,676 - INFO - Almacenando tabla única en DWH como BD_Dim_Metricas
+2024-10-25 22:24:55,542 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:24:55,685 - INFO - ALMACENAMIENTO ---  --- 1.54 seconds ---
+2024-10-25 22:24:55,687 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:24:55,689 - INFO - Tiempo BD_Dim_Metricas --- 1.60 seconds ---
+
+
+         METRICA ESPECIFICO                               NOMBRE  \
+0       Numérico     Conteo                       # Afiliaciones   
+1       Numérico     Conteo                            # Retiros   
+2       Numérico     Conteo                            # Activos   
+3    Indicadores        NaN        Cobertura Proyección Empresas   
+4    Indicadores        NaN    Cobertura Proyección Trabajadores   
+5    Indicadores        NaN      Afiliaciones Oportunas Empresas   
+6    Indicadores        NaN  Afiliaciones Oportunas Trabajadores   
+7   Satisfacción        NaN             # Satisfechos Afiliación   
+8   Satisfacción        NaN           # Insatisfechos Afiliación   
+9   Satisfacción        NaN     Promedio Satisfacción Afiliación   
+10   Indicadores        NaN                  Incremento Ingresos   
+11   Indicadores        NaN                 Cumplimiento Aportes   
+12      Numérico     Conteo                 # Aportes Entregados   
+13      Numérico     Conteo   # Empresas Aportantes No Afiliadas   
+14      Numérico     Conteo                   # Empresas En Mora   
+15      Numérico  Monetario                      $ Aportes Total   
+16      Numérico  Monetario                            $ En Mora   
+17      Numérico  Monetario           $ Aportes Emp No Afiliadas   
+18      Numérico  Monetario                         $ Recuperado   
+19      Numérico     Conteo            # Beneficiarios Con Cuota   
+20      Numérico     Conteo                              # Giros   
+21      Numérico  Monetario                  $ Cuotas Entregadas   
+22      Numérico  Monetario                            $ Recobro   
+23   Indicadores        NaN         Calidad Pago Cuota Monetaria   
+24  Satisfacción        NaN                  # Satisfechos Cuota   
+25  Satisfacción        NaN                # Insatisfechos Cuota   
+26  Satisfacción        NaN          Promedio Satisfacción Cuota   
+27      Numérico  Monetario                   Subsidio Prescrito   
+28      Numérico        NaN                          # Servicios   
+29   Indicadores        NaN                 Incremento Servicios
+
+            PROCESO  
+0        Afiliación  
+1        Afiliación  
+2        Afiliación  
+3        Afiliación  
+4        Afiliación  
+5        Afiliación  
+6        Afiliación  
+7        Afiliación  
+8        Afiliación  
+9        Afiliación  
+10          Aportes  
+11          Aportes  
+12          Aportes  
+13          Aportes  
+14          Aportes  
+15          Aportes  
+16          Aportes  
+17          Aportes  
+18          Aportes  
+19  Cuota Monetaria  
+20  Cuota Monetaria  
+21  Cuota Monetaria  
+22  Cuota Monetaria  
+23  Cuota Monetaria  
+24  Cuota Monetaria  
+25  Cuota Monetaria  
+26  Cuota Monetaria  
+27  Cuota Monetaria  
+28        Servicios  
+29        Servicios
+</code></pre></div>
+
+<h3 id="parametricatipovinculacion">ParametricaTipoVinculacion<a class="headerlink" href="#parametricatipovinculacion" title="Permanent link">&para;</a></h3>
+<h4 id="carga-y-almacenamiento-de-la-parametrica-de-tipo-de-vinculacion">Carga y Almacenamiento de la Paramétrica de Tipo de Vinculación<a class="headerlink" href="#carga-y-almacenamiento-de-la-parametrica-de-tipo-de-vinculacion" title="Permanent link">&para;</a></h4>
+<p>Este código carga el archivo Excel <code>ParametricaTipoVinculacion.xlsx</code> en el DataFrame <code>df_3</code>. Posteriormente, define la función <code>Proyeccion_cumpl_aportes</code>, que guarda los datos en la tabla <code>Dim_ParametricaTipoVinculacion</code> del Data Warehouse usando la función <code>guardar_en_dwh</code>. La opción <code>if_exists='replace'</code> asegura que los nuevos registros se agreguen sin sobrescribir los datos existentes.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../Parametricas/ParametricaTipoVinculacion.xlsx&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">Proyeccion_cumpl_aportes</span><span class="p">():</span> 
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df_3</span><span class="p">,</span> <span class="s1">&#39;Dim_ParametricaTipoVinculacion&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo Dim_ParametricaTipoVinculacion --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">Proyeccion_cumpl_aportes</span><span class="p">()</span>
+<span class="n">df_3</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:26:08,053 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:26:08,055 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:26:08,581 - INFO - Almacenando tabla única en DWH como Dim_ParametricaTipoVinculacion
+2024-10-25 22:26:09,494 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:26:09,621 - INFO - ALMACENAMIENTO ---  --- 1.57 seconds ---
+2024-10-25 22:26:09,623 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:26:09,624 - INFO - Tiempo Dim_ParametricaTipoVinculacion --- 1.60 seconds ---
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tipo</th>
+      <th>Agrupador1</th>
+      <th>Agrupador2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>C</td>
+      <td>CONCEJALES</td>
+      <td>CONCEJALES</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>E</td>
+      <td>EMPRESA</td>
+      <td>EMPRESA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>S</td>
+      <td>SERVICIO DOMESTICO</td>
+      <td>SERVICIO DOMESTICO</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>M</td>
+      <td>MADRE COMUNITARIA</td>
+      <td>MADRE COMUNITARIA</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>F</td>
+      <td>FACULTATIVO</td>
+      <td>FACULTATIVO</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>O</td>
+      <td>PENSIONADO 0.6%</td>
+      <td>PENSIONADO</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>P</td>
+      <td>PENSIONADO 2%</td>
+      <td>PENSIONADO</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Q</td>
+      <td>PENSIONADO POR FIDELIDAD 25 AÑOS</td>
+      <td>PENSIONADO</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>R</td>
+      <td>PENSIONADO 0%</td>
+      <td>PENSIONADO</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>I</td>
+      <td>INDEPENDIENTE 2%</td>
+      <td>INDEPENDIENTE</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Y</td>
+      <td>INDEPENDIENTE 0.6%</td>
+      <td>INDEPENDIENTE</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>ET</td>
+      <td>EMPRESA</td>
+      <td>DEPENDIENTE</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="metas_indicadores">Metas_indicadores<a class="headerlink" href="#metas_indicadores" title="Permanent link">&para;</a></h3>
+<h4 id="carga-y-almacenamiento-de-metas-e-indicadores-en-el-data-warehouse">Carga y Almacenamiento de Metas e Indicadores en el Data Warehouse<a class="headerlink" href="#carga-y-almacenamiento-de-metas-e-indicadores-en-el-data-warehouse" title="Permanent link">&para;</a></h4>
+<p>Este código carga el archivo Excel <code>Metas_indicadores.xlsx</code> en el DataFrame <code>df_4</code>. Luego, define la función <code>Metas_indicadores</code>, que guarda los datos en la tabla <code>DB_Dim_Metas_indicadores</code> del Data Warehouse. El parámetro <code>_metod</code> permite especificar si los datos deben agregarse (<code>replace</code>) o reemplazarse (<code>replace</code>) en la tabla, proporcionando flexibilidad en la gestión del almacenamiento.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../Parametricas/Metas_indicadores.xlsx&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">Metas_indicadores</span><span class="p">(</span><span class="n">_metod</span><span class="p">):</span> 
+    <span class="n">convertir_columnas_mayusculas</span><span class="p">(</span><span class="n">df_4</span><span class="p">)</span>
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df_4</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_Metas_indicadores&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="n">_metod</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo BD_Dim_Metas_indicadores --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">Metas_indicadores</span><span class="p">(</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+<span class="n">df_4</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:26:28,631 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:26:28,634 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:26:29,155 - INFO - Almacenando tabla única en DWH como BD_Dim_Metas_indicadores
+2024-10-25 22:26:30,000 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:26:30,149 - INFO - ALMACENAMIENTO ---  --- 1.52 seconds ---
+2024-10-25 22:26:30,150 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:26:30,152 - INFO - Tiempo BD_Dim_Metas_indicadores --- 1.63 seconds ---
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>INDICADOR</th>
+      <th>AÑO</th>
+      <th>META</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afiliaciones oportunas empresas</td>
+      <td>2022</td>
+      <td>0.9000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Afiliaciones oportunas empresas</td>
+      <td>2023</td>
+      <td>0.9000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Afiliaciones oportunas empresas</td>
+      <td>2024</td>
+      <td>0.9000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Afiliaciones oportunas empresas</td>
+      <td>2025</td>
+      <td>0.9000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Afiliaciones oportunas empresas</td>
+      <td>2026</td>
+      <td>0.9000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Afiliaciones oportunas trabajadores</td>
+      <td>2022</td>
+      <td>0.7500</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Afiliaciones oportunas trabajadores</td>
+      <td>2023</td>
+      <td>0.7500</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Afiliaciones oportunas trabajadores</td>
+      <td>2024</td>
+      <td>0.8000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Afiliaciones oportunas trabajadores</td>
+      <td>2025</td>
+      <td>0.8000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Afiliaciones oportunas trabajadores</td>
+      <td>2026</td>
+      <td>0.8500</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Incremento de ingresos por aportes</td>
+      <td>2022</td>
+      <td>0.0700</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Incremento de ingresos por aportes</td>
+      <td>2023</td>
+      <td>0.0543</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Incremento de ingresos por aportes</td>
+      <td>2024</td>
+      <td>0.0506</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Incremento de ingresos por aportes</td>
+      <td>2025</td>
+      <td>0.0566</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Incremento de ingresos por aportes</td>
+      <td>2026</td>
+      <td>0.0466</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Cumplimiento de los aportes</td>
+      <td>2022</td>
+      <td>0.9500</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Cumplimiento de los aportes</td>
+      <td>2023</td>
+      <td>0.9500</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Cumplimiento de los aportes</td>
+      <td>2024</td>
+      <td>0.9500</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Cumplimiento de los aportes</td>
+      <td>2025</td>
+      <td>0.9500</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Cumplimiento de los aportes</td>
+      <td>2026</td>
+      <td>0.9500</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Calidad pago cuota monetaria</td>
+      <td>2022</td>
+      <td>0.9000</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Calidad pago cuota monetaria</td>
+      <td>2023</td>
+      <td>0.9000</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Calidad pago cuota monetaria</td>
+      <td>2024</td>
+      <td>0.9000</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Calidad pago cuota monetaria</td>
+      <td>2025</td>
+      <td>0.9500</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Calidad pago cuota monetaria</td>
+      <td>2026</td>
+      <td>0.9500</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Oportunidad pago cuota monetaria</td>
+      <td>2022</td>
+      <td>0.9000</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Oportunidad pago cuota monetaria</td>
+      <td>2023</td>
+      <td>0.9000</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Oportunidad pago cuota monetaria</td>
+      <td>2024</td>
+      <td>0.9000</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Oportunidad pago cuota monetaria</td>
+      <td>2025</td>
+      <td>0.9500</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Oportunidad pago cuota monetaria</td>
+      <td>2026</td>
+      <td>0.9500</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Recuperación cartera 30 días</td>
+      <td>2022</td>
+      <td>0.0500</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Recuperación cartera 30 días</td>
+      <td>2023</td>
+      <td>0.0500</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Recuperación cartera 30 días</td>
+      <td>2024</td>
+      <td>0.0500</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Recuperación cartera 30 días</td>
+      <td>2025</td>
+      <td>0.0800</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Recuperación cartera 30 días</td>
+      <td>2026</td>
+      <td>0.0800</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Recuperación cartera 60 días</td>
+      <td>2022</td>
+      <td>0.0300</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Recuperación cartera 60 días</td>
+      <td>2023</td>
+      <td>0.0300</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Recuperación cartera 60 días</td>
+      <td>2024</td>
+      <td>0.0300</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Recuperación cartera 60 días</td>
+      <td>2025</td>
+      <td>0.0500</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Recuperación cartera 60 días</td>
+      <td>2026</td>
+      <td>0.0500</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Recuperación cartera 90 días</td>
+      <td>2022</td>
+      <td>0.0100</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Recuperación cartera 90 días</td>
+      <td>2023</td>
+      <td>0.0100</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Recuperación cartera 90 días</td>
+      <td>2024</td>
+      <td>0.0100</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Recuperación cartera 90 días</td>
+      <td>2025</td>
+      <td>0.0300</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Recuperación cartera 90 días</td>
+      <td>2026</td>
+      <td>0.0300</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="metasencuestassuper">MetasEncuestasSuper<a class="headerlink" href="#metasencuestassuper" title="Permanent link">&para;</a></h3>
+<h4 id="carga-y-almacenamiento-de-metas-de-encuestas-en-el-data-warehouse">Carga y Almacenamiento de Metas de Encuestas en el Data Warehouse<a class="headerlink" href="#carga-y-almacenamiento-de-metas-de-encuestas-en-el-data-warehouse" title="Permanent link">&para;</a></h4>
+<p>El código carga el archivo Excel <code>MetasEncuestasSuper.xlsx</code> en el DataFrame <code>df_5</code> y luego define la función <code>MetasEncuestasSuper</code>, que guarda los datos en la tabla <code>DB_Dim_MetasEncuestasSuper</code> del Data Warehouse. El parámetro <code>_metod</code> permite controlar si los datos se deben agregar a la tabla existente (<code>replace</code>) o reemplazar los datos anteriores (<code>replace</code>), garantizando la flexibilidad en la actualización de la información almacenada.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_5</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../Parametricas/MetasEncuestasSuper.xlsx&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">MetasEncuestasSuper</span><span class="p">(</span><span class="n">_metod</span><span class="p">):</span> 
+    <span class="n">convertir_columnas_mayusculas</span><span class="p">(</span><span class="n">df_5</span><span class="p">)</span>
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df_5</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_MetasEncuestasSuper&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="n">_metod</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo BD_Dim_MetasEncuestasSuper --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">MetasEncuestasSuper</span><span class="p">(</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+<span class="n">df_5</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:26:57,657 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:26:57,659 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:26:58,187 - INFO - Almacenando tabla única en DWH como BD_Dim_MetasEncuestasSuper
+2024-10-25 22:26:59,328 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:26:59,482 - INFO - ALMACENAMIENTO ---  --- 1.82 seconds ---
+2024-10-25 22:26:59,501 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:26:59,502 - INFO - Tiempo BD_Dim_MetasEncuestasSuper --- 1.89 seconds ---
+
+
+
+
+
+[&#39;AÑO&#39;,
+ &#39;MIN BENEFICIARIOS&#39;,
+ &#39;MAX BENEFICIARIOS&#39;,
+ &#39;MIN ENCUESTAS&#39;,
+ &#39;MAX ENCUESTAS&#39;]
+</code></pre></div>
+
+<h3 id="metascuota">MetasCuota<a class="headerlink" href="#metascuota" title="Permanent link">&para;</a></h3>
+<h4 id="carga-y-almacenamiento-de-metas-de-cuota-en-el-data-warehouse">Carga y Almacenamiento de Metas de Cuota en el Data Warehouse<a class="headerlink" href="#carga-y-almacenamiento-de-metas-de-cuota-en-el-data-warehouse" title="Permanent link">&para;</a></h4>
+<p>Este código carga el archivo Excel <code>MetasCuota.xlsx</code> en el DataFrame <code>df_6</code> y define la función <code>MetasCuota</code>, que guarda los datos en la tabla <code>DB_Dim_MetasCuota</code> del Data Warehouse. El parámetro <code>_metod</code> permite especificar si los datos deben agregarse a la tabla existente (<code>replace</code>) o reemplazarse (<code>replace</code>), ofreciendo flexibilidad en la gestión de los datos almacenados.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_6</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../Parametricas/MetasCuota.xlsx&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">MetasCuota</span><span class="p">(</span><span class="n">_metod</span><span class="p">):</span> 
+    <span class="n">convertir_columnas_mayusculas</span><span class="p">(</span><span class="n">df_6</span><span class="p">)</span>
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df_6</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_MetasCuota&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="n">_metod</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo BD_Dim_MetasCuota --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">MetasCuota</span><span class="p">(</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+<span class="n">df_6</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:27:30,714 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:27:30,716 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:27:31,239 - INFO - Almacenando tabla única en DWH como BD_Dim_MetasCuota
+2024-10-25 22:27:32,306 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:27:32,409 - INFO - ALMACENAMIENTO ---  --- 1.69 seconds ---
+2024-10-25 22:27:32,410 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:27:32,411 - INFO - Tiempo BD_Dim_MetasCuota --- 1.75 seconds ---
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AÑO</th>
+      <th>MES</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>UNNAMED: 6</th>
+      <th>5</th>
+      <th>UNNAMED: 8</th>
+      <th>6</th>
+      <th>...</th>
+      <th>25</th>
+      <th>26</th>
+      <th>UNNAMED: 45</th>
+      <th>27</th>
+      <th>UNNAMED: 47</th>
+      <th>28</th>
+      <th>UNNAMED: 49</th>
+      <th>29</th>
+      <th>30</th>
+      <th>31</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023</td>
+      <td>ENERO</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023</td>
+      <td>FEBRERO</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023</td>
+      <td>MARZO</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023</td>
+      <td>ABRIL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023</td>
+      <td>MAYO</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2023</td>
+      <td>JUNIO</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2023</td>
+      <td>JULIO</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2023</td>
+      <td>AGOSTO</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2023</td>
+      <td>SEPTIEMBRE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2023</td>
+      <td>OCTUBRE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2023</td>
+      <td>NOVIEMBRE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2023</td>
+      <td>DICIEMBRE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>12 rows × 53 columns</p>
+</div>
+
+<h3 id="coordenadas">Coordenadas<a class="headerlink" href="#coordenadas" title="Permanent link">&para;</a></h3>
+<h3 id="carga-y-almacenamiento-de-coordenadas-en-el-data-warehouse">Carga y Almacenamiento de Coordenadas en el Data Warehouse<a class="headerlink" href="#carga-y-almacenamiento-de-coordenadas-en-el-data-warehouse" title="Permanent link">&para;</a></h3>
+<p>Este código carga el archivo Excel <code>Coordenadas.xlsx</code> en el DataFrame <code>df_7</code> y define la función <code>Coordenadas</code>, la cual guarda los datos en la tabla <code>DB_Dim_Coordenadas</code> del Data Warehouse. El parámetro <code>if_exists</code> controla si los datos se deben agregar a los registros existentes (<code>replace</code>) o reemplazar la información almacenada anteriormente (<code>replace</code>), permitiendo la gestión eficiente de los datos de coordenadas.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_7</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../Parametricas/Coordenadas.xlsx&quot;</span><span class="p">)</span>
+<span class="n">columnas</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;CODIGOZONA&#39;</span><span class="p">:</span><span class="s1">&#39;CODIGO_ZONA&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;NOMBREZONA&#39;</span><span class="p">:</span><span class="s1">&#39;NOMBRE_ZONA&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;ZONACOMPLETA&#39;</span><span class="p">:</span><span class="s1">&#39;ZONA_COMPLETA&#39;</span>
+        <span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">convertir_columnas_mayusculas</span><span class="p">(</span><span class="n">df_7</span><span class="p">,</span><span class="n">rename_dict</span><span class="o">=</span><span class="n">columnas</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">Coordenadas</span><span class="p">(</span><span class="n">if_exists</span><span class="p">):</span> 
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_Coordenadas&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="n">if_exists</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo BD_Dim_Coordenadas --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">Coordenadas</span><span class="p">(</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:29:16,096 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:29:16,098 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:29:16,616 - INFO - Almacenando tabla única en DWH como BD_Dim_Coordenadas
+2024-10-25 22:29:17,547 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:29:17,701 - INFO - ALMACENAMIENTO ---  --- 1.61 seconds ---
+2024-10-25 22:29:17,753 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:29:17,755 - INFO - Tiempo BD_Dim_Coordenadas --- 1.70 seconds ---
+
+
+
+
+
+[&#39;CODIGO_ZONA&#39;, &#39;NOMBRE_ZONA&#39;, &#39;ZONACOMPLETA&#39;, &#39;LATITUDE&#39;, &#39;LONGITUDE&#39;]
+</code></pre></div>
+
+<h3 id="meta_cobertura_afiliacion">Meta_cobertura_afiliacion<a class="headerlink" href="#meta_cobertura_afiliacion" title="Permanent link">&para;</a></h3>
+<h4 id="carga-y-almacenamiento-de-metas-de-proyeccion-de-cobertura-y-afiliacion-en-el-data-warehouse">Carga y Almacenamiento de Metas de Proyección de Cobertura y Afiliación en el Data Warehouse<a class="headerlink" href="#carga-y-almacenamiento-de-metas-de-proyeccion-de-cobertura-y-afiliacion-en-el-data-warehouse" title="Permanent link">&para;</a></h4>
+<p>El código carga el archivo Excel <code>Meta_proyeccion_cobertura_afiliacion.xlsx</code> en el DataFrame <code>df_8</code> y define la función <code>Meta_proyeccion_cobertura_afiliacion</code>, que guarda los datos en la tabla <code>BD_Dim_Meta_cobertura_afiliacion</code> del Data Warehouse. El parámetro <code>if_exists</code> permite elegir entre agregar los datos a la tabla existente (<code>replace</code>) o reemplazar los datos actuales (<code>replace</code>), proporcionando flexibilidad en la actualización de la tabla.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_8</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../Parametricas/Meta_proyeccion_cobertura_afiliacion.xlsx&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">Meta_proyeccion_cobertura_afiliacion</span><span class="p">(</span><span class="n">if_exists</span><span class="p">):</span> 
+    <span class="n">df</span> <span class="o">=</span> <span class="n">convertir_columnas_mayusculas</span><span class="p">(</span><span class="n">df_8</span><span class="p">)</span>
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_Meta_cobertura_afiliacion&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="n">if_exists</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo BD_Dim_Meta_cobertura_afiliacion --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">Meta_proyeccion_cobertura_afiliacion</span><span class="p">(</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:29:46,031 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:29:46,033 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:29:46,560 - INFO - Almacenando tabla única en DWH como BD_Dim_Meta_cobertura_afiliacion
+2024-10-25 22:29:47,500 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:29:47,620 - INFO - ALMACENAMIENTO ---  --- 1.59 seconds ---
+2024-10-25 22:29:47,622 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:29:47,623 - INFO - Tiempo BD_Dim_Meta_cobertura_afiliacion --- 1.68 seconds ---
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CODIGO_ZONA</th>
+      <th>NOMBRE_ZONA</th>
+      <th>ZONACOMPLETA</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>47001</td>
+      <td>SANTA MARTA</td>
+      <td>SANTA MARTA, COLOMBIA</td>
+      <td>11.240355</td>
+      <td>-74.211023</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>47288</td>
+      <td>FUNDACION</td>
+      <td>FUNDACION, COLOMBIA</td>
+      <td>10.449279</td>
+      <td>-73.865429</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>47030</td>
+      <td>ALGARROBO</td>
+      <td>ALGARROBO, COLOMBIA</td>
+      <td>10.100040</td>
+      <td>-74.266630</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>47053</td>
+      <td>ARACATACA</td>
+      <td>ARACATACA, COLOMBIA</td>
+      <td>10.591925</td>
+      <td>-74.186103</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>47058</td>
+      <td>ARIGUANI</td>
+      <td>ARIGUANI, COLOMBIA</td>
+      <td>9.844197</td>
+      <td>-74.228119</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>47161</td>
+      <td>CERRO DE SAN ANTONIO</td>
+      <td>CERRO DE SAN ANTONIO, COLOMBIA</td>
+      <td>10.327091</td>
+      <td>-74.869002</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>47170</td>
+      <td>CHIVOLO</td>
+      <td>CHIVOLO, COLOMBIA</td>
+      <td>10.027447</td>
+      <td>-74.623845</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>47189</td>
+      <td>CIENAGA</td>
+      <td>CIENAGA, COLOMBIA</td>
+      <td>11.007984</td>
+      <td>-74.248926</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>47205</td>
+      <td>CONCORDIA</td>
+      <td>CONCORDIA, COLOMBIA</td>
+      <td>6.072311</td>
+      <td>-75.923098</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>47245</td>
+      <td>EL BANCO</td>
+      <td>EL BANCO, COLOMBIA</td>
+      <td>9.138144</td>
+      <td>-73.983003</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>47258</td>
+      <td>EL PINON</td>
+      <td>EL PINON, COLOMBIA</td>
+      <td>10.404038</td>
+      <td>-74.823769</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>47268</td>
+      <td>EL RETEN</td>
+      <td>EL RETEN, COLOMBIA</td>
+      <td>10.611793</td>
+      <td>-74.269383</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>47318</td>
+      <td>GUAMAL</td>
+      <td>GUAMAL, COLOMBIA</td>
+      <td>3.880475</td>
+      <td>-73.769877</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>47460</td>
+      <td>NUEVA GRANADA</td>
+      <td>NUEVA GRANADA, COLOMBIA</td>
+      <td>9.800020</td>
+      <td>-74.391264</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>47541</td>
+      <td>PEDRAZA</td>
+      <td>PEDRAZA, COLOMBIA</td>
+      <td>10.188806</td>
+      <td>-74.915762</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>47545</td>
+      <td>PIJINO DEL CARMEN</td>
+      <td>PIJINO DEL CARMEN, COLOMBIA</td>
+      <td>9.330239</td>
+      <td>-74.453295</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>47551</td>
+      <td>PIVIJAY</td>
+      <td>PIVIJAY, COLOMBIA</td>
+      <td>10.462231</td>
+      <td>-74.616859</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>47555</td>
+      <td>PLATO</td>
+      <td>PLATO, COLOMBIA</td>
+      <td>9.791337</td>
+      <td>-74.797525</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>47570</td>
+      <td>PUEBLOVIEJO</td>
+      <td>PUEBLOVIEJO, COLOMBIA</td>
+      <td>10.992353</td>
+      <td>-74.284038</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>47605</td>
+      <td>REMOLINOS</td>
+      <td>REMOLINOS, COLOMBIA</td>
+      <td>5.662310</td>
+      <td>-74.793830</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>47660</td>
+      <td>SABANAS DE SAN ANGEL</td>
+      <td>SABANAS DE SAN ANGEL, COLOMBIA</td>
+      <td>10.029770</td>
+      <td>-74.215310</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>47675</td>
+      <td>SALAMINA</td>
+      <td>SALAMINA, COLOMBIA</td>
+      <td>5.402354</td>
+      <td>-75.486468</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>47692</td>
+      <td>SAN SEBASTIAN BUENAVISTA</td>
+      <td>SAN SEBASTIAN BUENAVISTA, COLOMBIA</td>
+      <td>8.995635</td>
+      <td>-74.585474</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>47703</td>
+      <td>SAN ZENON</td>
+      <td>SAN ZENON, COLOMBIA</td>
+      <td>9.244884</td>
+      <td>-74.498450</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>47707</td>
+      <td>SANTA ANA</td>
+      <td>SANTA ANA, COLOMBIA</td>
+      <td>9.322961</td>
+      <td>-74.570544</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>47720</td>
+      <td>SANTA BARBARA DE PINTO</td>
+      <td>SANTA BARBARA DE PINTO, COLOMBIA</td>
+      <td>9.432340</td>
+      <td>-74.704930</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>47745</td>
+      <td>SITIONUEVO</td>
+      <td>SITIONUEVO, COLOMBIA</td>
+      <td>10.776607</td>
+      <td>-74.720902</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>47798</td>
+      <td>TENERIFE</td>
+      <td>TENERIFE, COLOMBIA</td>
+      <td>9.898413</td>
+      <td>-74.858425</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>47960</td>
+      <td>ZAPAYAN</td>
+      <td>ZAPAYAN, COLOMBIA</td>
+      <td>4.570868</td>
+      <td>-74.297333</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>47980</td>
+      <td>ZONA BANANERA</td>
+      <td>ZONA BANANERA, COLOMBIA</td>
+      <td>10.792245</td>
+      <td>-74.170970</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="indicadores">Indicadores<a class="headerlink" href="#indicadores" title="Permanent link">&para;</a></h3>
+<h4 id="carga-y-almacenamiento-de-indicadores-en-el-data-warehouse">Carga y Almacenamiento de Indicadores en el Data Warehouse<a class="headerlink" href="#carga-y-almacenamiento-de-indicadores-en-el-data-warehouse" title="Permanent link">&para;</a></h4>
+<p>Este código carga el archivo Excel <code>Indicadores.xlsx</code> en el DataFrame <code>df_11</code> y define la función <code>Indicadores</code>, que guarda los datos en la tabla <code>DB_Dim_Indicadores</code> del Data Warehouse. La función está configurada para agregar los datos a la tabla existente usando la opción <code>if_exists='replace'</code>, lo que garantiza que los nuevos registros se sumen a los ya almacenados sin sobrescribir la información previa.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_11</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../Parametricas/Indicadores.xlsx&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Indicadores</span><span class="p">():</span> 
+    <span class="n">df</span> <span class="o">=</span> <span class="n">convertir_columnas_mayusculas</span><span class="p">(</span><span class="n">df_11</span><span class="p">)</span>
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_Indicadores&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo BD_Dim_Indicadores --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">Indicadores</span><span class="p">()</span>
+<span class="n">df_11</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:30:50,072 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:30:50,073 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:30:50,596 - INFO - Almacenando tabla única en DWH como BD_Dim_Indicadores
+2024-10-25 22:30:51,609 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:30:51,740 - INFO - ALMACENAMIENTO ---  --- 1.67 seconds ---
+2024-10-25 22:30:51,741 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:30:51,742 - INFO - Tiempo BD_Dim_Indicadores --- 1.72 seconds ---
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>INDICADOR</th>
+      <th>MOTIVO</th>
+      <th>PERIODO</th>
+      <th>CANTIDAD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Solicitudes de Afiliación devueltas</td>
+      <td>M1</td>
+      <td>202307</td>
+      <td>422.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Solicitudes de Afiliación devueltas</td>
+      <td>M2</td>
+      <td>202307</td>
+      <td>60.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Solicitudes de Afiliación devueltas</td>
+      <td>M3</td>
+      <td>202307</td>
+      <td>444.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Solicitudes de Afiliación devueltas</td>
+      <td>M4</td>
+      <td>202307</td>
+      <td>463.00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Solicitudes de Afiliación devueltas</td>
+      <td>M5</td>
+      <td>202307</td>
+      <td>440.00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>190</th>
+      <td>Gestión PQRSF</td>
+      <td>M1</td>
+      <td>202307</td>
+      <td>0.15</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>Gestión PQRSF</td>
+      <td>M2</td>
+      <td>202307</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>Gestión PQRSF</td>
+      <td>M3</td>
+      <td>202307</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>Gestión PQRSF</td>
+      <td>M4</td>
+      <td>202307</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>Gestión PQRSF</td>
+      <td>M5</td>
+      <td>202307</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>195 rows × 4 columns</p>
+</div>
+
+<h3 id="satisfaccion_cartera">Satisfacción_cartera<a class="headerlink" href="#satisfaccion_cartera" title="Permanent link">&para;</a></h3>
+<h4 id="carga-y-almacenamiento-de-satisfaccion-de-cartera-en-el-data-warehouse">Carga y Almacenamiento de Satisfacción de Cartera en el Data Warehouse<a class="headerlink" href="#carga-y-almacenamiento-de-satisfaccion-de-cartera-en-el-data-warehouse" title="Permanent link">&para;</a></h4>
+<p>Este código carga el archivo Excel <code>SatisfaccionCartera.xlsx</code> en el DataFrame <code>df_9</code> y define la función <code>Satisfacción_cartera</code>, que guarda los datos en la tabla <code>DB_Dim_Satisfacción_cartera</code> del Data Warehouse. La función está configurada para agregar los datos a los registros existentes utilizando <code>if_exists='replace'</code>, asegurando que la información previa se mantenga mientras se agregan nuevos registros.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_9</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../Parametricas/SatisfaccionCartera.xlsx&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Satisfacción_cartera</span><span class="p">():</span> 
+    <span class="n">df</span> <span class="o">=</span> <span class="n">convertir_columnas_mayusculas</span><span class="p">(</span><span class="n">df_9</span><span class="p">)</span>    
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_Satisfacción_cartera&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo BD_Dim_Satisfacción_cartera --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">Satisfacción_cartera</span><span class="p">()</span>
+<span class="n">df_9</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:31:18,544 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:31:18,546 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:31:19,071 - INFO - Almacenando tabla única en DWH como BD_Dim_Satisfacción_cartera
+2024-10-25 22:31:20,083 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:31:20,212 - INFO - ALMACENAMIENTO ---  --- 1.67 seconds ---
+2024-10-25 22:31:20,213 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:31:20,214 - INFO - Tiempo BD_Dim_Satisfacción_cartera --- 1.72 seconds ---
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PREGUNTAS</th>
+      <th>PERIODO</th>
+      <th>CALIFICACIÓN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>¿La información entregada en la comunicación p...</td>
+      <td>202207</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>¿Considera que le falta información para reali...</td>
+      <td>202207</td>
+      <td>4.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>¿Tuvo problemas de acceso a la plataforma del ...</td>
+      <td>202207</td>
+      <td>3.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Si presentó alguna duda o inquietud, ¿le fue f...</td>
+      <td>202207</td>
+      <td>3.1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>¿La información entregada en la comunicación p...</td>
+      <td>202306</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>¿Considera que le falta información para reali...</td>
+      <td>202306</td>
+      <td>3.7</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>¿Tuvo problemas de acceso a la plataforma del ...</td>
+      <td>202306</td>
+      <td>4.6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Si presentó alguna duda o inquietud, ¿le fue f...</td>
+      <td>202306</td>
+      <td>4.9</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>¿La información entregada en la comunicación p...</td>
+      <td>202307</td>
+      <td>4.9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>¿Considera que le falta información para reali...</td>
+      <td>202307</td>
+      <td>4.8</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>¿Tuvo problemas de acceso a la plataforma del ...</td>
+      <td>202307</td>
+      <td>4.6</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Si presentó alguna duda o inquietud, ¿le fue f...</td>
+      <td>202307</td>
+      <td>4.6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="detalle_preguntas_encuestas">Detalle_preguntas_encuestas<a class="headerlink" href="#detalle_preguntas_encuestas" title="Permanent link">&para;</a></h3>
+<h4 id="carga-y-almacenamiento-de-detalle-de-preguntas-de-encuestas-en-el-data-warehouse">Carga y Almacenamiento de Detalle de Preguntas de Encuestas en el Data Warehouse<a class="headerlink" href="#carga-y-almacenamiento-de-detalle-de-preguntas-de-encuestas-en-el-data-warehouse" title="Permanent link">&para;</a></h4>
+<p>El código carga el archivo Excel <code>Detalle_preguntas_encuestas.xlsx</code> en el DataFrame <code>df_10</code> y define la función <code>Detalle_preguntas_encuestas</code>, que guarda los datos en la tabla <code>DB_Dim_Detalle_preguntas_encuestas</code> del Data Warehouse. La opción <code>if_exists='replace'</code> asegura que los datos nuevos se agreguen a los registros existentes sin sobrescribir la información almacenada previamente.</p>
+<div class="highlight"><pre><span></span><code><span class="n">parametica_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df_10</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../Parametricas/Detalle_preguntas_encuestas.xlsx&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Detalle_preguntas_encuestas</span><span class="p">(</span><span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">):</span> 
+    <span class="n">convertir_columnas_mayusculas</span><span class="p">(</span><span class="n">df_10</span><span class="p">)</span>
+    <span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df_10</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_Detalle_preguntas_encuestas&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="n">if_exists</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo BD_Dim_Detalle_preguntas_encuestas --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">parametica_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+
+<span class="n">Detalle_preguntas_encuestas</span><span class="p">(</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+<span class="n">df_10</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-25 22:32:01,932 - INFO - Intentando conexión a la base DWH...
+2024-10-25 22:32:01,934 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-25 22:32:02,449 - INFO - Almacenando tabla única en DWH como BD_Dim_Detalle_preguntas_encuestas
+2024-10-25 22:32:03,308 - INFO - Tabla almacenada correctamente.
+2024-10-25 22:32:03,443 - INFO - ALMACENAMIENTO ---  --- 1.51 seconds ---
+2024-10-25 22:32:03,444 - INFO - Finalizando proceso de almacenamiento en DWH.
+2024-10-25 22:32:03,446 - INFO - Tiempo BD_Dim_Detalle_preguntas_encuestas --- 1.57 seconds ---
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>FUENTE</th>
+      <th>PREGUNTA</th>
+      <th>DETALLE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Encuesta_afil_empleador_2022_PB</td>
+      <td>Pregunta1</td>
+      <td>¿CÓMO CALIFICA EN GENERAL LA CALIDAD DEL SERVI...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Encuesta_afil_empleador_2022_PB</td>
+      <td>Pregunta2</td>
+      <td>¿CÓMO CALIFICA USTED EL SERVICIO DE AFILIACIÓN...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Encuesta_afil_empleador_2022_PB</td>
+      <td>Pregunta3</td>
+      <td>¿CÓMO CALIFICA USTED EL SERVICIO DE AFILIACIÓN...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Encuesta_afil_empleador_2022_PB</td>
+      <td>Pregunta4</td>
+      <td>¿CÓMO CALIFICA USTED EL SERVICIO DE AFILIACIÓN...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Encuesta_afil_empleador_2023_I_sem_PB</td>
+      <td>Pregunta1</td>
+      <td>¿CÓMO CALIFICA EN GENERAL LA CALIDAD DEL SERVI...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Encuesta_afil_empleador_2023_I_sem_PB</td>
+      <td>Pregunta2</td>
+      <td>¿CÓMO CALIFICA USTED EL SERVICIO DE AFILIACIÓN...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Encuesta_afil_empleador_2023_I_sem_PB</td>
+      <td>Pregunta3</td>
+      <td>¿CÓMO CALIFICA USTED EL SERVICIO DE AFILIACIÓN...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Encuesta_afil_empleador_2023_I_sem_PB</td>
+      <td>Pregunta4</td>
+      <td>¿CÓMO CALIFICA USTED EL SERVICIO DE AFILIACIÓN...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Encuesta_afil_empleador_2023_II_sem_PB</td>
+      <td>Pregunta1</td>
+      <td>¿COMO CALIFICA EN GENERAL LA CALIDAD DEL SERVI...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Encuesta_afil_empleador_2023_II_sem_PB</td>
+      <td>Pregunta2</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Encuesta_afil_empleador_2023_II_sem_PB</td>
+      <td>Pregunta3</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Encuesta_afil_empleador_2023_II_sem_PB</td>
+      <td>Pregunta4</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Encuesta_afil_trabajador_2022_PB</td>
+      <td>Pregunta1</td>
+      <td>¿COMO CALIFICA EN GENERAL LA CALIDAD DEL SERVI...</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Encuesta_afil_trabajador_2022_PB</td>
+      <td>Pregunta2</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Encuesta_afil_trabajador_2022_PB</td>
+      <td>Pregunta3</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Encuesta_afil_trabajador_2022_PB</td>
+      <td>Pregunta4</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Encuesta_afil_trabajador_2022_PB</td>
+      <td>Pregunta5</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Encuesta_afil_trabajador_2023_I_sem_PB</td>
+      <td>Pregunta1</td>
+      <td>¿COMO CALIFICA EN GENERAL LA CALIDAD DEL SERVI...</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Encuesta_afil_trabajador_2023_I_sem_PB</td>
+      <td>Pregunta2</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Encuesta_afil_trabajador_2023_I_sem_PB</td>
+      <td>Pregunta3</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Encuesta_afil_trabajador_2023_I_sem_PB</td>
+      <td>Pregunta4</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Encuesta_afil_trabajador_2023_I_sem_PB</td>
+      <td>Pregunta5</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Encuesta_afil_trabajador_2023_II_sem_PB</td>
+      <td>Pregunta1</td>
+      <td>¿COMO CALIFICA EN GENERAL LA CALIDAD DEL SERVI...</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Encuesta_afil_trabajador_2023_II_sem_PB</td>
+      <td>Pregunta2</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Encuesta_afil_trabajador_2023_II_sem_PB</td>
+      <td>Pregunta3</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Encuesta_afil_trabajador_2023_II_sem_PB</td>
+      <td>Pregunta4</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Encuesta_afil_trabajador_2023_II_sem_PB</td>
+      <td>Pregunta5</td>
+      <td>¿COMO CALIFICA USTED EL SERVICIO DE AFILIACION...</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Encuesta_cuota_monetaria_PB</td>
+      <td>Pregunta1</td>
+      <td>OPORTUNIDAD [¿CONSIDERÍA USTED OPORTUNO EL TIE...</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Encuesta_cuota_monetaria_PB</td>
+      <td>Pregunta2</td>
+      <td>OPORTUNIDAD [¿FUE OPORTUNA LA RESPUESTA A SU S...</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Encuesta_cuota_monetaria_PB</td>
+      <td>Pregunta3</td>
+      <td>OPORTUNIDAD [¿RECIBE EL PAGO DE LA CUOTA MONET...</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Encuesta_cuota_monetaria_PB</td>
+      <td>Pregunta4</td>
+      <td>INFRAESTRUCTURA (FISICA Y VIRTUAL) [CALIFIQUE ...</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Encuesta_cuota_monetaria_PB</td>
+      <td>Pregunta5</td>
+      <td>INFRAESTRUCTURA (FISICA Y VIRTUAL) [EVALÚE LA ...</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Encuesta_cuota_monetaria_PB</td>
+      <td>Pregunta6</td>
+      <td>INFRAESTRUCTURA (FISICA Y VIRTUAL) [CALIFIQUE ...</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Encuesta_cuota_monetaria_PB</td>
+      <td>Pregunta7</td>
+      <td>CALIDEZ [QUE TAN AMABLE FUE LA ATENCION PRESEN...</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Encuesta_cuota_monetaria_PB</td>
+      <td>Pregunta8</td>
+      <td>CALIDEZ [¿CONSIDERA USTED QUE LA INFORMACIÓN E...</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Encuesta_cuota_monetaria_PB</td>
+      <td>Pregunta9</td>
+      <td>CALIDEZ [¿QUE TAN AMABLE FUE LA ATENCIÓN TELEF...</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Encuesta_cuota_monetaria_PB</td>
+      <td>Pregunta10</td>
+      <td>EFECTIVIDAD [¿CREE USTED QUE LA INFORMACIÓN EN...</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Encuesta_cuota_monetaria_PB</td>
+      <td>Pregunta11</td>
+      <td>EFECTIVIDAD [¿FUERON RESUELTAS TODAS SUS DUDAS...</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Encuesta_cuota_monetaria_PB</td>
+      <td>Pregunta12</td>
+      <td>EFECTIVIDAD [¿EL VALOR DE LA CUOTA MONETARIA C...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/init_mermaid.js"></script>
+      
+    
+  </body>
+</html>

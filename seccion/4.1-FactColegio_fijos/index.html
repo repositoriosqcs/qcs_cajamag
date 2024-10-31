@@ -1,0 +1,2341 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Bloque4/">
+      
+      
+        <link rel="next" href="../4.2-FactColegio/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>4.1 FactColegio fijos - Optimización CAJAMAG - Gobierno de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#d89717" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#41-fact-colegio-fijos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Optimización CAJAMAG - Gobierno de Datos" class="md-header__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Optimización CAJAMAG - Gobierno de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.1 FactColegio fijos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Optimización CAJAMAG - Gobierno de Datos" class="md-nav__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Optimización CAJAMAG - Gobierno de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INTRODUCCIÓN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instalacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INSTALACIÓN Y CONFIGURACIÓN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../buenaspracticas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BUENAS PRACTICAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../codigo/funciones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNCIONES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BODEGAS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            BODEGAS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Bodega 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            1. Bodega 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.1-DimDatosFijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 DimDatosFijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.2-DimCalendarioMensual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 DimCalendarioMensual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.3-Dimensiones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 Dimensiones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.4-Dimensiones_xml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.4 Dimensiones xml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.5-FactDatosContacto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.5 FactDatosContacto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.6-Fact_Historico_Afiliacion_Empresas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.6 Fact Historico Afiliacion Empresas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.7-Fact_Historico_Trabajadores1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.7-Fact_Historico_Trabajadores2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.8-Fact_HistoricoBeneficiarios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.8 Fact HistoricoBeneficiarios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.9-Dim_Parametricas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.9 Dim Parametricas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. Bodega 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            2. Bodega 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1-FactAportesEmpAfiliadas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactAportesEmpAfiliadas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1-FactHistoricoAportesTotales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactHistoricoAportesTotales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2-FactHistoricoCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactHistoricoCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.3-FactSubsidioVivienda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 FactSubsidioVivienda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.4-FactFosfec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 FactFosfec
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2-FactEstadoGiroCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactEstadoGiroCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.5-Fact_HistoricoMoraEmp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.5 Fact HistoricoMoraEmp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.6-FactHistoricoANS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.6 FactHistoricoANS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.7-FactHistoricoSubPrescrito/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.7 FactHistoricoSubPrescrito
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.8-FactHistoricoRecobro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.8 FactHistoricoRecobro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.9-FactHistoricoRecuperado/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.9 FactHistoricoRecuperado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.10-FactIgestion_Mercurio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.10 FactIgestion Mercurio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3. Bodega 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            3. Bodega 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.1-FactTransaccionesVentas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 FactTransaccionesVentas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. Bodega 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            4. Bodega 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    4.1 FactColegio fijos
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    4.1 FactColegio fijos
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacion-de-librerias-y-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importación de librerías y funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-del-logger-y-registro-de-inicio-de-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del Logger y Registro de Inicio de Proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consultas-sql-para-cargar-datos-de-estudiantes-y-acudientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas SQL para Cargar Datos de Estudiantes y Acudientes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cargar-y-estructurar-tablas-con-las-columnas-requeridas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cargar y estructurar tablas con las columnas requeridas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estandarizacion-y-combinacion-de-datos-de-estudiantes-y-acudientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estandarización y Combinación de Datos de Estudiantes y Acudientes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtrar-registros-unicos-por-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtrar registros únicos por id
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consulta-y-filtrado-de-registros-unicos-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consulta y Filtrado de Registros Únicos en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardar-registros-faltantes-en-la-tabla-dimdatosfijos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guardar registros faltantes en la tabla DimDatosFijos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.2-FactColegio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 FactColegio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. Bodega 5
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            5. Bodega 5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.1-FactServicioSocial_Fijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 FactServicioSocial Fijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.2-FactServicioSocial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 FactServicioSocial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    6. Bodega 6
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            6. Bodega 6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.1-FactEncuestas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 FactEncuestas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.2-Fact_Encuesta_afil_empleador/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 Fact Encuesta afil empleador
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacion-de-librerias-y-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importación de librerías y funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-del-logger-y-registro-de-inicio-de-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del Logger y Registro de Inicio de Proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consultas-sql-para-cargar-datos-de-estudiantes-y-acudientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas SQL para Cargar Datos de Estudiantes y Acudientes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cargar-y-estructurar-tablas-con-las-columnas-requeridas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cargar y estructurar tablas con las columnas requeridas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estandarizacion-y-combinacion-de-datos-de-estudiantes-y-acudientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estandarización y Combinación de Datos de Estudiantes y Acudientes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtrar-registros-unicos-por-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtrar registros únicos por id
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consulta-y-filtrado-de-registros-unicos-en-el-data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consulta y Filtrado de Registros Únicos en el Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardar-registros-faltantes-en-la-tabla-dimdatosfijos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guardar registros faltantes en la tabla DimDatosFijos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="41-fact-colegio-fijos">4.1 Fact Colegio fijos<a class="headerlink" href="#41-fact-colegio-fijos" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>El proceso ETL para <code>FactColegio_fijos</code> extrae y transforma datos de las tablas <code>colegio12</code> y <code>colegio13</code>, correspondientes a información de estudiantes y acudientes, respectivamente. La transformación incluye la consolidación de los datos en un DataFrame único, la estandarización de nombres y la limpieza de duplicados. Una vez estructurados los datos, se verifica su existencia en la tabla <code>DimDatosFijos</code> del Data Warehouse (DWH). Los registros que no existen se almacenan en el DWH, asegurando la integridad y unicidad de la información de afiliados en la base de datos.</p>
+<h3 id="diagrama-de-secuencia-del-proceso-etl">Diagrama de Secuencia del Proceso ETL<a class="headerlink" href="#diagrama-de-secuencia-del-proceso-etl" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    title Diagrama de Secuencia del Proceso ETL - FactColegio_fijos
+    participant 👤 Usuario
+    participant ETL_Script
+    participant Minerva_DB as Base de Datos Minerva
+    participant DWH as Data Warehouse
+
+    👤 Usuario -&gt;&gt; ETL_Script: Ejecuta el script ETL
+    ETL_Script -&gt;&gt; ETL_Script: Configura entorno y logger
+    ETL_Script -&gt;&gt; Minerva_DB: Conecta a BD Minerva
+    Minerva_DB --&gt;&gt; ETL_Script: Conexión exitosa
+    ETL_Script -&gt;&gt; Minerva_DB: Ejecuta consulta SQL para cargar `colegio12` y `colegio13`
+    Minerva_DB --&gt;&gt; ETL_Script: Retorna datos de estudiantes y acudientes
+    ETL_Script -&gt;&gt; ETL_Script: Combina datos y elimina duplicados
+    ETL_Script -&gt;&gt; DWH: Conecta a BD DWH
+    DWH --&gt;&gt; ETL_Script: Conexión exitosa
+    ETL_Script -&gt;&gt; DWH: Verifica datos en `DimDatosFijos`
+    DWH --&gt;&gt; ETL_Script: Retorna datos existentes
+    ETL_Script -&gt;&gt; DWH: Carga datos faltantes en `DimDatosFijos`
+    DWH --&gt;&gt; ETL_Script: Confirmación de carga exitosa
+    ETL_Script -&gt;&gt; 👤 Usuario: Finaliza proceso ETL y registra tiempo</code></pre>
+<h2 id="etl">ETL<a class="headerlink" href="#etl" title="Permanent link">&para;</a></h2>
+<h3 id="importacion-de-librerias-y-funciones">Importación de librerías y funciones<a class="headerlink" href="#importacion-de-librerias-y-funciones" title="Permanent link">&para;</a></h3>
+<p>Este código establece el entorno de procesamiento para cargar y transformar datos en el DWH. Configura librerías como <code>pandas</code> y <code>sqlalchemy</code> para manipulación y conexión de datos. Además, incluye funciones personalizadas de <code>Funciones.py</code>, como <code>StoreDuplicated</code> para gestión de duplicados, <code>obtener_conexion</code> para conexión a la base de datos, y <code>estandarizar_direccion</code> y <code>marcar_direcciones_estandarizadas</code> para procesar direcciones de manera uniforme. </p>
+<p>Al final, <code>testfunciones()</code> se ejecuta para validar la configuración.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">sa</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">MetaData</span><span class="p">,</span> <span class="n">Table</span><span class="p">,</span> <span class="n">insert</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
+<span class="c1">#---------------------------------------------</span>
+<span class="c1">#Import de modulo funciones</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c1"># Agrega el directorio al sys.path</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../funciones&#39;</span><span class="p">))</span>
+<span class="c1"># Importa las funciones desde el archivo Funciones.py</span>
+<span class="kn">from</span> <span class="nn">Funciones</span> <span class="kn">import</span> <span class="n">guardar_en_dwh</span><span class="p">,</span> <span class="n">obtener_conexion</span><span class="p">,</span> <span class="n">cargar_tablas</span><span class="p">,</span> <span class="n">testfunciones</span><span class="p">,</span> <span class="n">setup_logger</span><span class="p">,</span><span class="n">estandarizar_direccion</span><span class="p">,</span><span class="n">marcar_direcciones_estandarizadas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">testfunciones</span><span class="p">())</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>Importacion de funciones correcta, 27-10-2024 09:29
+</code></pre></div>
+
+<h3 id="configuracion-del-logger-y-registro-de-inicio-de-proceso-etl">Configuración del Logger y Registro de Inicio de Proceso ETL<a class="headerlink" href="#configuracion-del-logger-y-registro-de-inicio-de-proceso-etl" title="Permanent link">&para;</a></h3>
+<p>Este bloque configura el logger con <code>setup_logger</code>, estableciendo el archivo de log <code>Colegio.log</code> y el nivel de registro <code>INFO</code> para capturar eventos informativos y errores durante el proceso ETL. El mensaje <code>'COMIENZO ETL'</code> se registra para indicar el inicio del flujo de extracción, transformación y carga de datos, ayudando a rastrear el proceso en el archivo de log.</p>
+<div class="highlight"><pre><span></span><code><span class="n">logger</span> <span class="o">=</span> <span class="n">setup_logger</span><span class="p">(</span><span class="n">log_filename</span><span class="o">=</span><span class="s1">&#39;Colegio.log&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;COMIENZO ETL&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:29:13,179 - INFO - COMIENZO ETL
+</code></pre></div>
+
+<h3 id="consultas-sql-para-cargar-datos-de-estudiantes-y-acudientes">Consultas SQL para Cargar Datos de Estudiantes y Acudientes<a class="headerlink" href="#consultas-sql-para-cargar-datos-de-estudiantes-y-acudientes" title="Permanent link">&para;</a></h3>
+<p>Este código define dos consultas SQL (<code>colegio12</code> y <code>colegio13</code>) para extraer datos de estudiantes y acudientes desde las tablas <code>colegio12</code> y <code>colegio13</code>. Ambas consultas construyen el campo <code>ID_AFILIADO</code> combinando los valores <code>coddoc</code> y <code>numdoc</code>, y crean <code>RAZON_SOCIAL</code> concatenando nombres y apellidos.</p>
+<p>La estructura también incluye <code>FECHA_NACIMIENTO</code>, <code>SEXO</code>, <code>CODDOC</code>, <code>DOCUMENTO</code>, y los nombres individuales (<code>PRIMER_NOMBRE</code>, <code>SEGUNDO_NOMBRE</code>, <code>PRIMER_APELLIDO</code>, <code>SEGUNDO_APELLIDO</code>). En <code>colegio13</code>, <code>FECHA_NACIMIENTO</code> se deja como <code>NULL</code>, dado que esta información podría no estar disponible para acudientes.</p>
+<p>Finalmente, las consultas se registran en <code>qr_structure</code>, y el logger anota el inicio de la lectura de queries en el proceso ETL.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Definir las consultas SQL para cargar datos y asegurarse de crear la estructura con los campos requeridos</span>
+<span class="n">required_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ID_AFILIADO&#39;</span><span class="p">,</span> <span class="s1">&#39;RAZON_SOCIAL&#39;</span><span class="p">,</span><span class="s1">&#39;FECHA_NACIMIENTO&#39;</span><span class="p">,</span> <span class="s1">&#39;SEXO&#39;</span><span class="p">,</span> <span class="s1">&#39;CODDOC&#39;</span><span class="p">,</span> <span class="s1">&#39;DOCUMENTO&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIMER_NOMBRE&#39;</span><span class="p">,</span> <span class="s1">&#39;SEGUNDO_NOMBRE&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIMER_APELLIDO&#39;</span><span class="p">,</span> <span class="s1">&#39;SEGUNDO_APELLIDO&#39;</span><span class="p">]</span>
+<span class="n">qr_structure</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;colegio12&quot;</span><span class="p">:</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    SELECT</span>
+<span class="s1">        CONCAT(coddoc, numdoc) AS ID_AFILIADO,</span>
+<span class="s1">        CONCAT(</span>
+<span class="s1">            IFNULL(prinom, &#39;&#39;), &#39; &#39;, </span>
+<span class="s1">            IFNULL(segnom, &#39;&#39;), &#39; &#39;, </span>
+<span class="s1">            IFNULL(priape, &#39;&#39;), &#39; &#39;, </span>
+<span class="s1">            IFNULL(segape, &#39;&#39;)</span>
+<span class="s1">            ) AS RAZON_SOCIAL,</span>
+<span class="s1">        fecnac AS FECHA_NACIMIENTO,</span>
+<span class="s1">        codsex AS sexo,</span>
+<span class="s1">        coddoc,</span>
+<span class="s1">        numdoc AS documento,</span>
+<span class="s1">        prinom AS PRIMER_NOMBRE,</span>
+<span class="s1">        segnom AS SEGUNDO_NOMBRE,</span>
+<span class="s1">        priape AS PRIMER_APELLIDO,</span>
+<span class="s1">        segape AS SEGUNDO_APELLIDO,</span>
+<span class="s1">        &quot;colegio12&quot; AS FUENTE</span>
+<span class="s1">    FROM colegio.colegio12&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;colegio13&quot;</span><span class="p">:</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    SELECT</span>
+<span class="s1">        CONCAT(coddoc, numdoc) AS ID_AFILIADO,</span>
+<span class="s1">        CONCAT(</span>
+<span class="s1">            IFNULL(prinom, &#39;&#39;), &#39; &#39;, </span>
+<span class="s1">            IFNULL(segnom, &#39;&#39;), &#39; &#39;, </span>
+<span class="s1">            IFNULL(priape, &#39;&#39;), &#39; &#39;, </span>
+<span class="s1">            IFNULL(segape, &#39;&#39;)</span>
+<span class="s1">            ) AS RAZON_SOCIAL,</span>
+<span class="s1">        NULL AS FECHA_NACIMIENTO,</span>
+<span class="s1">        codsex AS sexo,</span>
+<span class="s1">        coddoc,</span>
+<span class="s1">        numdoc AS documento,</span>
+<span class="s1">        prinom AS PRIMER_NOMBRE,</span>
+<span class="s1">        segnom AS SEGUNDO_NOMBRE,</span>
+<span class="s1">        priape AS PRIMER_APELLIDO,</span>
+<span class="s1">        segape AS SEGUNDO_APELLIDO,</span>
+<span class="s1">        &quot;colegio13&quot; AS FUENTE</span>
+<span class="s1">    FROM colegio.colegio13&#39;&#39;&#39;</span>
+<span class="p">}</span>
+<span class="n">dim_names</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;colegio12&quot;</span><span class="p">:</span><span class="s1">&#39;BD_Fact_Colegio_Estudiantes&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;colegio13&quot;</span><span class="p">:</span><span class="s1">&#39;BD_Fact_Colegio_Acudientes&#39;</span><span class="p">,</span>
+               <span class="p">}</span>
+<span class="n">df_structure</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;LECTURA DE QUERYS&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:29:13,219 - INFO - LECTURA DE QUERYS
+</code></pre></div>
+
+<h3 id="cargar-y-estructurar-tablas-con-las-columnas-requeridas">Cargar y estructurar tablas con las columnas requeridas<a class="headerlink" href="#cargar-y-estructurar-tablas-con-las-columnas-requeridas" title="Permanent link">&para;</a></h3>
+<p>Se cargan las tablas <code>colegio12</code> y <code>colegio13</code> desde la base de datos, garantizando que todas las columnas requeridas estén presentes en los dataframes resultantes. Si alguna columna falta, se crea con el valor <code>"SinDato"</code>. Posteriormente, se concatenan ambas tablas en un solo dataframe <code>df_colegio_combined</code>. Los eventos de carga y concatenación se registran en el log.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Conexion a base Minerva</span>
+<span class="n">motor</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">obtener_conexion</span><span class="p">(</span><span class="s1">&#39;minerva&#39;</span><span class="p">))</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;CONEXION A BASE MINERVA&#39;</span><span class="p">)</span>
+<span class="n">cargar_tablas</span><span class="p">(</span><span class="n">motor</span><span class="p">,</span> <span class="n">qr_structure</span><span class="p">,</span> <span class="n">df_structure</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:29:13,300 - INFO - CONEXION A BASE MINERVA
+2024-10-27 09:29:13,874 - INFO - Cargando colegio12 
+2024-10-27 09:29:15,038 - INFO - Cargada colegio12, 2,501 registros finales obtenidos. --- 1.16 seconds ---
+2024-10-27 09:29:15,039 - INFO - Cargando colegio13 
+2024-10-27 09:29:15,448 - INFO - Cargada colegio13, 1,291 registros finales obtenidos. --- 0.41 seconds ---
+2024-10-27 09:29:15,534 - INFO - CARGUE TABLAS DESDE MYSQL --- colegio13 --- 2.21 seconds ---
+</code></pre></div>
+
+<h3 id="estandarizacion-y-combinacion-de-datos-de-estudiantes-y-acudientes">Estandarización y Combinación de Datos de Estudiantes y Acudientes<a class="headerlink" href="#estandarizacion-y-combinacion-de-datos-de-estudiantes-y-acudientes" title="Permanent link">&para;</a></h3>
+<p>Este código asegura que las tablas de <code>colegio12</code> y <code>colegio13</code> contienen las columnas necesarias al transformar todas las columnas a mayúsculas y agregando columnas faltantes definidas en <code>required_columns</code> con el valor <code>"SinDato"</code>.</p>
+<p>Cada tabla (<code>colegio12</code> y <code>colegio13</code>) se estructura y verifica antes de ser registrada como cargada. Luego, se combinan en un solo DataFrame (<code>df_colegio_combined</code>) usando <code>pd.concat</code>, uniendo así los datos de estudiantes y acudientes en una sola estructura, manteniendo consistencia y uniformidad en los datos. El proceso se registra en el logger para facilitar el seguimiento del ETL.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">ky</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_structure</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="c1">#print(ky)</span>
+    <span class="c1"># Convertir todos los nombres de las columnas a mayúsculas</span>
+    <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="c1"># Asegurarse de que las columnas requeridas estén presentes en la estructura</span>
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">required_columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;SinDato&quot;</span>
+
+    <span class="c1">#df_structure[key] = df[required_columns]</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;TABLA </span><span class="si">{</span><span class="n">ky</span><span class="si">}</span><span class="s1"> CARGADA Y ESTRUCTURADA&#39;</span><span class="p">)</span>
+<span class="c1"># Concatenar las tablas de colegio12 y colegio13</span>
+<span class="n">df_colegio_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_structure</span><span class="p">[</span><span class="s1">&#39;colegio12&#39;</span><span class="p">],</span> <span class="n">df_structure</span><span class="p">[</span><span class="s1">&#39;colegio13&#39;</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;TABLAS colegio12 Y colegio13 COMBINADAS&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:29:15,555 - INFO - TABLA colegio12 CARGADA Y ESTRUCTURADA
+2024-10-27 09:29:15,559 - INFO - TABLA colegio13 CARGADA Y ESTRUCTURADA
+2024-10-27 09:29:15,562 - INFO - TABLAS colegio12 Y colegio13 COMBINADAS
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df_colegio_combined</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID_AFILIADO</th>
+      <th>RAZON_SOCIAL</th>
+      <th>FECHA_NACIMIENTO</th>
+      <th>SEXO</th>
+      <th>CODDOC</th>
+      <th>DOCUMENTO</th>
+      <th>PRIMER_NOMBRE</th>
+      <th>SEGUNDO_NOMBRE</th>
+      <th>PRIMER_APELLIDO</th>
+      <th>SEGUNDO_APELLIDO</th>
+      <th>FUENTE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>TI1001941478</td>
+      <td>ISAAC DAVID SEVILLA LOPEZ</td>
+      <td>2003-08-18</td>
+      <td>M</td>
+      <td>TI</td>
+      <td>1001941478</td>
+      <td>ISAAC</td>
+      <td>DAVID</td>
+      <td>SEVILLA</td>
+      <td>LOPEZ</td>
+      <td>colegio12</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>TI1001941478</td>
+      <td>ISAAC DAVID SEVILLA LOPEZ</td>
+      <td>2003-08-18</td>
+      <td>M</td>
+      <td>TI</td>
+      <td>1001941478</td>
+      <td>ISAAC</td>
+      <td>DAVID</td>
+      <td>SEVILLA</td>
+      <td>LOPEZ</td>
+      <td>colegio12</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>TI1003266048</td>
+      <td>JORGE LUIS GARCIA JIMENEZ</td>
+      <td>2002-12-25</td>
+      <td>M</td>
+      <td>TI</td>
+      <td>1003266048</td>
+      <td>JORGE</td>
+      <td>LUIS</td>
+      <td>GARCIA</td>
+      <td>JIMENEZ</td>
+      <td>colegio12</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>TI1003266048</td>
+      <td>JORGE LUIS GARCIA JIMENEZ</td>
+      <td>2002-12-25</td>
+      <td>M</td>
+      <td>TI</td>
+      <td>1003266048</td>
+      <td>JORGE</td>
+      <td>LUIS</td>
+      <td>GARCIA</td>
+      <td>JIMENEZ</td>
+      <td>colegio12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>TI1004358737</td>
+      <td>CARLOS DAVID GUZMAN SARMIENTO</td>
+      <td>2002-04-24</td>
+      <td>M</td>
+      <td>TI</td>
+      <td>1004358737</td>
+      <td>CARLOS</td>
+      <td>DAVID</td>
+      <td>GUZMAN</td>
+      <td>SARMIENTO</td>
+      <td>colegio12</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3787</th>
+      <td>CC93400713</td>
+      <td>OSCAR ALEDT GIRALDO CORREA</td>
+      <td>None</td>
+      <td>M</td>
+      <td>CC</td>
+      <td>93400713</td>
+      <td>OSCAR</td>
+      <td>ALEDT</td>
+      <td>GIRALDO</td>
+      <td>CORREA</td>
+      <td>colegio13</td>
+    </tr>
+    <tr>
+      <th>3788</th>
+      <td>CC94520471</td>
+      <td>JEAN PAUL TORRES VELEZ</td>
+      <td>None</td>
+      <td>M</td>
+      <td>CC</td>
+      <td>94520471</td>
+      <td>JEAN</td>
+      <td>PAUL</td>
+      <td>TORRES</td>
+      <td>VELEZ</td>
+      <td>colegio13</td>
+    </tr>
+    <tr>
+      <th>3789</th>
+      <td>CC9770518</td>
+      <td>MAURICIO  CADENA HOYOS</td>
+      <td>None</td>
+      <td>M</td>
+      <td>CC</td>
+      <td>9770518</td>
+      <td>MAURICIO</td>
+      <td>None</td>
+      <td>CADENA</td>
+      <td>HOYOS</td>
+      <td>colegio13</td>
+    </tr>
+    <tr>
+      <th>3790</th>
+      <td>CC98668306</td>
+      <td>JUAN CARLOS POSADA GALLARDO</td>
+      <td>None</td>
+      <td>M</td>
+      <td>CC</td>
+      <td>98668306</td>
+      <td>JUAN</td>
+      <td>CARLOS</td>
+      <td>POSADA</td>
+      <td>GALLARDO</td>
+      <td>colegio13</td>
+    </tr>
+    <tr>
+      <th>3791</th>
+      <td>CCMAGDALENA</td>
+      <td>FREDYS JOSE CAMPO MENDOZA</td>
+      <td>None</td>
+      <td>M</td>
+      <td>CC</td>
+      <td>MAGDALENA</td>
+      <td>FREDYS</td>
+      <td>JOSE</td>
+      <td>CAMPO</td>
+      <td>MENDOZA</td>
+      <td>colegio13</td>
+    </tr>
+  </tbody>
+</table>
+<p>3792 rows × 11 columns</p>
+</div>
+
+<h3 id="filtrar-registros-unicos-por-id">Filtrar registros únicos por <code>id</code><a class="headerlink" href="#filtrar-registros-unicos-por-id" title="Permanent link">&para;</a></h3>
+<p>Se eliminan los registros duplicados en el dataframe <code>df_colegio_combined</code> manteniendo solo los registros con <code>id</code> únicos. El dataframe resultante se almacena en <code>df_colegio_unique</code>, y el proceso se registra en el log.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Obtener solo los registros con &#39;id&#39; únicos</span>
+<span class="n">df_colegio_unique</span> <span class="o">=</span> <span class="n">df_colegio_combined</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;ID_AFILIADO&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;REGISTROS ÚNICOS DE ID OBTENIDOS&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:29:15,603 - INFO - REGISTROS ÚNICOS DE ID OBTENIDOS
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df_colegio_unique</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID_AFILIADO</th>
+      <th>RAZON_SOCIAL</th>
+      <th>FECHA_NACIMIENTO</th>
+      <th>SEXO</th>
+      <th>CODDOC</th>
+      <th>DOCUMENTO</th>
+      <th>PRIMER_NOMBRE</th>
+      <th>SEGUNDO_NOMBRE</th>
+      <th>PRIMER_APELLIDO</th>
+      <th>SEGUNDO_APELLIDO</th>
+      <th>FUENTE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>TI1001941478</td>
+      <td>ISAAC DAVID SEVILLA LOPEZ</td>
+      <td>2003-08-18</td>
+      <td>M</td>
+      <td>TI</td>
+      <td>1001941478</td>
+      <td>ISAAC</td>
+      <td>DAVID</td>
+      <td>SEVILLA</td>
+      <td>LOPEZ</td>
+      <td>colegio12</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>TI1003266048</td>
+      <td>JORGE LUIS GARCIA JIMENEZ</td>
+      <td>2002-12-25</td>
+      <td>M</td>
+      <td>TI</td>
+      <td>1003266048</td>
+      <td>JORGE</td>
+      <td>LUIS</td>
+      <td>GARCIA</td>
+      <td>JIMENEZ</td>
+      <td>colegio12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>TI1004358737</td>
+      <td>CARLOS DAVID GUZMAN SARMIENTO</td>
+      <td>2002-04-24</td>
+      <td>M</td>
+      <td>TI</td>
+      <td>1004358737</td>
+      <td>CARLOS</td>
+      <td>DAVID</td>
+      <td>GUZMAN</td>
+      <td>SARMIENTO</td>
+      <td>colegio12</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>TI1004367232</td>
+      <td>ARIADNA SOFIA EFFER OTERO</td>
+      <td>2003-06-10</td>
+      <td>F</td>
+      <td>TI</td>
+      <td>1004367232</td>
+      <td>ARIADNA</td>
+      <td>SOFIA</td>
+      <td>EFFER</td>
+      <td>OTERO</td>
+      <td>colegio12</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>TI1004462648</td>
+      <td>SEBASTIAN ALEJANDRO JOYA MORALES</td>
+      <td>2003-05-10</td>
+      <td>M</td>
+      <td>TI</td>
+      <td>1004462648</td>
+      <td>SEBASTIAN</td>
+      <td>ALEJANDRO</td>
+      <td>JOYA</td>
+      <td>MORALES</td>
+      <td>colegio12</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3787</th>
+      <td>CC93400713</td>
+      <td>OSCAR ALEDT GIRALDO CORREA</td>
+      <td>None</td>
+      <td>M</td>
+      <td>CC</td>
+      <td>93400713</td>
+      <td>OSCAR</td>
+      <td>ALEDT</td>
+      <td>GIRALDO</td>
+      <td>CORREA</td>
+      <td>colegio13</td>
+    </tr>
+    <tr>
+      <th>3788</th>
+      <td>CC94520471</td>
+      <td>JEAN PAUL TORRES VELEZ</td>
+      <td>None</td>
+      <td>M</td>
+      <td>CC</td>
+      <td>94520471</td>
+      <td>JEAN</td>
+      <td>PAUL</td>
+      <td>TORRES</td>
+      <td>VELEZ</td>
+      <td>colegio13</td>
+    </tr>
+    <tr>
+      <th>3789</th>
+      <td>CC9770518</td>
+      <td>MAURICIO  CADENA HOYOS</td>
+      <td>None</td>
+      <td>M</td>
+      <td>CC</td>
+      <td>9770518</td>
+      <td>MAURICIO</td>
+      <td>None</td>
+      <td>CADENA</td>
+      <td>HOYOS</td>
+      <td>colegio13</td>
+    </tr>
+    <tr>
+      <th>3790</th>
+      <td>CC98668306</td>
+      <td>JUAN CARLOS POSADA GALLARDO</td>
+      <td>None</td>
+      <td>M</td>
+      <td>CC</td>
+      <td>98668306</td>
+      <td>JUAN</td>
+      <td>CARLOS</td>
+      <td>POSADA</td>
+      <td>GALLARDO</td>
+      <td>colegio13</td>
+    </tr>
+    <tr>
+      <th>3791</th>
+      <td>CCMAGDALENA</td>
+      <td>FREDYS JOSE CAMPO MENDOZA</td>
+      <td>None</td>
+      <td>M</td>
+      <td>CC</td>
+      <td>MAGDALENA</td>
+      <td>FREDYS</td>
+      <td>JOSE</td>
+      <td>CAMPO</td>
+      <td>MENDOZA</td>
+      <td>colegio13</td>
+    </tr>
+  </tbody>
+</table>
+<p>2444 rows × 11 columns</p>
+</div>
+
+<h3 id="consulta-y-filtrado-de-registros-unicos-en-el-data-warehouse">Consulta y Filtrado de Registros Únicos en el Data Warehouse<a class="headerlink" href="#consulta-y-filtrado-de-registros-unicos-en-el-data-warehouse" title="Permanent link">&para;</a></h3>
+<p>Este código consulta la tabla <code>BD_Dim_Datos_Fijos</code> en el Data Warehouse (DWH), almacenando el resultado en <code>df_structure_dwh</code> para el análisis de datos de identificación. Después de establecer la conexión con la base DWH y cargar los datos en <code>df_dwh</code>, se realiza un filtro para identificar los registros únicos de <code>df_colegio_unique</code> que no están presentes en <code>df_dwh</code>, usando el campo <code>ID_AFILIADO</code> como referencia.</p>
+<p>El DataFrame <code>df_missing_in_dwh</code> contiene los registros faltantes, que pueden requerir integración en la tabla de datos fijos, y el proceso se registra en el logger para asegurar un rastreo claro del flujo de trabajo ETL.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Lista de querys</span>
+<span class="n">qr_structure_dwh</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Datos_fijos&quot;</span><span class="p">:</span><span class="s1">&#39;&#39;&#39;SELECT * FROM dwh.BD_Dim_Datos_Fijos</span>
+<span class="s1">    &#39;&#39;&#39;</span>
+               <span class="p">}</span>
+
+<span class="n">df_structure_dwh</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;LECTURA DE QUERYS&#39;</span><span class="p">)</span>
+
+<span class="c1">#Conexion a base dwh</span>
+<span class="n">motor_dwh</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">obtener_conexion</span><span class="p">(</span><span class="s1">&#39;dwh&#39;</span><span class="p">))</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;CONEXION A BASE DWH&#39;</span><span class="p">)</span>
+<span class="n">cargar_tablas</span><span class="p">(</span><span class="n">motor_dwh</span><span class="p">,</span> <span class="n">qr_structure_dwh</span><span class="p">,</span> <span class="n">df_structure_dwh</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:29:15,633 - INFO - LECTURA DE QUERYS
+2024-10-27 09:29:15,635 - INFO - CONEXION A BASE DWH
+2024-10-27 09:29:16,181 - INFO - Cargando Datos_fijos 
+2024-10-27 09:30:47,920 - INFO - Cargada Datos_fijos, 1,038,532 registros finales obtenidos. --- 1.53 minutes ---
+2024-10-27 09:30:48,092 - INFO - CARGUE TABLAS DESDE MYSQL --- Datos_fijos --- 1.54 minutes ---
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df_dwh</span> <span class="o">=</span> <span class="n">df_structure_dwh</span><span class="p">[</span><span class="s2">&quot;Datos_fijos&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Filtrar los registros únicos que no están presentes en DimDatosFijos</span>
+
+<span class="n">df_missing_in_dwh</span> <span class="o">=</span> <span class="n">df_colegio_unique</span><span class="p">[</span><span class="o">~</span><span class="n">df_colegio_unique</span><span class="p">[</span><span class="s1">&#39;ID_AFILIADO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_dwh</span><span class="p">[</span><span class="s1">&#39;ID_AFILIADO&#39;</span><span class="p">])]</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;FILTRADOS REGISTROS ÚnICOS QUE NO ESTÁN EN DimDatosFijos&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:30:48,820 - INFO - FILTRADOS REGISTROS ÚnICOS QUE NO ESTÁN EN DimDatosFijos
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df_missing_in_dwh</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID_AFILIADO</th>
+      <th>RAZON_SOCIAL</th>
+      <th>FECHA_NACIMIENTO</th>
+      <th>SEXO</th>
+      <th>CODDOC</th>
+      <th>DOCUMENTO</th>
+      <th>PRIMER_NOMBRE</th>
+      <th>SEGUNDO_NOMBRE</th>
+      <th>PRIMER_APELLIDO</th>
+      <th>SEGUNDO_APELLIDO</th>
+      <th>FUENTE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1843</th>
+      <td>TI1084063844</td>
+      <td>EMMANUEL ALFONSO GRANADOS PERTUZ</td>
+      <td>2017-08-18</td>
+      <td>M</td>
+      <td>TI</td>
+      <td>1084063844</td>
+      <td>EMMANUEL</td>
+      <td>ALFONSO</td>
+      <td>GRANADOS</td>
+      <td>PERTUZ</td>
+      <td>colegio12</td>
+    </tr>
+    <tr>
+      <th>2256</th>
+      <td>TI1084607791</td>
+      <td>ALDO ANDRE HERRERA CARRILLO</td>
+      <td>2017-08-27</td>
+      <td>M</td>
+      <td>TI</td>
+      <td>1084607791</td>
+      <td>ALDO</td>
+      <td>ANDRE</td>
+      <td>HERRERA</td>
+      <td>CARRILLO</td>
+      <td>colegio12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="guardar-registros-faltantes-en-la-tabla-dimdatosfijos">Guardar registros faltantes en la tabla <code>DimDatosFijos</code><a class="headerlink" href="#guardar-registros-faltantes-en-la-tabla-dimdatosfijos" title="Permanent link">&para;</a></h3>
+<p>Se conectan los registros faltantes en la tabla <code>BD_DimDatosFijos</code> en el DWH y se almacenan los registros del dataframe <code>df_missing_in_dwh</code> en la base de datos utilizando el modo <code>append</code>. El proceso de almacenamiento se registra en el log, y en caso de error, se captura y se registra el mensaje correspondiente.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Conexion a base dwh</span>
+
+<span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df_missing_in_dwh</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_Datos_Fijos&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:30:48,853 - INFO - Intentando conexión a la base DWH...
+2024-10-27 09:30:48,855 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-27 09:30:49,380 - INFO - Almacenando tabla única en DWH como BD_Dim_Datos_Fijos
+2024-10-27 09:30:50,115 - INFO - Tabla almacenada correctamente. 2 registros finales obtenidos.
+2024-10-27 09:30:50,222 - INFO - ALMACENAMIENTO ---  --- 1.37 seconds ---
+2024-10-27 09:30:50,223 - INFO - Finalizando proceso de almacenamiento en DWH.
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/init_mermaid.js"></script>
+      
+    
+  </body>
+</html>

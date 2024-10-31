@@ -1,0 +1,2444 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Bloque5/">
+      
+      
+        <link rel="next" href="../5.2-FactServicioSocial/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>5.1 FactServicioSocial Fijos - Optimización CAJAMAG - Gobierno de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#d89717" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#51-fact-servicio-social-fijos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Optimización CAJAMAG - Gobierno de Datos" class="md-header__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Optimización CAJAMAG - Gobierno de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5.1 FactServicioSocial Fijos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Optimización CAJAMAG - Gobierno de Datos" class="md-nav__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Optimización CAJAMAG - Gobierno de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INTRODUCCIÓN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instalacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INSTALACIÓN Y CONFIGURACIÓN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../buenaspracticas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BUENAS PRACTICAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../codigo/funciones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNCIONES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BODEGAS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            BODEGAS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Bodega 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            1. Bodega 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.1-DimDatosFijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 DimDatosFijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.2-DimCalendarioMensual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 DimCalendarioMensual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.3-Dimensiones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 Dimensiones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.4-Dimensiones_xml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.4 Dimensiones xml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.5-FactDatosContacto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.5 FactDatosContacto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.6-Fact_Historico_Afiliacion_Empresas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.6 Fact Historico Afiliacion Empresas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.7-Fact_Historico_Trabajadores1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.7-Fact_Historico_Trabajadores2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.8-Fact_HistoricoBeneficiarios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.8 Fact HistoricoBeneficiarios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.9-Dim_Parametricas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.9 Dim Parametricas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. Bodega 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            2. Bodega 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1-FactAportesEmpAfiliadas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactAportesEmpAfiliadas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1-FactHistoricoAportesTotales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactHistoricoAportesTotales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2-FactHistoricoCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactHistoricoCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.3-FactSubsidioVivienda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 FactSubsidioVivienda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.4-FactFosfec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 FactFosfec
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2-FactEstadoGiroCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactEstadoGiroCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.5-Fact_HistoricoMoraEmp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.5 Fact HistoricoMoraEmp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.6-FactHistoricoANS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.6 FactHistoricoANS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.7-FactHistoricoSubPrescrito/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.7 FactHistoricoSubPrescrito
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.8-FactHistoricoRecobro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.8 FactHistoricoRecobro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.9-FactHistoricoRecuperado/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.9 FactHistoricoRecuperado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.10-FactIgestion_Mercurio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.10 FactIgestion Mercurio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3. Bodega 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            3. Bodega 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.1-FactTransaccionesVentas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 FactTransaccionesVentas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. Bodega 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            4. Bodega 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1-FactColegio_fijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 FactColegio fijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.2-FactColegio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 FactColegio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. Bodega 5
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            5. Bodega 5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    5.1 FactServicioSocial Fijos
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    5.1 FactServicioSocial Fijos
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacion-de-librerias-y-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importación de librerías y funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicion-de-consultas-sql-para-la-carga-de-datos-de-personas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definición de Consultas SQL para la Carga de Datos de Personas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conexion-y-carga-de-tablas-de-personas-en-bases-minerva-y-neith" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conexión y Carga de Tablas de Personas en Bases Minerva y Neith
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtrar-registros-unicos-por-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtrar registros únicos por id
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#carga-de-datos-fijos-desde-dwh-y-filtrado-de-registros-faltantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga de Datos Fijos desde DWH y Filtrado de Registros Faltantes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardar-registros-faltantes-en-la-tabla-dimdatosfijos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guardar registros faltantes en la tabla DimDatosFijos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.2-FactServicioSocial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 FactServicioSocial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    6. Bodega 6
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            6. Bodega 6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.1-FactEncuestas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 FactEncuestas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.2-Fact_Encuesta_afil_empleador/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 Fact Encuesta afil empleador
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacion-de-librerias-y-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importación de librerías y funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicion-de-consultas-sql-para-la-carga-de-datos-de-personas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definición de Consultas SQL para la Carga de Datos de Personas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conexion-y-carga-de-tablas-de-personas-en-bases-minerva-y-neith" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conexión y Carga de Tablas de Personas en Bases Minerva y Neith
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtrar-registros-unicos-por-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtrar registros únicos por id
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#carga-de-datos-fijos-desde-dwh-y-filtrado-de-registros-faltantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga de Datos Fijos desde DWH y Filtrado de Registros Faltantes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardar-registros-faltantes-en-la-tabla-dimdatosfijos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guardar registros faltantes en la tabla DimDatosFijos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="51-fact-servicio-social-fijos">5.1 Fact Servicio Social Fijos<a class="headerlink" href="#51-fact-servicio-social-fijos" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>El proceso ETL <code>FactServicioSocial_Fijos</code> extrae y transforma datos de personas desde dos fuentes (<code>nsijec.personas</code> y <code>saipi.personas</code>). Este flujo garantiza la integración de información clave de identificación en el Data Warehouse (DWH), especialmente en la tabla <code>DimDatosFijos</code>. Cada registro se verifica para asegurar su unicidad, y aquellos que no existen en el DWH se almacenan, asegurando una estructura de datos consolidada y uniforme.</p>
+<h3 id="diagrama-de-secuencia-del-proceso-etl">Diagrama de Secuencia del Proceso ETL<a class="headerlink" href="#diagrama-de-secuencia-del-proceso-etl" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    title Diagrama de Secuencia del Proceso ETL - FactServicioSocial_Fijos
+    participant 👤 Usuario
+    participant ETL_Script
+    participant Minerva_DB as Base de Datos Minerva
+    participant Neith_DB as Base de Datos Neith
+    participant DWH as Data Warehouse
+
+    👤 Usuario -&gt;&gt; ETL_Script: Ejecuta el script ETL
+    ETL_Script -&gt;&gt; ETL_Script: Configura entorno y logger
+    ETL_Script -&gt;&gt; Minerva_DB: Conecta a BD Minerva
+    Minerva_DB --&gt;&gt; ETL_Script: Conexión exitosa
+    ETL_Script -&gt;&gt; Minerva_DB: Ejecuta consulta SQL para extraer `personas_jec`
+    Minerva_DB --&gt;&gt; ETL_Script: Retorna datos de `personas_jec`
+    ETL_Script -&gt;&gt; Neith_DB: Conecta a BD Neith
+    Neith_DB --&gt;&gt; ETL_Script: Conexión exitosa
+    ETL_Script -&gt;&gt; Neith_DB: Ejecuta consulta SQL para extraer `persona_saipi`
+    Neith_DB --&gt;&gt; ETL_Script: Retorna datos de `persona_saipi`
+    ETL_Script -&gt;&gt; ETL_Script: Combina y filtra registros únicos
+    ETL_Script -&gt;&gt; DWH: Conecta a BD DWH
+    DWH --&gt;&gt; ETL_Script: Conexión exitosa
+    ETL_Script -&gt;&gt; DWH: Verifica datos en `DimDatosFijos`
+    DWH --&gt;&gt; ETL_Script: Retorna datos existentes
+    ETL_Script -&gt;&gt; DWH: Carga datos faltantes en `DimDatosFijos`
+    DWH --&gt;&gt; ETL_Script: Confirmación de carga exitosa
+    ETL_Script -&gt;&gt; 👤 Usuario: Finaliza proceso ETL y registra tiempo</code></pre>
+<h2 id="etl">ETL<a class="headerlink" href="#etl" title="Permanent link">&para;</a></h2>
+<h3 id="importacion-de-librerias-y-funciones">Importación de librerías y funciones<a class="headerlink" href="#importacion-de-librerias-y-funciones" title="Permanent link">&para;</a></h3>
+<p>Este código configura el entorno para operaciones de carga y transformación de datos en un Data Warehouse, importando librerías esenciales (<code>pandas</code>, <code>sqlalchemy</code>, <code>pymysql</code>) y funciones personalizadas desde <code>Funciones.py</code>, como <code>StoreDuplicated</code> para duplicados, <code>estandarizar_direccion</code>, y <code>marcar_direcciones_estandarizadas</code> para estandarización de direcciones, así como <code>obtener_conexion</code> y <code>cargar_tablas</code> para la gestión de datos. La prueba <code>testfunciones()</code> asegura que las funciones están operativas.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">sa</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">MetaData</span><span class="p">,</span> <span class="n">Table</span><span class="p">,</span> <span class="n">insert</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c1"># Agrega el directorio al sys.path</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../funciones&#39;</span><span class="p">))</span>
+<span class="c1"># Importa las funciones desde el archivo Funciones.py</span>
+<span class="kn">from</span> <span class="nn">Funciones</span> <span class="kn">import</span> <span class="n">guardar_en_dwh</span><span class="p">,</span> <span class="n">obtener_conexion</span><span class="p">,</span> <span class="n">cargar_tablas</span><span class="p">,</span> <span class="n">testfunciones</span><span class="p">,</span> <span class="n">setup_logger</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">testfunciones</span><span class="p">())</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>Importacion de funciones correcta, 27-10-2024 09:51
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">logger</span> <span class="o">=</span> <span class="n">setup_logger</span><span class="p">(</span><span class="n">log_filename</span><span class="o">=</span><span class="s1">&#39;ServicioSocial_Fijos.log&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;COMIENZO ETL&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:51:27,760 - INFO - COMIENZO ETL
+</code></pre></div>
+
+<h3 id="definicion-de-consultas-sql-para-la-carga-de-datos-de-personas">Definición de Consultas SQL para la Carga de Datos de Personas<a class="headerlink" href="#definicion-de-consultas-sql-para-la-carga-de-datos-de-personas" title="Permanent link">&para;</a></h3>
+<p>Este código establece consultas SQL en <code>qr_structure</code> y <code>qr_structureNeith</code> para extraer datos de personas desde dos fuentes diferentes (<code>nsijec.personas</code> y <code>saipi.personas</code>). Estas consultas recuperan información relevante como <code>ID_AFILIADO</code>, <code>RAZON_SOCIAL</code>, <code>FECHA_NACIMIENTO</code>, <code>SEXO</code>, <code>CODDOC</code>, <code>DOCUMENTO</code>, y nombres y apellidos, asegurando que los campos requeridos en <code>required_columns</code> estén presentes en ambas estructuras. Esto permite integrar y estandarizar datos personales de distintas fuentes dentro del Data Warehouse, facilitando el análisis y reportes de manera unificada.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Definir las consultas SQL para cargar datos y asegurarse de crear la estructura con los campos requeridos</span>
+<span class="n">required_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ID_AFILIADO&#39;</span><span class="p">,</span> <span class="s1">&#39;RAZON_SOCIAL&#39;</span><span class="p">,</span><span class="s1">&#39;FECHA_NACIMIENTO&#39;</span><span class="p">,</span> <span class="s1">&#39;SEXO&#39;</span><span class="p">,</span> <span class="s1">&#39;CODDOC&#39;</span><span class="p">,</span> <span class="s1">&#39;DOCUMENTO&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIMER_NOMBRE&#39;</span><span class="p">,</span> <span class="s1">&#39;SEGUNDO_NOMBRE&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIMER_APELLIDO&#39;</span><span class="p">,</span> <span class="s1">&#39;SEGUNDO_APELLIDO&#39;</span><span class="p">]</span>
+<span class="c1">#Lista de querys</span>
+<span class="n">qr_structure</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;personas_jec&quot;</span><span class="p">:</span><span class="s1">&#39;&#39;&#39;select </span>
+<span class="s1">                CONCAT(t.tipo,p.identificacion) AS ID_AFILIADO,</span>
+<span class="s1">                CONCAT(</span>
+<span class="s1">                    IFNULL(pri_nombre, &#39;&#39;), &#39; &#39;, </span>
+<span class="s1">                    IFNULL(seg_nombre, &#39;&#39;), &#39; &#39;, </span>
+<span class="s1">                    IFNULL(pri_apellido, &#39;&#39;), &#39; &#39;, </span>
+<span class="s1">                    IFNULL(seg_apellido, &#39;&#39;)</span>
+<span class="s1">                    ) AS RAZON_SOCIAL,</span>
+<span class="s1">                fecha_nac as FECHA_NACIMIENTO,</span>
+<span class="s1">                sexo as SEXO,</span>
+<span class="s1">                t.tipo as CODDOC,</span>
+<span class="s1">                p.identificacion as DOCUMENTO,</span>
+<span class="s1">                pri_nombre AS PRIMER_NOMBRE,</span>
+<span class="s1">                seg_nombre AS SEGUNDO_NOMBRE,</span>
+<span class="s1">                pri_apellido AS PRIMER_APELLIDO,</span>
+<span class="s1">                seg_apellido AS SEGUNDO_APELLIDO,</span>
+<span class="s1">                &quot;nsijec.personas&quot; AS FUENTE</span>
+<span class="s1">                from nsijec.personas p </span>
+<span class="s1">            INNER JOIN nsijec.tipos_idens t on p.tipo_identificacion = t.id&#39;&#39;&#39;</span>
+
+               <span class="p">}</span>
+
+<span class="c1">#Lista de querys Neith</span>
+<span class="n">qr_structureNeith</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;persona_saipi&quot;</span><span class="p">:</span><span class="s1">&#39;&#39;&#39;select </span>
+<span class="s1">                CONCAT(t.referencia,p.identificacion) AS ID_AFILIADO,</span>
+<span class="s1">                CONCAT(</span>
+<span class="s1">                        IFNULL(prinom, &#39;&#39;), &#39; &#39;, </span>
+<span class="s1">                        IFNULL(segnom, &#39;&#39;), &#39; &#39;, </span>
+<span class="s1">                        IFNULL(priape, &#39;&#39;), &#39; &#39;, </span>
+<span class="s1">                        IFNULL(segape, &#39;&#39;)</span>
+<span class="s1">                        ) AS RAZON_SOCIAL,</span>
+<span class="s1">                fecnac as FECHA_NACIMIENTO,</span>
+<span class="s1">                t.referencia as CODDOC,</span>
+<span class="s1">                p.identificacion as DOCUMENTO,</span>
+<span class="s1">                prinom AS PRIMER_NOMBRE,</span>
+<span class="s1">                segnom AS SEGUNDO_NOMBRE,</span>
+<span class="s1">                priape AS PRIMER_APELLIDO,</span>
+<span class="s1">                segape AS SEGUNDO_APELLIDO,</span>
+<span class="s1">                &quot;saipi.personas&quot; AS FUENTE</span>
+<span class="s1">                from saipi.personas p</span>
+<span class="s1">            INNER JOIN saipi.tipos_identificacion t on p.tipiden = t.id&#39;&#39;&#39;</span>
+    <span class="p">}</span>
+
+
+<span class="n">df_structure</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;LECTURA DE QUERYS&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:51:27,781 - INFO - LECTURA DE QUERYS
+</code></pre></div>
+
+<h3 id="conexion-y-carga-de-tablas-de-personas-en-bases-minerva-y-neith">Conexión y Carga de Tablas de Personas en Bases Minerva y Neith<a class="headerlink" href="#conexion-y-carga-de-tablas-de-personas-en-bases-minerva-y-neith" title="Permanent link">&para;</a></h3>
+<p>Este código se conecta a las bases de datos <code>minerva</code> y <code>neith</code>, cargando datos de las tablas <code>personas_jec</code> y <code>persona_saipi</code> en <code>df_structure</code>. Tras cargar las tablas, asegura que todas las columnas necesarias (<code>required_columns</code>) están presentes, agregando columnas faltantes con el valor <code>"SinDato"</code>.</p>
+<p>Luego, las tablas <code>personas_jec</code> y <code>persona_saipi</code> se combinan en un solo DataFrame <code>df_combined</code>, integrando todos los datos en una estructura común. Este proceso garantiza que las tablas cumplen con la estructura requerida, permitiendo análisis unificado de los datos de ambas fuentes.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Conexion a base Minerva</span>
+<span class="n">motor</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">obtener_conexion</span><span class="p">(</span><span class="s1">&#39;minerva&#39;</span><span class="p">))</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;CONEXION A BASE MINERVA&#39;</span><span class="p">)</span>
+<span class="n">cargar_tablas</span><span class="p">(</span><span class="n">motor</span><span class="p">,</span> <span class="n">qr_structure</span><span class="p">,</span> <span class="n">df_structure</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:51:27,949 - INFO - CONEXION A BASE MINERVA
+2024-10-27 09:51:28,947 - INFO - Cargando personas_jec 
+2024-10-27 09:51:37,773 - INFO - Cargada personas_jec, 65,568 registros finales obtenidos. --- 8.83 seconds ---
+2024-10-27 09:51:37,875 - INFO - CARGUE TABLAS DESDE MYSQL --- personas_jec --- 9.92 seconds ---
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Cargar tablas desde la base &#39;neith&#39;</span>
+<span class="n">motorNeith</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">obtener_conexion</span><span class="p">(</span><span class="s1">&#39;neith&#39;</span><span class="p">))</span>
+<span class="n">cargar_tablas</span><span class="p">(</span><span class="n">motorNeith</span><span class="p">,</span> <span class="n">qr_structureNeith</span><span class="p">,</span> <span class="n">df_structure</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:51:39,178 - INFO - Cargando persona_saipi 
+2024-10-27 09:51:42,120 - INFO - Cargada persona_saipi, 15,097 registros finales obtenidos. --- 2.94 seconds ---
+2024-10-27 09:51:42,210 - INFO - CARGUE TABLAS DESDE MYSQL --- persona_saipi --- 4.32 seconds ---
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">ky</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_structure</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="c1">#print(ky)</span>
+    <span class="c1"># Convertir todos los nombres de las columnas a mayúsculas</span>
+    <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="c1"># Asegurarse de que las columnas requeridas estén presentes en la estructura</span>
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">required_columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;SinDato&quot;</span>
+
+    <span class="c1">#df_structure[key] = df[required_columns]</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;TABLA </span><span class="si">{</span><span class="n">ky</span><span class="si">}</span><span class="s1"> CARGADA Y ESTRUCTURADA&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:51:42,237 - INFO - TABLA personas_jec CARGADA Y ESTRUCTURADA
+2024-10-27 09:51:42,252 - INFO - TABLA persona_saipi CARGADA Y ESTRUCTURADA
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Concatenar las tablas de </span>
+<span class="n">df_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_structure</span><span class="p">[</span><span class="s1">&#39;personas_jec&#39;</span><span class="p">],</span> <span class="n">df_structure</span><span class="p">[</span><span class="s1">&#39;persona_saipi&#39;</span><span class="p">]],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;TABLAS personas_jec y persona_saipi COMBINADAS&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:51:42,282 - INFO - TABLAS personas_jec y persona_saipi COMBINADAS
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df_combined</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID_AFILIADO</th>
+      <th>RAZON_SOCIAL</th>
+      <th>FECHA_NACIMIENTO</th>
+      <th>SEXO</th>
+      <th>CODDOC</th>
+      <th>DOCUMENTO</th>
+      <th>PRIMER_NOMBRE</th>
+      <th>SEGUNDO_NOMBRE</th>
+      <th>PRIMER_APELLIDO</th>
+      <th>SEGUNDO_APELLIDO</th>
+      <th>FUENTE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CC1782509</td>
+      <td>FRANCISCO  IZQUIERDO IZQUIERDO</td>
+      <td>1980-11-12</td>
+      <td>MASCULINO</td>
+      <td>CC</td>
+      <td>1782509</td>
+      <td>FRANCISCO</td>
+      <td>None</td>
+      <td>IZQUIERDO</td>
+      <td>IZQUIERDO</td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CC26883143</td>
+      <td>DELIS MARIA  PACHECO GUERRERO</td>
+      <td>1981-05-05</td>
+      <td>FEMENINO</td>
+      <td>CC</td>
+      <td>26883143</td>
+      <td>DELIS</td>
+      <td>MARIA</td>
+      <td>PACHECO</td>
+      <td>GUERRERO</td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CC26905242</td>
+      <td>MELISSA  DAVILA</td>
+      <td>1992-03-04</td>
+      <td>FEMENINO</td>
+      <td>CC</td>
+      <td>26905242</td>
+      <td>MELISSA</td>
+      <td></td>
+      <td>DAVILA</td>
+      <td></td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CC26914344</td>
+      <td>ROSIRIS DEL CARMEN CANTILLO GAMERO</td>
+      <td>1900-01-13</td>
+      <td>FEMENINO</td>
+      <td>CC</td>
+      <td>26914344</td>
+      <td>ROSIRIS</td>
+      <td>DEL CARMEN</td>
+      <td>CANTILLO</td>
+      <td>GAMERO</td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CC34511420</td>
+      <td>JHONAIKER JOSUE GUERRERO  CORDOVA</td>
+      <td>2010-03-18</td>
+      <td>MASCULINO</td>
+      <td>CC</td>
+      <td>34511420</td>
+      <td>JHONAIKER</td>
+      <td>JOSUE</td>
+      <td>GUERRERO</td>
+      <td>CORDOVA</td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>80660</th>
+      <td>PE7780022</td>
+      <td>EMMA ROSSIBELL VASQUEZ ZAMBRANO</td>
+      <td>2019-12-27</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>7780022</td>
+      <td>EMMA</td>
+      <td>ROSSIBELL</td>
+      <td>VASQUEZ</td>
+      <td>ZAMBRANO</td>
+      <td>saipi.personas</td>
+    </tr>
+    <tr>
+      <th>80661</th>
+      <td>PE7824433</td>
+      <td>SAMANTHA LUCIA LEON HRRERA</td>
+      <td>2019-03-11</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>7824433</td>
+      <td>SAMANTHA</td>
+      <td>LUCIA</td>
+      <td>LEON</td>
+      <td>HRRERA</td>
+      <td>saipi.personas</td>
+    </tr>
+    <tr>
+      <th>80662</th>
+      <td>PE7829018</td>
+      <td>ELISBETH VICTORIA ARDITO MEDINA</td>
+      <td>2017-12-22</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>7829018</td>
+      <td>ELISBETH</td>
+      <td>VICTORIA</td>
+      <td>ARDITO</td>
+      <td>MEDINA</td>
+      <td>saipi.personas</td>
+    </tr>
+    <tr>
+      <th>80663</th>
+      <td>PE7950951</td>
+      <td>ANGEL JAVIER HERNANDEZ VEGA</td>
+      <td>2018-11-17</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>7950951</td>
+      <td>ANGEL</td>
+      <td>JAVIER</td>
+      <td>HERNANDEZ</td>
+      <td>VEGA</td>
+      <td>saipi.personas</td>
+    </tr>
+    <tr>
+      <th>80664</th>
+      <td>PE987518</td>
+      <td>YOELIS CHIQUINQUIRA MORALES MARQUEZ</td>
+      <td>1985-03-10</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>987518</td>
+      <td>YOELIS</td>
+      <td>CHIQUINQUIRA</td>
+      <td>MORALES</td>
+      <td>MARQUEZ</td>
+      <td>saipi.personas</td>
+    </tr>
+  </tbody>
+</table>
+<p>80665 rows × 11 columns</p>
+</div>
+
+<h3 id="filtrar-registros-unicos-por-id">Filtrar registros únicos por <code>id</code><a class="headerlink" href="#filtrar-registros-unicos-por-id" title="Permanent link">&para;</a></h3>
+<p>Se eliminan los registros duplicados en el dataframe <code>df_colegio_combined</code> manteniendo solo los registros con <code>id</code> únicos. El dataframe resultante se almacena en <code>df_colegio_unique</code>, y el proceso se registra en el log.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Obtener solo los registros con &#39;id&#39; únicos</span>
+<span class="n">df_unique</span> <span class="o">=</span> <span class="n">df_combined</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;ID_AFILIADO&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;REGISTROS ÚNICOS DE ID OBTENIDOS&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:51:42,473 - INFO - REGISTROS ÚNICOS DE ID OBTENIDOS
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df_unique</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID_AFILIADO</th>
+      <th>RAZON_SOCIAL</th>
+      <th>FECHA_NACIMIENTO</th>
+      <th>SEXO</th>
+      <th>CODDOC</th>
+      <th>DOCUMENTO</th>
+      <th>PRIMER_NOMBRE</th>
+      <th>SEGUNDO_NOMBRE</th>
+      <th>PRIMER_APELLIDO</th>
+      <th>SEGUNDO_APELLIDO</th>
+      <th>FUENTE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CC1782509</td>
+      <td>FRANCISCO  IZQUIERDO IZQUIERDO</td>
+      <td>1980-11-12</td>
+      <td>MASCULINO</td>
+      <td>CC</td>
+      <td>1782509</td>
+      <td>FRANCISCO</td>
+      <td>None</td>
+      <td>IZQUIERDO</td>
+      <td>IZQUIERDO</td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CC26883143</td>
+      <td>DELIS MARIA  PACHECO GUERRERO</td>
+      <td>1981-05-05</td>
+      <td>FEMENINO</td>
+      <td>CC</td>
+      <td>26883143</td>
+      <td>DELIS</td>
+      <td>MARIA</td>
+      <td>PACHECO</td>
+      <td>GUERRERO</td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CC26905242</td>
+      <td>MELISSA  DAVILA</td>
+      <td>1992-03-04</td>
+      <td>FEMENINO</td>
+      <td>CC</td>
+      <td>26905242</td>
+      <td>MELISSA</td>
+      <td></td>
+      <td>DAVILA</td>
+      <td></td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CC26914344</td>
+      <td>ROSIRIS DEL CARMEN CANTILLO GAMERO</td>
+      <td>1900-01-13</td>
+      <td>FEMENINO</td>
+      <td>CC</td>
+      <td>26914344</td>
+      <td>ROSIRIS</td>
+      <td>DEL CARMEN</td>
+      <td>CANTILLO</td>
+      <td>GAMERO</td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CC34511420</td>
+      <td>JHONAIKER JOSUE GUERRERO  CORDOVA</td>
+      <td>2010-03-18</td>
+      <td>MASCULINO</td>
+      <td>CC</td>
+      <td>34511420</td>
+      <td>JHONAIKER</td>
+      <td>JOSUE</td>
+      <td>GUERRERO</td>
+      <td>CORDOVA</td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>80660</th>
+      <td>PE7780022</td>
+      <td>EMMA ROSSIBELL VASQUEZ ZAMBRANO</td>
+      <td>2019-12-27</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>7780022</td>
+      <td>EMMA</td>
+      <td>ROSSIBELL</td>
+      <td>VASQUEZ</td>
+      <td>ZAMBRANO</td>
+      <td>saipi.personas</td>
+    </tr>
+    <tr>
+      <th>80661</th>
+      <td>PE7824433</td>
+      <td>SAMANTHA LUCIA LEON HRRERA</td>
+      <td>2019-03-11</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>7824433</td>
+      <td>SAMANTHA</td>
+      <td>LUCIA</td>
+      <td>LEON</td>
+      <td>HRRERA</td>
+      <td>saipi.personas</td>
+    </tr>
+    <tr>
+      <th>80662</th>
+      <td>PE7829018</td>
+      <td>ELISBETH VICTORIA ARDITO MEDINA</td>
+      <td>2017-12-22</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>7829018</td>
+      <td>ELISBETH</td>
+      <td>VICTORIA</td>
+      <td>ARDITO</td>
+      <td>MEDINA</td>
+      <td>saipi.personas</td>
+    </tr>
+    <tr>
+      <th>80663</th>
+      <td>PE7950951</td>
+      <td>ANGEL JAVIER HERNANDEZ VEGA</td>
+      <td>2018-11-17</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>7950951</td>
+      <td>ANGEL</td>
+      <td>JAVIER</td>
+      <td>HERNANDEZ</td>
+      <td>VEGA</td>
+      <td>saipi.personas</td>
+    </tr>
+    <tr>
+      <th>80664</th>
+      <td>PE987518</td>
+      <td>YOELIS CHIQUINQUIRA MORALES MARQUEZ</td>
+      <td>1985-03-10</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>987518</td>
+      <td>YOELIS</td>
+      <td>CHIQUINQUIRA</td>
+      <td>MORALES</td>
+      <td>MARQUEZ</td>
+      <td>saipi.personas</td>
+    </tr>
+  </tbody>
+</table>
+<p>80587 rows × 11 columns</p>
+</div>
+
+<h3 id="carga-de-datos-fijos-desde-dwh-y-filtrado-de-registros-faltantes">Carga de Datos Fijos desde DWH y Filtrado de Registros Faltantes<a class="headerlink" href="#carga-de-datos-fijos-desde-dwh-y-filtrado-de-registros-faltantes" title="Permanent link">&para;</a></h3>
+<p>Este código se conecta a la base de datos DWH y carga la tabla <code>BD_Dim_Datos_Fijos</code> en <code>df_structure_dwh</code>, verificando los datos actuales en el Data Warehouse. Luego, realiza un filtrado en <code>df_unique</code> para encontrar registros que no están presentes en <code>df_dwh</code> comparando el campo <code>ID_AFILIADO</code>.</p>
+<p>El resultado, <code>df_missing_in_dwh</code>, contiene los registros únicos que faltan en <code>BD_Dim_Datos_Fijos</code>, permitiendo identificar qué datos deben ser actualizados o añadidos en el Data Warehouse.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Lista de querys</span>
+<span class="n">qr_structure_dwh</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Datos_fijos&quot;</span><span class="p">:</span><span class="s1">&#39;&#39;&#39;SELECT * FROM dwh.BD_Dim_Datos_Fijos</span>
+<span class="s1">    &#39;&#39;&#39;</span>
+               <span class="p">}</span>
+
+<span class="n">df_structure_dwh</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;LECTURA DE QUERYS&#39;</span><span class="p">)</span>
+
+<span class="c1">#Conexion a base dwh</span>
+<span class="n">motor_dwh</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">obtener_conexion</span><span class="p">(</span><span class="s1">&#39;dwh&#39;</span><span class="p">))</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;CONEXION A BASE DWH&#39;</span><span class="p">)</span>
+<span class="n">cargar_tablas</span><span class="p">(</span><span class="n">motor_dwh</span><span class="p">,</span> <span class="n">qr_structure_dwh</span><span class="p">,</span> <span class="n">df_structure_dwh</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:51:42,537 - INFO - LECTURA DE QUERYS
+2024-10-27 09:51:42,540 - INFO - CONEXION A BASE DWH
+2024-10-27 09:51:44,202 - INFO - Cargando Datos_fijos 
+2024-10-27 09:51:44,253 - INFO - Cargada Datos_fijos, 2 registros finales obtenidos. --- 0.05 seconds ---
+2024-10-27 09:51:44,344 - INFO - CARGUE TABLAS DESDE MYSQL --- Datos_fijos --- 1.80 seconds ---
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df_dwh</span> <span class="o">=</span> <span class="n">df_structure_dwh</span><span class="p">[</span><span class="s2">&quot;Datos_fijos&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Filtrar los registros únicos que no están presentes en DimDatosFijos</span>
+
+<span class="n">df_missing_in_dwh</span> <span class="o">=</span> <span class="n">df_unique</span><span class="p">[</span><span class="o">~</span><span class="n">df_unique</span><span class="p">[</span><span class="s1">&#39;ID_AFILIADO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_dwh</span><span class="p">[</span><span class="s1">&#39;ID_AFILIADO&#39;</span><span class="p">])]</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;FILTRADOS REGISTROS ÚnICOS QUE NO ESTÁN EN DimDatosFijos&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:51:44,390 - INFO - FILTRADOS REGISTROS ÚnICOS QUE NO ESTÁN EN DimDatosFijos
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df_missing_in_dwh</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID_AFILIADO</th>
+      <th>RAZON_SOCIAL</th>
+      <th>FECHA_NACIMIENTO</th>
+      <th>SEXO</th>
+      <th>CODDOC</th>
+      <th>DOCUMENTO</th>
+      <th>PRIMER_NOMBRE</th>
+      <th>SEGUNDO_NOMBRE</th>
+      <th>PRIMER_APELLIDO</th>
+      <th>SEGUNDO_APELLIDO</th>
+      <th>FUENTE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CC1782509</td>
+      <td>FRANCISCO  IZQUIERDO IZQUIERDO</td>
+      <td>1980-11-12</td>
+      <td>MASCULINO</td>
+      <td>CC</td>
+      <td>1782509</td>
+      <td>FRANCISCO</td>
+      <td>None</td>
+      <td>IZQUIERDO</td>
+      <td>IZQUIERDO</td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CC26883143</td>
+      <td>DELIS MARIA  PACHECO GUERRERO</td>
+      <td>1981-05-05</td>
+      <td>FEMENINO</td>
+      <td>CC</td>
+      <td>26883143</td>
+      <td>DELIS</td>
+      <td>MARIA</td>
+      <td>PACHECO</td>
+      <td>GUERRERO</td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CC26905242</td>
+      <td>MELISSA  DAVILA</td>
+      <td>1992-03-04</td>
+      <td>FEMENINO</td>
+      <td>CC</td>
+      <td>26905242</td>
+      <td>MELISSA</td>
+      <td></td>
+      <td>DAVILA</td>
+      <td></td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CC26914344</td>
+      <td>ROSIRIS DEL CARMEN CANTILLO GAMERO</td>
+      <td>1900-01-13</td>
+      <td>FEMENINO</td>
+      <td>CC</td>
+      <td>26914344</td>
+      <td>ROSIRIS</td>
+      <td>DEL CARMEN</td>
+      <td>CANTILLO</td>
+      <td>GAMERO</td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CC34511420</td>
+      <td>JHONAIKER JOSUE GUERRERO  CORDOVA</td>
+      <td>2010-03-18</td>
+      <td>MASCULINO</td>
+      <td>CC</td>
+      <td>34511420</td>
+      <td>JHONAIKER</td>
+      <td>JOSUE</td>
+      <td>GUERRERO</td>
+      <td>CORDOVA</td>
+      <td>nsijec.personas</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>80660</th>
+      <td>PE7780022</td>
+      <td>EMMA ROSSIBELL VASQUEZ ZAMBRANO</td>
+      <td>2019-12-27</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>7780022</td>
+      <td>EMMA</td>
+      <td>ROSSIBELL</td>
+      <td>VASQUEZ</td>
+      <td>ZAMBRANO</td>
+      <td>saipi.personas</td>
+    </tr>
+    <tr>
+      <th>80661</th>
+      <td>PE7824433</td>
+      <td>SAMANTHA LUCIA LEON HRRERA</td>
+      <td>2019-03-11</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>7824433</td>
+      <td>SAMANTHA</td>
+      <td>LUCIA</td>
+      <td>LEON</td>
+      <td>HRRERA</td>
+      <td>saipi.personas</td>
+    </tr>
+    <tr>
+      <th>80662</th>
+      <td>PE7829018</td>
+      <td>ELISBETH VICTORIA ARDITO MEDINA</td>
+      <td>2017-12-22</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>7829018</td>
+      <td>ELISBETH</td>
+      <td>VICTORIA</td>
+      <td>ARDITO</td>
+      <td>MEDINA</td>
+      <td>saipi.personas</td>
+    </tr>
+    <tr>
+      <th>80663</th>
+      <td>PE7950951</td>
+      <td>ANGEL JAVIER HERNANDEZ VEGA</td>
+      <td>2018-11-17</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>7950951</td>
+      <td>ANGEL</td>
+      <td>JAVIER</td>
+      <td>HERNANDEZ</td>
+      <td>VEGA</td>
+      <td>saipi.personas</td>
+    </tr>
+    <tr>
+      <th>80664</th>
+      <td>PE987518</td>
+      <td>YOELIS CHIQUINQUIRA MORALES MARQUEZ</td>
+      <td>1985-03-10</td>
+      <td>NaN</td>
+      <td>PE</td>
+      <td>987518</td>
+      <td>YOELIS</td>
+      <td>CHIQUINQUIRA</td>
+      <td>MORALES</td>
+      <td>MARQUEZ</td>
+      <td>saipi.personas</td>
+    </tr>
+  </tbody>
+</table>
+<p>80587 rows × 11 columns</p>
+</div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h3 id="guardar-registros-faltantes-en-la-tabla-dimdatosfijos">Guardar registros faltantes en la tabla <code>DimDatosFijos</code><a class="headerlink" href="#guardar-registros-faltantes-en-la-tabla-dimdatosfijos" title="Permanent link">&para;</a></h3>
+<p>Se conectan los registros faltantes en la tabla <code>BD_DimDatosFijos</code> en el DWH y se almacenan los registros del dataframe <code>df_missing_in_dwh</code> en la base de datos utilizando el modo <code>append</code>. El proceso de almacenamiento se registra en el log, y en caso de error, se captura y se registra el mensaje correspondiente.</p>
+<div class="highlight"><pre><span></span><code><span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df_missing_in_dwh</span><span class="p">,</span> <span class="s1">&#39;BD_Dim_Datos_Fijos&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:51:44,422 - INFO - Intentando conexión a la base DWH...
+2024-10-27 09:51:44,425 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-27 09:51:45,442 - INFO - Almacenando tabla única en DWH como BD_Dim_Datos_Fijos
+2024-10-27 09:51:56,325 - INFO - Tabla almacenada correctamente. 80,587 registros finales obtenidos.
+2024-10-27 09:51:56,471 - INFO - ALMACENAMIENTO ---  --- 12.05 seconds ---
+2024-10-27 09:51:56,473 - INFO - Finalizando proceso de almacenamiento en DWH.
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;FINAL ETL --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-27 09:51:56,505 - INFO - FINAL ETL --- 28.80 seconds ---
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/init_mermaid.js"></script>
+      
+    
+  </body>
+</html>

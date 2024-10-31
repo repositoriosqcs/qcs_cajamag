@@ -1,0 +1,2061 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../4.1-FactColegio_fijos/">
+      
+      
+        <link rel="next" href="../Bloque5/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>4.2 FactColegio - Optimización CAJAMAG - Gobierno de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#d89717" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#42-fact-colegio" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Optimización CAJAMAG - Gobierno de Datos" class="md-header__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Optimización CAJAMAG - Gobierno de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.2 FactColegio
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Optimización CAJAMAG - Gobierno de Datos" class="md-nav__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Optimización CAJAMAG - Gobierno de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INTRODUCCIÓN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instalacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INSTALACIÓN Y CONFIGURACIÓN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../buenaspracticas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BUENAS PRACTICAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../codigo/funciones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNCIONES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BODEGAS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            BODEGAS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Bodega 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            1. Bodega 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.1-DimDatosFijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 DimDatosFijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.2-DimCalendarioMensual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 DimCalendarioMensual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.3-Dimensiones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 Dimensiones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.4-Dimensiones_xml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.4 Dimensiones xml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.5-FactDatosContacto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.5 FactDatosContacto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.6-Fact_Historico_Afiliacion_Empresas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.6 Fact Historico Afiliacion Empresas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.7-Fact_Historico_Trabajadores1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.7-Fact_Historico_Trabajadores2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.8-Fact_HistoricoBeneficiarios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.8 Fact HistoricoBeneficiarios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.9-Dim_Parametricas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.9 Dim Parametricas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. Bodega 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            2. Bodega 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1-FactAportesEmpAfiliadas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactAportesEmpAfiliadas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1-FactHistoricoAportesTotales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactHistoricoAportesTotales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2-FactHistoricoCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactHistoricoCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.3-FactSubsidioVivienda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 FactSubsidioVivienda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.4-FactFosfec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 FactFosfec
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2-FactEstadoGiroCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactEstadoGiroCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.5-Fact_HistoricoMoraEmp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.5 Fact HistoricoMoraEmp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.6-FactHistoricoANS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.6 FactHistoricoANS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.7-FactHistoricoSubPrescrito/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.7 FactHistoricoSubPrescrito
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.8-FactHistoricoRecobro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.8 FactHistoricoRecobro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.9-FactHistoricoRecuperado/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.9 FactHistoricoRecuperado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.10-FactIgestion_Mercurio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.10 FactIgestion Mercurio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3. Bodega 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            3. Bodega 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.1-FactTransaccionesVentas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 FactTransaccionesVentas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. Bodega 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            4. Bodega 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1-FactColegio_fijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 FactColegio fijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    4.2 FactColegio
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    4.2 FactColegio
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacion-de-librerias-y-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importación de librerías y funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-inicial-del-logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración inicial del logger
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicion-de-consultas-para-datos-de-colegio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definición de Consultas para Datos de Colegio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#carga-de-tablas-desde-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga de tablas desde SQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validacion-y-eliminacion-de-campos-duplicados-en-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validación y Eliminación de Campos Duplicados en Tablas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformacion-y-limpieza-de-datos-en-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transformación y Limpieza de Datos en Tablas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacion-de-tabla-dimensional-para-anos-de-calendario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creación de Tabla Dimensional para Años de Calendario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estandarizacion-de-direcciones-para-estudiantes-y-acudientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estandarización de Direcciones para Estudiantes y Acudientes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conexion-a-la-base-de-datos-dwh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conexión a la base de datos DWH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardar-en-base-de-datos-dwh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guardar en base de datos DWH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. Bodega 5
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            5. Bodega 5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.1-FactServicioSocial_Fijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 FactServicioSocial Fijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.2-FactServicioSocial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 FactServicioSocial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    6. Bodega 6
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            6. Bodega 6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.1-FactEncuestas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 FactEncuestas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.2-Fact_Encuesta_afil_empleador/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 Fact Encuesta afil empleador
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacion-de-librerias-y-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importación de librerías y funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-inicial-del-logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración inicial del logger
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicion-de-consultas-para-datos-de-colegio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definición de Consultas para Datos de Colegio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#carga-de-tablas-desde-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carga de tablas desde SQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validacion-y-eliminacion-de-campos-duplicados-en-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validación y Eliminación de Campos Duplicados en Tablas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformacion-y-limpieza-de-datos-en-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transformación y Limpieza de Datos en Tablas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacion-de-tabla-dimensional-para-anos-de-calendario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creación de Tabla Dimensional para Años de Calendario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estandarizacion-de-direcciones-para-estudiantes-y-acudientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estandarización de Direcciones para Estudiantes y Acudientes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conexion-a-la-base-de-datos-dwh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conexión a la base de datos DWH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardar-en-base-de-datos-dwh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guardar en base de datos DWH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="42-fact-colegio">4.2 Fact Colegio<a class="headerlink" href="#42-fact-colegio" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>El proceso ETL para <code>FactColegio</code> permite extraer, transformar y cargar información de estudiantes, acudientes, matrículas, y grados de una base de datos de colegio hacia un Data Warehouse (DWH). Este proceso se enfoca en estructurar datos personales y académicos, así como en estandarizar las direcciones de estudiantes y acudientes. El flujo ETL emplea consultas SQL para extraer los datos, transformaciones para limpieza y deduplicación, y una carga final en el DWH con nombres de tablas predefinidos. Este procedimiento asegura la disponibilidad de datos estandarizados y listos para análisis y reportes en el entorno del DWH.</p>
+<h3 id="diagrama-de-secuencia-del-proceso-etl">Diagrama de Secuencia del Proceso ETL<a class="headerlink" href="#diagrama-de-secuencia-del-proceso-etl" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    title Diagrama de Secuencia del Proceso ETL - FactColegio
+    participant 👤 Usuario
+    participant ETL_Script
+    participant Minerva_DB as Base de Datos Minerva
+    participant DWH as Data Warehouse
+
+    👤 Usuario -&gt;&gt; ETL_Script: Ejecuta el script ETL
+    ETL_Script -&gt;&gt; ETL_Script: Configura entorno y logger
+    ETL_Script -&gt;&gt; Minerva_DB: Conecta a BD Minerva
+    Minerva_DB --&gt;&gt; ETL_Script: Conexión exitosa
+    ETL_Script -&gt;&gt; Minerva_DB: Ejecuta consulta SQL para datos de estudiantes, acudientes, matrículas, y grados
+    Minerva_DB --&gt;&gt; ETL_Script: Retorna datos de entidades del colegio
+    ETL_Script -&gt;&gt; ETL_Script: Estandariza direcciones y elimina duplicados
+    ETL_Script -&gt;&gt; DWH: Conecta a BD DWH
+    DWH --&gt;&gt; ETL_Script: Conexión exitosa
+    ETL_Script -&gt;&gt; DWH: Carga tablas transformadas y dimensionales en el DWH
+    DWH --&gt;&gt; ETL_Script: Confirmación de carga exitosa
+    ETL_Script -&gt;&gt; 👤 Usuario: Finaliza proceso ETL y registra tiempo</code></pre>
+<h2 id="etl">ETL<a class="headerlink" href="#etl" title="Permanent link">&para;</a></h2>
+<h3 id="importacion-de-librerias-y-funciones">Importación de librerías y funciones<a class="headerlink" href="#importacion-de-librerias-y-funciones" title="Permanent link">&para;</a></h3>
+<p>Este código configura el entorno para la manipulación de datos en un Data Warehouse, importando librerías clave como <code>pandas</code>, <code>sqlalchemy</code> y <code>logging</code> para el manejo de datos, conexiones de base y registro de eventos. También se cargan funciones personalizadas del módulo <code>Funciones.py</code>, incluyendo <code>guardar_en_dwh</code>, <code>StoreDuplicated</code>, <code>estandarizar_direccion</code>, y <code>marcar_direcciones_estandarizadas</code>, que facilitan la carga, estandarización y validación de datos. La prueba <code>testfunciones()</code> asegura que estas funciones están correctamente importadas y operativas.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">sa</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">MetaData</span><span class="p">,</span> <span class="n">Table</span><span class="p">,</span> <span class="n">insert</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c1"># Agrega el directorio al sys.path</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../funciones&#39;</span><span class="p">))</span>
+<span class="c1"># Importa las funciones desde el archivo Funciones.py</span>
+<span class="kn">from</span> <span class="nn">Funciones</span> <span class="kn">import</span> <span class="n">guardar_en_dwh</span><span class="p">,</span> <span class="n">StoreDuplicated</span><span class="p">,</span> <span class="n">obtener_conexion</span><span class="p">,</span> <span class="n">cargar_tablas</span><span class="p">,</span> <span class="n">testfunciones</span><span class="p">,</span> <span class="n">setup_logger</span><span class="p">,</span><span class="n">estandarizar_direccion</span><span class="p">,</span><span class="n">marcar_direcciones_estandarizadas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">testfunciones</span><span class="p">())</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>Importacion de funciones correcta, 30-10-2024 12:28
+</code></pre></div>
+
+<h3 id="configuracion-inicial-del-logger">Configuración inicial del logger<a class="headerlink" href="#configuracion-inicial-del-logger" title="Permanent link">&para;</a></h3>
+<p>Se configura el logger para registrar eventos del proceso ETL en el archivo <code>Colegio.log</code>, utilizando el nivel de detalle <code>INFO</code>. También se registra el inicio del proceso, y se almacena la hora de inicio para medir el tiempo total de ejecución.</p>
+<div class="highlight"><pre><span></span><code><span class="n">logger</span> <span class="o">=</span> <span class="n">setup_logger</span><span class="p">(</span><span class="n">log_filename</span><span class="o">=</span><span class="s1">&#39;Colegio.log&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;COMIENZO ETL&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-30 12:28:00,767 - INFO - COMIENZO ETL
+</code></pre></div>
+
+<h3 id="definicion-de-consultas-para-datos-de-colegio">Definición de Consultas para Datos de Colegio<a class="headerlink" href="#definicion-de-consultas-para-datos-de-colegio" title="Permanent link">&para;</a></h3>
+<p>Este código configura las consultas SQL en el diccionario <code>qr_structure</code> para obtener datos de diversas tablas relacionadas con estudiantes, acudientes, matrículas, grados y niveles educativos en una base de datos de colegio. Cada consulta extrae y renombra columnas específicas de las tablas <code>colegio12</code>, <code>colegio13</code>, <code>colegio15</code>, y <code>colegio03</code> para estandarizar los datos. El diccionario <code>dim_names</code> asigna nombres descriptivos para identificar cada consulta en <code>df_structure</code>, donde se almacenarán los resultados. Esta configuración permite la carga y procesamiento eficiente de datos escolares para análisis posteriores.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Lista de querys</span>
+<span class="n">qr_structure</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;colegio12&quot;</span><span class="p">:</span><span class="s1">&#39;&#39;&#39;select </span>
+<span class="s1">                ano as ANIO,</span>
+<span class="s1">                CONCAT(coddoc,numdoc) AS ID_AFILIADO,</span>
+<span class="s1">                coddoc AS TIPO_DOCUMENTO,</span>
+<span class="s1">                numdoc AS DOCUMENTO,</span>
+<span class="s1">                ciuexp AS CIUDAD_EXPEDICION,</span>
+<span class="s1">                priape AS PRIMER_APELLIDO,</span>
+<span class="s1">                segape AS SEGUNDO_APELLIDO,</span>
+<span class="s1">                prinom AS PRIMER_NOMBRE,</span>
+<span class="s1">                segnom AS SEGUNDO_NOMBRE,</span>
+<span class="s1">                rh,</span>
+<span class="s1">                eps,</span>
+<span class="s1">                codsex AS CODSEX,</span>
+<span class="s1">                ciunac AS CIUDAD_NACIMIENTO,</span>
+<span class="s1">                fecnac AS FECHA_NACIMIENTO,</span>
+<span class="s1">                dirres AS DIRECCION,</span>
+<span class="s1">                barrio AS BARRIO,</span>
+<span class="s1">                estrato AS ESTRATO,</span>
+<span class="s1">                codciu AS CODIGO_CIUDAD,</span>
+<span class="s1">                telres AS TELEFONO,</span>
+<span class="s1">                email,</span>
+<span class="s1">                nota,</span>
+<span class="s1">                observacion,</span>
+<span class="s1">                docpad AS DOCUMENTO_PADRE,</span>
+<span class="s1">                docmad AS DOCUMENTO_MADRE,</span>
+<span class="s1">                docacu AS DOCUMENTO_ACUDIENTE,</span>
+<span class="s1">                codben,</span>
+<span class="s1">                codcat,</span>
+<span class="s1">                tipo AS TIPO_ESTUDIANTE</span>
+<span class="s1">                from colegio.colegio12&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;colegio13&quot;</span><span class="p">:</span><span class="s1">&#39;&#39;&#39;select </span>
+<span class="s1">                CONCAT(coddoc,numdoc) AS ID_AFILIADO,</span>
+<span class="s1">                coddoc AS TIPO_DOCUMENTO,</span>
+<span class="s1">                numdoc AS DOCUMENTO,</span>
+<span class="s1">                ciuexp AS CIUDAD_EXPEDICION,</span>
+<span class="s1">                priape AS PRIMER_APELLIDO,</span>
+<span class="s1">                segape AS SEGUNDO_APELLIDO,</span>
+<span class="s1">                prinom AS PRIMER_NOMBRE,</span>
+<span class="s1">                segnom AS SEGUNDO_NOMBRE,</span>
+<span class="s1">                codpar AS COD_PARENTESCO,</span>
+<span class="s1">                profesion,</span>
+<span class="s1">                empresa,</span>
+<span class="s1">                ocupacion,</span>
+<span class="s1">                codsex,</span>
+<span class="s1">                direccion,</span>
+<span class="s1">                codciu AS CODIGO_CIUDAD,</span>
+<span class="s1">                telefono,</span>
+<span class="s1">                email</span>
+<span class="s1">                from colegio.colegio13&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;colegio15&quot;</span><span class="p">:</span><span class="s1">&#39;&#39;&#39;select </span>
+<span class="s1">                c15.ano as ANIO,</span>
+<span class="s1">                c15.nummat AS NUMERO_MATRICULA,</span>
+<span class="s1">                concat(c12.coddoc,c15.numdoc) AS ID_AFILIADO,</span>
+<span class="s1">                c15.codgra AS COD_GRADO,</span>
+<span class="s1">                c15.codgru AS COD_GRUPO,</span>
+<span class="s1">                c15.fecmat AS FECHA_MATRICULA,</span>
+<span class="s1">                c15.colant AS COLEGIO_ANTERIOR,</span>
+<span class="s1">                c15.numlib AS NUMERO_LIBRO_REGISTRO,</span>
+<span class="s1">                c15.numfol AS NUMERO_FOLIO_REGISTRO,</span>
+<span class="s1">                c15.codcon AS COD_CONVENIO,</span>
+<span class="s1">                c15.codest AS COD_ESTADO,</span>
+<span class="s1">                c15.codcat,</span>
+<span class="s1">                c15.estado,</span>
+<span class="s1">                c15.fecest AS FECHA_ESTADO,</span>
+<span class="s1">                c15.motivo AS MOTIVO_NOVEDAD,</span>
+<span class="s1">                c15.usuario,</span>
+<span class="s1">                c15.estbol AS ESTADO_BOLETIN</span>
+<span class="s1">                from colegio.colegio15 c15</span>
+<span class="s1">            LEFT JOIN colegio.colegio12 c12 on c15.ano = c12.ano and c15.numdoc = c12.numdoc&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;colegio03&quot;</span><span class="p">:</span> <span class="s1">&#39;&#39;&#39;SELECT </span>
+<span class="s1">                c03.codgra AS COD_GRADO,</span>
+<span class="s1">                c03.detalle AS GRADO,</span>
+<span class="s1">                c02.detalle AS NIVEL_EDUCATIVO,</span>
+<span class="s1">                c03.numcup AS NUMERO_CUPOS</span>
+<span class="s1">            FROM colegio.colegio03 c03</span>
+<span class="s1">            LEFT JOIN colegio.colegio02 c02 on c03.nivedu = c02.nivedu    </span>
+<span class="s1">    &#39;&#39;&#39;</span>
+               <span class="p">}</span>
+<span class="n">dim_names</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;colegio12&quot;</span><span class="p">:</span><span class="s1">&#39;BD_Fact_Colegio_Estudiantes&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;colegio13&quot;</span><span class="p">:</span><span class="s1">&#39;BD_Fact_Colegio_Acudientes&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;colegio15&quot;</span><span class="p">:</span><span class="s1">&#39;BD_Fact_Colegio_Matriculas&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;BD_Dim_Colegio_Calendario&quot;</span> <span class="p">:</span> <span class="s2">&quot;BD_Dim_Colegio_Calendario&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;colegio03&quot;</span><span class="p">:</span> <span class="s2">&quot;BD_Dim_Colegio_Grados&quot;</span>
+               <span class="p">}</span>
+<span class="n">df_structure</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;LECTURA DE QUERYS&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-30 12:28:00,782 - INFO - LECTURA DE QUERYS
+</code></pre></div>
+
+<h3 id="carga-de-tablas-desde-sql">Carga de tablas desde SQL<a class="headerlink" href="#carga-de-tablas-desde-sql" title="Permanent link">&para;</a></h3>
+<p>Se ejecutan las consultas SQL definidas en <code>qr_structure</code> y los resultados se almacenan en el diccionario <code>df_structure</code>. Para cada consulta, se utiliza un bloque <code>with</code> para manejar la conexión a la base de datos de manera segura. El nombre de cada tabla cargada se registra en el log junto con el tiempo total del proceso de carga desde MySQL.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Conexion a base Minerva</span>
+<span class="n">motor</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">obtener_conexion</span><span class="p">(</span><span class="s1">&#39;minerva&#39;</span><span class="p">))</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;CONEXION A BASE MINERVA&#39;</span><span class="p">)</span>
+<span class="n">cargar_tablas</span><span class="p">(</span><span class="n">motor</span><span class="p">,</span> <span class="n">qr_structure</span><span class="p">,</span> <span class="n">df_structure</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-30 12:28:00,852 - INFO - CONEXION A BASE MINERVA
+2024-10-30 12:28:01,177 - INFO - Cargando colegio12 
+2024-10-30 12:28:01,640 - INFO - Cargada colegio12, 2,501 registros finales obtenidos. --- 0.46 seconds ---
+2024-10-30 12:28:01,641 - INFO - Cargando colegio13 
+2024-10-30 12:28:01,815 - INFO - Cargada colegio13, 1,291 registros finales obtenidos. --- 0.17 seconds ---
+2024-10-30 12:28:01,816 - INFO - Cargando colegio15 
+2024-10-30 12:28:01,970 - INFO - Cargada colegio15, 2,243 registros finales obtenidos. --- 0.15 seconds ---
+2024-10-30 12:28:01,971 - INFO - Cargando colegio03 
+2024-10-30 12:28:02,003 - INFO - Cargada colegio03, 13 registros finales obtenidos. --- 0.03 seconds ---
+2024-10-30 12:28:02,062 - INFO - CARGUE TABLAS DESDE MYSQL --- colegio03 --- 1.21 seconds ---
+</code></pre></div>
+
+<h3 id="validacion-y-eliminacion-de-campos-duplicados-en-tablas">Validación y Eliminación de Campos Duplicados en Tablas<a class="headerlink" href="#validacion-y-eliminacion-de-campos-duplicados-en-tablas" title="Permanent link">&para;</a></h3>
+<p>Este código recorre las tablas almacenadas en <code>df_structure</code> y realiza una validación para detectar y registrar valores duplicados en cada tabla. Para cada tabla, genera una lista de columnas a comparar (<code>ColumnsToCompare</code>), excluyendo el campo <code>id</code>. La función <code>StoreDuplicated</code> verifica duplicados en función de estas columnas y genera un archivo de trazabilidad con el nombre <code>\trazaDuplicados_</code> seguido del nombre de la tabla.</p>
+<p>Una vez verificados los duplicados, se eliminan las filas duplicadas, dejando solo registros únicos. Los tiempos de ejecución de esta operación se registran en <code>validador_time</code>, proporcionando un resumen del proceso en segundos al finalizar.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Validador de campos repetidos </span>
+<span class="n">validador_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ky</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_structure</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>   
+    <span class="n">ColumnsToCompare</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;id&#39;</span> <span class="p">]</span> <span class="p">]</span>
+    <span class="n">StoreDuplicated</span><span class="p">(</span><span class="s1">&#39;N/A&#39;</span> <span class="p">,</span> <span class="n">ColumnsToCompare</span><span class="p">,</span> <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">],</span> <span class="sa">r</span><span class="s1">&#39;\trazaDuplicados_&#39;</span> <span class="o">+</span> <span class="n">ky</span> <span class="p">)</span>
+    <span class="c1">#Limpieza inicial quitar duplicados</span>
+    <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;VALIDADOR TABLA: &#39;</span><span class="o">+</span> <span class="n">ky</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;VALIDADOR DUPLICADOS --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">validador_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-30 12:28:02,124 - INFO - VALIDADOR TABLA: colegio12
+2024-10-30 12:28:02,148 - INFO - VALIDADOR TABLA: colegio13
+2024-10-30 12:28:02,171 - INFO - VALIDADOR TABLA: colegio15
+2024-10-30 12:28:02,178 - INFO - VALIDADOR TABLA: colegio03
+2024-10-30 12:28:02,180 - INFO - VALIDADOR DUPLICADOS --- 0.11 seconds ---
+</code></pre></div>
+
+<h3 id="transformacion-y-limpieza-de-datos-en-tablas">Transformación y Limpieza de Datos en Tablas<a class="headerlink" href="#transformacion-y-limpieza-de-datos-en-tablas" title="Permanent link">&para;</a></h3>
+<p>Este código realiza una serie de transformaciones de limpieza en cada tabla dentro de <code>df_structure</code>. Primero, convierte todos los nombres de columnas a mayúsculas para asegurar consistencia en el formato. Luego, se aplica una transformación en todas las columnas de tipo texto para pasar su contenido a mayúsculas y eliminar espacios en blanco al inicio y al final de cada valor, manteniendo la uniformidad en el formato.</p>
+<p>Finalmente, reemplaza los valores <code>"NAN"</code> y <code>"NONE"</code> por <code>NaN</code> de NumPy, asegurando que los datos faltantes estén correctamente etiquetados. El tiempo de ejecución de estas transformaciones se registra y se muestra en <code>limpieza_time</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Transformación 2</span>
+<span class="n">limpieza_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ky</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_structure</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="c1">#print(ky)</span>
+    <span class="c1"># Convertir todos los nombres de las columnas a mayúsculas</span>
+    <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="c1">#Pasar las columnas tipo texto a UPPER</span>
+    <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+    <span class="c1">#En las columnas tipo texto, eliminar espacios al comienzo y al final</span>
+    <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+    <span class="c1">#Reemplazar los &quot;NAN&quot; o &quot;NONE&quot; por NaN</span>
+    <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NAN&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="n">ky</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NONE&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LIMPIEZA  --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">limpieza_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-30 12:28:02,326 - INFO - LIMPIEZA  --- 0.14 seconds ---
+</code></pre></div>
+
+<h3 id="creacion-de-tabla-dimensional-para-anos-de-calendario">Creación de Tabla Dimensional para Años de Calendario<a class="headerlink" href="#creacion-de-tabla-dimensional-para-anos-de-calendario" title="Permanent link">&para;</a></h3>
+<p>Este código extrae la columna <code>ANIO</code> de la tabla de matrículas (<code>colegio15</code>) en <code>df_structure</code>, obtiene los valores únicos de esa columna y crea un nuevo DataFrame <code>df_valores_unicos</code> con estos valores. Este DataFrame sirve como una tabla dimensional de años (<code>BD_Dim_Colegio_Calendario</code>), almacenando los distintos años de calendario de las matrículas en <code>df_structure</code> para su uso en análisis de tiempo o relaciones entre tablas.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Obtener la tabla original desde df_structure</span>
+<span class="n">tabla</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="s1">&#39;colegio15&#39;</span><span class="p">]</span>
+
+<span class="c1"># Obtener los valores únicos de la columna &#39;TIPO&#39;</span>
+<span class="n">valores_unicos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">tabla</span><span class="p">[</span><span class="s1">&#39;ANIO&#39;</span><span class="p">])</span>
+
+<span class="c1"># Crear un DataFrame a partir de los valores únicos con la columna renombrada</span>
+<span class="n">df_valores_unicos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">valores_unicos</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ANIO&#39;</span><span class="p">])</span>
+
+<span class="c1"># Crear Dim</span>
+<span class="n">df_structure</span><span class="p">[</span><span class="s1">&#39;BD_Dim_Colegio_Calendario&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_valores_unicos</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_structure</span><span class="p">[</span><span class="s1">&#39;BD_Dim_Colegio_Calendario&#39;</span><span class="p">]</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ANIO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2024</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="estandarizacion-de-direcciones-para-estudiantes-y-acudientes">Estandarización de Direcciones para Estudiantes y Acudientes<a class="headerlink" href="#estandarizacion-de-direcciones-para-estudiantes-y-acudientes" title="Permanent link">&para;</a></h3>
+<p>Este bloque de código realiza la estandarización de direcciones en los DataFrames <code>df_estudiantes</code> y <code>df_acudientes</code>, extraídos de <code>df_structure</code>. Primero, renombra la columna <code>DIRECCION</code> a <code>DIRECCION_ORIGINAL</code> y asegura que sea de tipo texto para ambos DataFrames. Luego, aplica la función <code>estandarizar_direccion</code> en <code>DIRECCION_ORIGINAL</code> para generar una columna <code>DIRECCION_LIMPIA</code> con las direcciones en un formato estandarizado.</p>
+<p>Posteriormente, utiliza <code>marcar_direcciones_estandarizadas</code> para agregar una columna que indique si la dirección estandarizada comienza con una de las abreviaturas esperadas. Finalmente, las tablas estandarizadas se actualizan en <code>df_structure</code>, dejando las direcciones listas para su análisis y asegurando consistencia en el formato de dirección.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Para estudiantes</span>
+<span class="n">df_estudiantes</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="s1">&#39;colegio12&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Asegurarse de que la columna DIRECCION_ORIGINAL es de tipo texto</span>
+<span class="n">df_estudiantes</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;DIRECCION&#39;</span><span class="p">:</span><span class="s1">&#39;DIRECCION_ORIGINAL&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_estudiantes</span><span class="p">[</span><span class="s1">&#39;DIRECCION_ORIGINAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_estudiantes</span><span class="p">[</span><span class="s1">&#39;DIRECCION_ORIGINAL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="c1"># Aplicamos la estandarización a todas las direcciones y creamos una nueva columna con las direcciones estandarizadas</span>
+
+<span class="n">df_estudiantes</span><span class="p">[</span><span class="s1">&#39;DIRECCION_LIMPIA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_estudiantes</span><span class="p">[</span><span class="s1">&#39;DIRECCION_ORIGINAL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">estandarizar_direccion</span><span class="p">)</span>
+
+<span class="c1"># Agregar columna &#39;DIRECCION_ESTANDARIZADA&#39; si la direccion empieza con algunas de las abreviaturas estandarizadas</span>
+<span class="n">marcar_direcciones_estandarizadas</span><span class="p">(</span><span class="n">df_estudiantes</span><span class="p">,</span> <span class="s1">&#39;DIRECCION_LIMPIA&#39;</span><span class="p">)</span>
+
+<span class="n">df_structure</span><span class="p">[</span><span class="s1">&#39;colegio12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_estudiantes</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1">#df_structure[&#39;colegio12&#39;]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Para acudientes</span>
+<span class="n">df_acudientes</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="s1">&#39;colegio13&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Asegurarse de que la columna DIRECCION_ORIGINAL es de tipo texto</span>
+<span class="n">df_acudientes</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;DIRECCION&#39;</span><span class="p">:</span><span class="s1">&#39;DIRECCION_ORIGINAL&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_acudientes</span><span class="p">[</span><span class="s1">&#39;DIRECCION_ORIGINAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_acudientes</span><span class="p">[</span><span class="s1">&#39;DIRECCION_ORIGINAL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="c1"># Aplicamos la estandarización a todas las direcciones y creamos una nueva columna con las direcciones estandarizadas</span>
+
+<span class="n">df_acudientes</span><span class="p">[</span><span class="s1">&#39;DIRECCION_LIMPIA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_acudientes</span><span class="p">[</span><span class="s1">&#39;DIRECCION_ORIGINAL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">estandarizar_direccion</span><span class="p">)</span>
+
+<span class="c1"># Agregar columna &#39;DIRECCION_ESTANDARIZADA&#39; si la direccion empieza con algunas de las abreviaturas estandarizadas</span>
+<span class="n">marcar_direcciones_estandarizadas</span><span class="p">(</span><span class="n">df_acudientes</span><span class="p">,</span> <span class="s1">&#39;DIRECCION_LIMPIA&#39;</span><span class="p">)</span>
+
+<span class="n">df_structure</span><span class="p">[</span><span class="s1">&#39;colegio13&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_acudientes</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1">#df_structure[&#39;colegio13&#39;]</span>
+</code></pre></div>
+<h3 id="conexion-a-la-base-de-datos-dwh">Conexión a la base de datos DWH<a class="headerlink" href="#conexion-a-la-base-de-datos-dwh" title="Permanent link">&para;</a></h3>
+<p>Se establece la conexión con la base de datos DWH utilizando la función <code>Conexion_dwh()</code> y se crea el motor de conexión con <code>create_engine()</code>. El evento de conexión exitosa se registra en el log.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#---------------------------------------------</span>
+<span class="c1">#Conexion a base dwh</span>
+<span class="n">motor2</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">obtener_conexion</span><span class="p">(</span><span class="s1">&#39;dwh&#39;</span><span class="p">))</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;CONEXION A BASE DWH&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-30 12:28:02,430 - INFO - CONEXION A BASE DWH
+</code></pre></div>
+
+<h3 id="guardar-en-base-de-datos-dwh">Guardar en base de datos DWH<a class="headerlink" href="#guardar-en-base-de-datos-dwh" title="Permanent link">&para;</a></h3>
+<p>Se guarda cada tabla del diccionario <code>df_structure</code> en su respectiva tabla en la base de datos DWH, utilizando los nombres definidos en <code>dim_names</code>. El contenido de cada tabla se reemplaza si ya existe en la base de datos. El tiempo total de almacenamiento se registra en el log.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Conexion a base dwh</span>
+
+<span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df_structure</span><span class="p">,</span> <span class="n">dim_names</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-30 12:28:02,440 - INFO - Intentando conexión a la base DWH...
+2024-10-30 12:28:02,442 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-30 12:28:02,730 - INFO - Almacenando tabla colegio12 en DWH como BD_Fact_Colegio_Estudiantes
+2024-10-30 12:28:04,964 - INFO - Tabla colegio12 almacenada correctamente como BD_Fact_Colegio_Estudiantes.
+2024-10-30 12:28:04,965 - INFO - Almacenando tabla colegio13 en DWH como BD_Fact_Colegio_Acudientes
+2024-10-30 12:28:06,820 - INFO - Tabla colegio13 almacenada correctamente como BD_Fact_Colegio_Acudientes.
+2024-10-30 12:28:06,820 - INFO - Almacenando tabla colegio15 en DWH como BD_Fact_Colegio_Matriculas
+2024-10-30 12:28:08,041 - INFO - Tabla colegio15 almacenada correctamente como BD_Fact_Colegio_Matriculas.
+2024-10-30 12:28:08,042 - INFO - Almacenando tabla colegio03 en DWH como BD_Dim_Colegio_Grados
+2024-10-30 12:28:08,625 - INFO - Tabla colegio03 almacenada correctamente como BD_Dim_Colegio_Grados.
+2024-10-30 12:28:08,627 - INFO - Almacenando tabla BD_Dim_Colegio_Calendario en DWH como BD_Dim_Colegio_Calendario
+2024-10-30 12:28:09,123 - INFO - Tabla BD_Dim_Colegio_Calendario almacenada correctamente como BD_Dim_Colegio_Calendario.
+2024-10-30 12:28:09,181 - INFO - ALMACENAMIENTO ---  --- 6.74 seconds ---
+2024-10-30 12:28:09,182 - INFO - Finalizando proceso de almacenamiento en DWH.
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;FINAL ETL --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-30 12:28:09,191 - INFO - FINAL ETL --- 8.44 seconds ---
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/init_mermaid.js"></script>
+      
+    
+  </body>
+</html>

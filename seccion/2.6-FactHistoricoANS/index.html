@@ -1,0 +1,2058 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2.5-Fact_HistoricoMoraEmp/">
+      
+      
+        <link rel="next" href="../2.7-FactHistoricoSubPrescrito/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>2.6 FactHistoricoANS - Optimización CAJAMAG - Gobierno de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#d89717" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#26-fact-historico-ans" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Optimización CAJAMAG - Gobierno de Datos" class="md-header__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Optimización CAJAMAG - Gobierno de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.6 FactHistoricoANS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Optimización CAJAMAG - Gobierno de Datos" class="md-nav__button md-logo" aria-label="Optimización CAJAMAG - Gobierno de Datos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Optimización CAJAMAG - Gobierno de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INTRODUCCIÓN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instalacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    INSTALACIÓN Y CONFIGURACIÓN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../buenaspracticas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BUENAS PRACTICAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../codigo/funciones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FUNCIONES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BODEGAS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            BODEGAS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Bodega 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            1. Bodega 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.1-DimDatosFijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 DimDatosFijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.2-DimCalendarioMensual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 DimCalendarioMensual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.3-Dimensiones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 Dimensiones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.4-Dimensiones_xml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.4 Dimensiones xml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.5-FactDatosContacto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.5 FactDatosContacto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.6-Fact_Historico_Afiliacion_Empresas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.6 Fact Historico Afiliacion Empresas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.7-Fact_Historico_Trabajadores1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.7-Fact_Historico_Trabajadores2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.7 Fact Historico Trabajadores2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.8-Fact_HistoricoBeneficiarios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.8 Fact HistoricoBeneficiarios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.9-Dim_Parametricas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.9 Dim Parametricas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. Bodega 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            2. Bodega 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1-FactAportesEmpAfiliadas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactAportesEmpAfiliadas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1-FactHistoricoAportesTotales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 FactHistoricoAportesTotales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2-FactHistoricoCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactHistoricoCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.3-FactSubsidioVivienda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 FactSubsidioVivienda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.4-FactFosfec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 FactFosfec
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2-FactEstadoGiroCuota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 FactEstadoGiroCuota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.5-Fact_HistoricoMoraEmp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.5 Fact HistoricoMoraEmp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    2.6 FactHistoricoANS
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    2.6 FactHistoricoANS
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacion-de-librerias-y-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importación de librerías y funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-del-logger-y-comienzo-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del logger y comienzo del proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consulta-de-datos-y-union-de-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consulta de Datos y Unión de Tablas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conexion-y-cargue-de-tablas-desde-sql-con-registro-de-duracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conexión y cargue de tablas desde SQL con registro de duración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procesamiento-de-datos-y-transformacion-en-df" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procesamiento de Datos y Transformación en df
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generacion-de-id-unico-y-seleccion-de-columnas-en-df_final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generación de ID Único y Selección de Columnas en df_final
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardar-en-base-de-datos-dwh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guardar en base de datos DWH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.7-FactHistoricoSubPrescrito/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.7 FactHistoricoSubPrescrito
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.8-FactHistoricoRecobro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.8 FactHistoricoRecobro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.9-FactHistoricoRecuperado/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.9 FactHistoricoRecuperado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.10-FactIgestion_Mercurio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.10 FactIgestion Mercurio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3. Bodega 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            3. Bodega 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.1-FactTransaccionesVentas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 FactTransaccionesVentas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. Bodega 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            4. Bodega 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1-FactColegio_fijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 FactColegio fijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.2-FactColegio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 FactColegio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. Bodega 5
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            5. Bodega 5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.1-FactServicioSocial_Fijos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 FactServicioSocial Fijos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.2-FactServicioSocial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 FactServicioSocial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    6. Bodega 6
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            6. Bodega 6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bloque6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intoduccion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.1-FactEncuestas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 FactEncuestas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.2-Fact_Encuesta_afil_empleador/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 Fact Encuesta afil empleador
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-secuencia-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de Secuencia del Proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ETL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacion-de-librerias-y-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importación de librerías y funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-del-logger-y-comienzo-del-proceso-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración del logger y comienzo del proceso ETL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consulta-de-datos-y-union-de-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consulta de Datos y Unión de Tablas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conexion-y-cargue-de-tablas-desde-sql-con-registro-de-duracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conexión y cargue de tablas desde SQL con registro de duración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procesamiento-de-datos-y-transformacion-en-df" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procesamiento de Datos y Transformación en df
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generacion-de-id-unico-y-seleccion-de-columnas-en-df_final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generación de ID Único y Selección de Columnas en df_final
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardar-en-base-de-datos-dwh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guardar en base de datos DWH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="26-fact-historico-ans">2.6 Fact Historico ANS<a class="headerlink" href="#26-fact-historico-ans" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>El proceso ETL para <code>Fact_HistoricoANS</code> se utiliza para extraer, transformar y cargar datos de tres fuentes de datos (<code>subsi02</code>, <code>subsi15</code>, y <code>subsi23</code>) en la base de datos <code>subsidio</code>, consolidando los registros relacionados con los historiales de afiliación de empresas, trabajadores y beneficiarios en el Data Warehouse (DWH). La extracción se realiza mediante una consulta <code>UNION</code> para combinar datos de las tres tablas, asignando una fuente específica a cada entidad según su tabla de origen y limitando los resultados ultimos 18 meses. Posteriormente, se aplican transformaciones, como la generación de una clave única de historial y la estandarización de nombres de columnas, para facilitar su análisis y almacenamiento. Finalmente, el DataFrame <code>df_final</code> se almacena en la tabla <code>BD_Fact_HistoricoANS</code> del DWH, con registros en el log para monitorear el rendimiento y la precisión del proceso.</p>
+<h3 id="diagrama-de-secuencia-del-proceso-etl">Diagrama de Secuencia del Proceso ETL<a class="headerlink" href="#diagrama-de-secuencia-del-proceso-etl" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    title Diagrama de Secuencia del Proceso ETL - Fact_HistoricoANS
+    participant 👤 Usuario
+    participant ETL_Script
+    participant Minerva_DB as Base de Datos Minerva
+    participant DWH as Data Warehouse
+
+    👤 Usuario -&gt;&gt; ETL_Script: Ejecuta el script ETL
+    ETL_Script -&gt;&gt; ETL_Script: Configura entorno y logger
+    ETL_Script -&gt;&gt; Minerva_DB: Conecta a BD Minerva
+    Minerva_DB --&gt;&gt; ETL_Script: Conexión exitosa
+    ETL_Script -&gt;&gt; Minerva_DB: Ejecuta consulta SQL para extraer historiales
+    Minerva_DB --&gt;&gt; ETL_Script: Retorna datos históricos
+    ETL_Script -&gt;&gt; ETL_Script: Procesa datos y genera claves únicas
+    ETL_Script -&gt;&gt; DWH: Conecta a BD DWH
+    DWH --&gt;&gt; ETL_Script: Conexión exitosa
+    ETL_Script -&gt;&gt; DWH: Carga datos en `BD_Fact_HistoricoANS`
+    DWH --&gt;&gt; ETL_Script: Confirmación de carga exitosa
+    ETL_Script -&gt;&gt; 👤 Usuario: Finaliza proceso ETL y registra tiempo</code></pre>
+<h2 id="etl">ETL<a class="headerlink" href="#etl" title="Permanent link">&para;</a></h2>
+<h3 id="importacion-de-librerias-y-funciones">Importación de librerías y funciones<a class="headerlink" href="#importacion-de-librerias-y-funciones" title="Permanent link">&para;</a></h3>
+<p>Este script establece un entorno para la conexión a bases de datos y la manipulación de datos utilizando SQLAlchemy y Pandas, optimizado para operaciones de carga y transformación de datos. Al principio, el código registra el tiempo de inicio de ejecución con <code>time</code> y carga las librerías <code>sqlalchemy</code>, <code>pandas</code>, <code>numpy</code>, <code>logging</code>, y <code>os</code>, necesarias para la manipulación de datos y la creación de conexiones a bases de datos. La configuración del módulo personalizado ubicado en el directorio <code>../funciones</code> permite la importación de funciones específicas desde <code>Funciones.py</code>, incluyendo <code>guardar_en_dwh</code>, <code>cargar_tablas</code>, <code>obtener_conexion</code>, <code>testfunciones</code>, y <code>setup_logger</code>. Estas funciones proporcionan métodos para manejar conexiones, cargar y guardar datos en un <em>Data Warehouse</em>, y realizar pruebas o configuraciones de registros, creando una estructura modular y eficiente para el procesamiento de datos.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">sa</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1">#Import de modulo funciones</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Agrega el directorio al sys.path</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../funciones&#39;</span><span class="p">))</span>
+
+<span class="c1"># Importa las funciones desde el archivo Funciones.py</span>
+
+<span class="kn">from</span> <span class="nn">Funciones</span> <span class="kn">import</span> <span class="n">convertir_columnas_mayusculas</span><span class="p">,</span> <span class="n">guardar_en_dwh</span><span class="p">,</span> <span class="n">cargar_tablas</span><span class="p">,</span> <span class="n">obtener_conexion</span><span class="p">,</span> <span class="n">testfunciones</span><span class="p">,</span> <span class="n">setup_logger</span>
+</code></pre></div>
+<h3 id="configuracion-del-logger-y-comienzo-del-proceso-etl">Configuración del logger y comienzo del proceso ETL<a class="headerlink" href="#configuracion-del-logger-y-comienzo-del-proceso-etl" title="Permanent link">&para;</a></h3>
+<p>En esta celda se configura el logger, que se utiliza para registrar mensajes de información (logging). El logger está configurado para guardar un archivo log con el nombre <code>HistoricoANS.log</code>, y en esta etapa, se inicia el proceso ETL, registrando el comienzo del mismo.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">#---------------------------------------------</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">setup_logger</span><span class="p">(</span><span class="n">log_filename</span><span class="o">=</span><span class="s1">&#39;HistoricoANS.log&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># Cambiado a logging.INFO</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">testfunciones</span><span class="p">())</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;COMIENZO ETL&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-28 18:27:02,075 - INFO - Importacion de funciones correcta, 28-10-2024 18:27
+2024-10-28 18:27:02,086 - INFO - COMIENZO ETL
+</code></pre></div>
+
+<h3 id="consulta-de-datos-y-union-de-tablas">Consulta de Datos y Unión de Tablas<a class="headerlink" href="#consulta-de-datos-y-union-de-tablas" title="Permanent link">&para;</a></h3>
+<p>En este código, se define una consulta SQL que combina datos de tres tablas (<code>subsi02</code>, <code>subsi15</code> y <code>subsi23</code>) de la base de datos <code>subsidio</code> mediante la operación <code>UNION</code>. La consulta unifica registros de diferentes tipos de entidades (<code>Empresa</code>, <code>Trabajador</code>, y <code>Beneficiario</code>), asignándoles una fuente específica según la tabla de origen. Cada selección dentro de la <code>UNION</code> crea un campo <code>periodo</code> basado en la fecha (<code>fecafi</code> o <code>fecpre</code>), que concatena el año y el mes. También incluye los campos <code>coddoc</code>, <code>Identificacion</code>, <code>fecafi</code>, <code>fecapr</code>, <code>Tipo</code> y <code>Fuente</code>. En el caso de <code>subsi23</code>, se emplea una <code>INNER JOIN</code> con la tabla <code>subsi22</code> para obtener información adicional de identificación, basada en el campo común <code>codben</code>. La condición <code>WHERE</code> restringe los resultados a los años 2022 y 2023 para todas las tablas. </p>
+<p>La consulta está diseñada para recuperar únicamente los registros de los últimos 18 periodos (meses) desde la fecha actual. Para lograrlo, En cada WHERE, se filtra el campo periodo utilizando la función DATE_SUB(CURRENT_DATE(), INTERVAL 18 MONTH), que calcula la fecha límite de hace 18 meses. Esta condición es dinámica y siempre asegura que solo se devuelvan registros dentro de este rango de 18 meses.</p>
+<p>En el caso de la tabla subsi23, se emplea una INNER JOIN con subsi22 para obtener información adicional de identificación, basada en el campo común codben.</p>
+<p>Finalmente, el logger registra un mensaje indicando la lectura de la consulta, lo que ayuda a monitorear la ejecución del proceso en tiempo real. La estructura generada en <code>qr_structure</code> estará lista para ejecutarse y almacenar los resultados en <code>df_structure</code>, permitiendo realizar análisis y procesamiento posteriores.</p>
+<div class="highlight"><pre><span></span><code><span class="n">qr_structure</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                select </span>
+<span class="s2">                    CONCAT(YEAR(fecafi), LPAD(MONTH(fecafi), 2, &#39;0&#39;)) AS periodo, </span>
+<span class="s2">                    coddoc, </span>
+<span class="s2">                    nit as Identifiacion, </span>
+<span class="s2">                    fecafi, </span>
+<span class="s2">                    fecapr, </span>
+<span class="s2">                    &#39;Empresa&#39; as Tipo, </span>
+<span class="s2">                    &#39;subsi02&#39; Fuente</span>
+<span class="s2">                from subsidio.subsi02</span>
+<span class="s2">                where CONCAT(YEAR(fecafi), LPAD(MONTH(fecafi), 2, &#39;0&#39;)) &gt;= DATE_FORMAT(DATE_SUB(CURRENT_DATE(), INTERVAL 18 MONTH), &#39;%Y%m&#39;)</span>
+
+<span class="s2">                UNION</span>
+
+<span class="s2">                select </span>
+<span class="s2">                    CONCAT(YEAR(s15.fecpre), LPAD(MONTH(s15.fecpre), 2, &#39;0&#39;)) AS periodo, </span>
+<span class="s2">                    s15.coddoc, </span>
+<span class="s2">                    s15.cedtra as Identifiacion, </span>
+<span class="s2">                    s15.fecpre AS fecafi, </span>
+<span class="s2">                    IF(s15.fecpre &gt; s15.fecafi, s15.fecsis, s15.fecafi) AS fecapr, </span>
+<span class="s2">                    &#39;Trabajador&#39; as Tipo, </span>
+<span class="s2">                    &#39;subsi15&#39; Fuente</span>
+<span class="s2">                from subsidio.subsi15 as s15</span>
+<span class="s2">                where CONCAT(YEAR(s15.fecpre), LPAD(MONTH(s15.fecpre), 2, &#39;0&#39;)) &gt;= DATE_FORMAT(DATE_SUB(CURRENT_DATE(), INTERVAL 18 MONTH), &#39;%Y%m&#39;)</span>
+
+<span class="s2">                UNION</span>
+
+<span class="s2">                select </span>
+<span class="s2">                    CONCAT(YEAR(fecpre), LPAD(MONTH(fecpre), 2, &#39;0&#39;)) AS periodo, </span>
+<span class="s2">                    k2.coddoc,  </span>
+<span class="s2">                    documento as Identificacion, </span>
+<span class="s2">                    fecpre AS fecafi,</span>
+<span class="s2">                    IF(fecpre &gt; fecafi, fecsis, fecafi) AS fecapr, </span>
+<span class="s2">                    &#39;Beneficiario&#39; as Tipo, </span>
+<span class="s2">                    &#39;subsi23&#39; Fuente</span>
+<span class="s2">                from subsidio.subsi23 as k1</span>
+<span class="s2">                INNER JOIN (select documento, coddoc, codben from subsidio.subsi22) as k2</span>
+<span class="s2">                ON k1.codben = k2.codben</span>
+<span class="s2">                where CONCAT(YEAR(fecpre), LPAD(MONTH(fecpre), 2, &#39;0&#39;)) &gt;= DATE_FORMAT(DATE_SUB(CURRENT_DATE(), INTERVAL 18 MONTH), &#39;%Y%m&#39;);</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="p">}</span>
+<span class="n">df_structure</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;LECTURA DE QUERYS&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-28 18:27:02,097 - INFO - LECTURA DE QUERYS
+</code></pre></div>
+
+<h3 id="conexion-y-cargue-de-tablas-desde-sql-con-registro-de-duracion">Conexión y cargue de tablas desde SQL con registro de duración<a class="headerlink" href="#conexion-y-cargue-de-tablas-desde-sql-con-registro-de-duracion" title="Permanent link">&para;</a></h3>
+<p>Este bloque se conecta a la base de datos Minerva, carga las tablas definidas en <code>qr_structure</code>, y utiliza el <code>logger</code> para registrar tanto el tiempo individual de carga de cada tabla como el tiempo total del proceso. Esto proporciona visibilidad sobre el rendimiento de cada cargue y del proceso general, facilitando el monitoreo y la optimización del flujo de datos.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Conexion a base Minerva</span>
+<span class="n">motor</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">obtener_conexion</span><span class="p">(</span><span class="s1">&#39;minerva&#39;</span><span class="p">))</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;CONEXION A BASE MINERVA&#39;</span><span class="p">)</span>
+
+<span class="n">cargar_tablas</span><span class="p">(</span><span class="n">motor</span><span class="p">,</span> <span class="n">qr_structure</span><span class="p">,</span> <span class="n">df_structure</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-28 18:27:02,178 - INFO - CONEXION A BASE MINERVA
+2024-10-28 18:27:02,731 - INFO - Cargando query 
+2024-10-28 18:28:05,522 - INFO - Cargada query, 137,314 registros finales obtenidos. --- 1.05 minutes ---
+2024-10-28 18:28:05,624 - INFO - CARGUE TABLAS DESDE MYSQL --- query --- 1.06 minutes ---
+</code></pre></div>
+
+<h3 id="procesamiento-de-datos-y-transformacion-en-df">Procesamiento de Datos y Transformación en <code>df</code><a class="headerlink" href="#procesamiento-de-datos-y-transformacion-en-df" title="Permanent link">&para;</a></h3>
+<p>En este script, partiendo de <code>df = df_structure['query']</code>, se realiza un procesamiento de datos detallado que incluye la creación de nuevas columnas y la transformación de tipos de datos para estructurar la información en <code>df_filtered</code>. Primero, se crea una columna <code>Validador</code> que evalúa si <code>fecafi</code> es mayor que <code>fecapr</code>, asignando un valor de <code>0</code> o <code>1</code> según la comparación. Posteriormente, se introduce una columna <code>tipide</code> utilizando <code>map</code> para convertir los códigos en <code>coddoc</code> en identificadores numéricos específicos mediante <code>coddoc_mapping</code>, y se maneja cualquier valor no coincidente conservando su valor original.</p>
+<p>La columna <code>KeyHistoricos</code> se genera concatenando <code>periodo</code>, <code>tipide</code>, <code>Identifiacion</code> y las tres primeras letras de <code>Tipo</code>, formando una clave única para cada registro. Luego, se filtran las filas donde <code>Validador</code> es igual a <code>1</code>, eliminando esta columna del <code>DataFrame</code> resultante <code>df_filtered</code>. Para mejorar la precisión en la manipulación de fechas, <code>fecafi</code> y <code>fecapr</code> se convierten al tipo <code>datetime</code>.</p>
+<p>El proceso de ETL se registra en el <code>logger</code> tanto en términos de la cantidad de registros finales obtenidos como del tiempo total de ejecución. El <code>DataFrame</code> final <code>df_filtered</code> se muestra para validar las transformaciones realizadas, y se guarda opcionalmente en el <em>Data Warehouse</em> para futuras consultas y análisis.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Asumiendo que df = df_structure[&#39;query&#39;]</span>
+<span class="c1"># Crear la columna &#39;Validador&#39; basado en la comparación entre &#39;fecafi&#39; y &#39;fecapr&#39;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df_structure</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Validador&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;fecafi&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;fecapr&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Agregar columna &#39;tipide&#39; usando map en lugar de apply</span>
+<span class="n">coddoc_mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;CC&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;CD&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;CE&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;NI&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;NP&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;PA&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;PE&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;PT&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;RC&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;TI&#39;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+
+<span class="c1"># Mapear directamente el valor de &#39;coddoc&#39; a &#39;tipide&#39;</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;tipide&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;coddoc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">coddoc_mapping</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;coddoc&#39;</span><span class="p">])</span>
+
+<span class="c1"># Agregar columna &#39;KeyHistoricos&#39;</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;KeyHistoricos&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;periodo&#39;</span><span class="p">,</span> <span class="s1">&#39;tipide&#39;</span><span class="p">,</span> <span class="s1">&#39;Identifiacion&#39;</span><span class="p">,</span> <span class="s1">&#39;Tipo&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;periodo&#39;</span><span class="p">]</span><span class="si">}{</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;tipide&#39;</span><span class="p">])</span><span class="si">}{</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Identifiacion&#39;</span><span class="p">]</span><span class="si">}{</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Tipo&#39;</span><span class="p">][:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="c1"># Filtrar filas donde Validador es 1 y hacer una copia explícita</span>
+<span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Validador&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Eliminar columna &#39;Validador&#39;</span>
+<span class="n">df_filtered</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Validador&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Cambiar el tipo de las columnas &#39;fecafi&#39; y &#39;fecapr&#39; a datetime</span>
+<span class="n">df_filtered</span><span class="p">[</span><span class="s1">&#39;fecafi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">[</span><span class="s1">&#39;fecafi&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">df_filtered</span><span class="p">[</span><span class="s1">&#39;fecapr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">[</span><span class="s1">&#39;fecapr&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+<span class="c1"># Registrar el número de registros obtenidos</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Proceso ETL completado, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">)</span><span class="si">}</span><span class="s2"> registros finales obtenidos.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Guardar en base de datos DWH (opcional)</span>
+<span class="c1"># df_filtered.to_sql(&#39;nombre_tabla_dwh&#39;, con=engine, index=False, if_exists=&#39;replace&#39;)</span>
+
+<span class="c1"># Loguear tiempo final de ejecución</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finalizado ETL en </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> segundos.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el DataFrame final para ver los resultados</span>
+<span class="n">df_filtered</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-28 18:28:08,348 - INFO - Proceso ETL completado, 65582 registros finales obtenidos.
+2024-10-28 18:28:08,350 - INFO - Finalizado ETL en 66.31 segundos.
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>periodo</th>
+      <th>coddoc</th>
+      <th>Identifiacion</th>
+      <th>fecafi</th>
+      <th>fecapr</th>
+      <th>Tipo</th>
+      <th>Fuente</th>
+      <th>tipide</th>
+      <th>KeyHistoricos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>202310</td>
+      <td>CC</td>
+      <td>1000063770</td>
+      <td>2023-10-18</td>
+      <td>2023-10-18</td>
+      <td>Empresa</td>
+      <td>subsi02</td>
+      <td>1</td>
+      <td>20231011000063770Emp</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>202309</td>
+      <td>CC</td>
+      <td>1000521027</td>
+      <td>2023-09-04</td>
+      <td>2023-09-04</td>
+      <td>Empresa</td>
+      <td>subsi02</td>
+      <td>1</td>
+      <td>20230911000521027Emp</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>202407</td>
+      <td>CC</td>
+      <td>1000697509</td>
+      <td>2024-07-05</td>
+      <td>2024-07-05</td>
+      <td>Empresa</td>
+      <td>subsi02</td>
+      <td>1</td>
+      <td>20240711000697509Emp</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>202408</td>
+      <td>CC</td>
+      <td>1001832447</td>
+      <td>2024-08-15</td>
+      <td>2024-08-15</td>
+      <td>Empresa</td>
+      <td>subsi02</td>
+      <td>1</td>
+      <td>20240811001832447Emp</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>202310</td>
+      <td>CC</td>
+      <td>1002130415</td>
+      <td>2023-10-13</td>
+      <td>2023-10-13</td>
+      <td>Empresa</td>
+      <td>subsi02</td>
+      <td>1</td>
+      <td>20231011002130415Emp</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>137309</th>
+      <td>202306</td>
+      <td>TI</td>
+      <td>1083053889</td>
+      <td>2023-06-27</td>
+      <td>2023-06-29</td>
+      <td>Beneficiario</td>
+      <td>subsi23</td>
+      <td>2</td>
+      <td>20230621083053889Ben</td>
+    </tr>
+    <tr>
+      <th>137310</th>
+      <td>202306</td>
+      <td>TI</td>
+      <td>1083053907</td>
+      <td>2023-06-27</td>
+      <td>2023-06-29</td>
+      <td>Beneficiario</td>
+      <td>subsi23</td>
+      <td>2</td>
+      <td>20230621083053907Ben</td>
+    </tr>
+    <tr>
+      <th>137311</th>
+      <td>202310</td>
+      <td>RC</td>
+      <td>1083055299</td>
+      <td>2023-10-18</td>
+      <td>2023-10-19</td>
+      <td>Beneficiario</td>
+      <td>subsi23</td>
+      <td>3</td>
+      <td>20231031083055299Ben</td>
+    </tr>
+    <tr>
+      <th>137312</th>
+      <td>202311</td>
+      <td>PT</td>
+      <td>5200619</td>
+      <td>2023-11-08</td>
+      <td>2023-11-15</td>
+      <td>Beneficiario</td>
+      <td>subsi23</td>
+      <td>15</td>
+      <td>202311155200619Ben</td>
+    </tr>
+    <tr>
+      <th>137313</th>
+      <td>202406</td>
+      <td>RC</td>
+      <td>1083069197</td>
+      <td>2024-06-01</td>
+      <td>2024-06-01</td>
+      <td>Beneficiario</td>
+      <td>subsi23</td>
+      <td>3</td>
+      <td>20240631083069197Ben</td>
+    </tr>
+  </tbody>
+</table>
+<p>65582 rows × 9 columns</p>
+</div>
+
+<h3 id="generacion-de-id-unico-y-seleccion-de-columnas-en-df_final">Generación de ID Único y Selección de Columnas en <code>df_final</code><a class="headerlink" href="#generacion-de-id-unico-y-seleccion-de-columnas-en-df_final" title="Permanent link">&para;</a></h3>
+<p>En este código, se crea la columna <code>ID AFILIADO</code> en <code>df_filtered</code> mediante la concatenación de los valores en <code>coddoc</code> y <code>Identifiacion</code>, ambos convertidos a texto, para formar un identificador único de afiliado. Seguidamente, el diccionario <code>_names</code> mapea los nombres originales de columnas a nombres más descriptivos y en mayúsculas, facilitando la estandarización y consistencia. La función <code>convertir_columnas_mayusculas</code> aplica estos cambios a <code>df_filtered</code>.</p>
+<p>Finalmente, se genera <code>df_final</code> seleccionando únicamente las columnas clave, incluyendo <code>ID AFILIADO</code>, <code>PERIODO</code>, <code>CODIGO_DOCUMENTO</code>, <code>ID</code>, <code>FECHA_AFILIACION</code>, <code>FECHA_APROBACION</code>, <code>TIPO</code>, <code>FUENTE</code>, <code>TIPIDE</code> y <code>KEYHISTORICOS</code>, lo que asegura que el <code>DataFrame</code> final esté estructurado de acuerdo con los requisitos para análisis o almacenamiento en la base de datos.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_filtered</span><span class="p">[</span><span class="s1">&#39;ID AFILIADO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s1">&#39;coddoc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s1">&#39;Identifiacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="n">_names</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;coddoc&#39;</span><span class="p">:</span> <span class="s1">&#39;CODIGO_DOCUMENTO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Identifiacion&#39;</span><span class="p">:</span> <span class="s1">&#39;ID&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fecafi&#39;</span><span class="p">:</span> <span class="s1">&#39;FECHA_AFILIACION&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fecapr&#39;</span><span class="p">:</span> <span class="s1">&#39;FECHA_APROBACION&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">convertir_columnas_mayusculas</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">,</span> <span class="n">_names</span><span class="p">)</span>
+<span class="n">df_final</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span>
+    <span class="s1">&#39;ID AFILIADO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PERIODO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CODIGO_DOCUMENTO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ID&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FECHA_AFILIACION&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FECHA_APROBACION&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;TIPO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FUENTE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;TIPIDE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;KEYHISTORICOS&#39;</span>
+    <span class="p">]]</span>
+</code></pre></div>
+<hr />
+<h3 id="guardar-en-base-de-datos-dwh">Guardar en base de datos DWH<a class="headerlink" href="#guardar-en-base-de-datos-dwh" title="Permanent link">&para;</a></h3>
+<p>Se guarda el dataframe <code>dfTotal</code> en la tabla <code>BD_Fact_HistoricoANS</code> de la base DWH usando <code>with</code> para garantizar el cierre automático de la conexión. Se registra el tiempo de ejecución en el log.</p>
+<div class="highlight"><pre><span></span><code><span class="n">guardar_en_dwh</span><span class="p">(</span><span class="n">df_final</span><span class="p">,</span> <span class="s1">&#39;BD_Fact_HistoricoANS&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+<span class="n">df_final</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-28 18:28:08,439 - INFO - Intentando conexión a la base DWH...
+2024-10-28 18:28:08,477 - INFO - Conexión a la base DWH establecida con éxito.
+2024-10-28 18:28:09,320 - INFO - Almacenando tabla única en DWH como BD_Fact_HistoricoANS
+2024-10-28 18:28:19,527 - INFO - Tabla almacenada correctamente. 65,582 registros finales obtenidos.
+2024-10-28 18:28:19,659 - INFO - ALMACENAMIENTO ---  --- 11.22 seconds ---
+2024-10-28 18:28:19,661 - INFO - Finalizando proceso de almacenamiento en DWH.
+
+
+
+
+
+[&#39;ID AFILIADO&#39;,
+ &#39;PERIODO&#39;,
+ &#39;CODIGO_DOCUMENTO&#39;,
+ &#39;ID&#39;,
+ &#39;FECHA_AFILIACION&#39;,
+ &#39;FECHA_APROBACION&#39;,
+ &#39;TIPO&#39;,
+ &#39;FUENTE&#39;,
+ &#39;TIPIDE&#39;,
+ &#39;KEYHISTORICOS&#39;]
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;FINAL ETL --- </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> seconds ---&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="codehilite"><pre><span></span><code>2024-10-28 18:28:19,675 - INFO - FINAL ETL --- 77.63 seconds ---
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/init_mermaid.js"></script>
+      
+    
+  </body>
+</html>
